@@ -45,14 +45,39 @@
         <!--Fixtures-->
         <scene sceneID="9bx-rP-fhI">
             <objects>
-                <viewController id="3i3-Vw-kgY" sceneMemberID="viewController">
+                <viewController id="3i3-Vw-kgY" customClass="FixtureVC" customModule="TvFootball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R5B-SL-u9h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jH-fh-DtV" userLabel="webView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EI-6d-qPZ" userLabel="bannerView">
+                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fu5-ni-LEZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8jH-fh-DtV" firstAttribute="top" secondItem="q8h-kH-0m4" secondAttribute="top" id="FCp-4M-3S2"/>
+                            <constraint firstItem="8jH-fh-DtV" firstAttribute="width" secondItem="R5B-SL-u9h" secondAttribute="width" id="NO8-Bh-Cs1"/>
+                            <constraint firstItem="7EI-6d-qPZ" firstAttribute="width" secondItem="R5B-SL-u9h" secondAttribute="width" id="RYk-DZ-6ZT"/>
+                            <constraint firstItem="7EI-6d-qPZ" firstAttribute="centerX" secondItem="q8h-kH-0m4" secondAttribute="centerX" id="WkI-Uw-5QL"/>
+                            <constraint firstItem="8jH-fh-DtV" firstAttribute="centerX" secondItem="q8h-kH-0m4" secondAttribute="centerX" id="Z8Z-Mz-n4I"/>
+                            <constraint firstItem="7EI-6d-qPZ" firstAttribute="top" secondItem="8jH-fh-DtV" secondAttribute="bottom" constant="1" id="jIP-b9-GXp"/>
+                            <constraint firstItem="q8h-kH-0m4" firstAttribute="bottom" secondItem="8jH-fh-DtV" secondAttribute="bottom" constant="51" id="qrD-jd-TKL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="q8h-kH-0m4"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Fixtures" id="B2D-Se-QDa"/>
+                    <connections>
+                        <outlet property="tvWebView" destination="8jH-fh-DtV" id="Bd1-D3-TWg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klP-cn-UvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

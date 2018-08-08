@@ -19,6 +19,7 @@
 		9EDFA38A211AF4CF0019E321 /* LiveMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA389211AF4CF0019E321 /* LiveMatch.swift */; };
 		9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */; };
 		9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */; };
+		9EDFA394211B08010019E321 /* FixtureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA393211B08010019E321 /* FixtureVC.swift */; };
 		C3049BE85A5B85CD51B0462B /* Pods_TvFootball.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		9EDFA389211AF4CF0019E321 /* LiveMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatch.swift; sourceTree = "<group>"; };
 		9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDelegate.swift; sourceTree = "<group>"; };
 		9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvFootballVC.swift; sourceTree = "<group>"; };
+		9EDFA393211B08010019E321 /* FixtureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureVC.swift; sourceTree = "<group>"; };
 		B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TvFootball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BC835DECC456B78614AA12 /* Pods-TvFootball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TvFootball.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TvFootball/Pods-TvFootball.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */,
+				9EDFA393211B08010019E321 /* FixtureVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			files = (
 				9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */,
 				9E6FCD3D2119AACB0059DDE0 /* AppDelegate.swift in Sources */,
+				9EDFA394211B08010019E321 /* FixtureVC.swift in Sources */,
 				9EDFA38A211AF4CF0019E321 /* LiveMatch.swift in Sources */,
 				9EDFA382211AA6A00019E321 /* DataManager.swift in Sources */,
 				9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */,
