@@ -9,7 +9,7 @@ DEPENDENCIES:
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - RAMAnimatedTabBarController
     - SwiftyJSON
@@ -21,4 +21,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b3ec63806f0ef47ffac1f709833dff9af5bb770c
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

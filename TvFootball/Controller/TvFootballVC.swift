@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import RAMAnimatedTabBarController
 
-class TvFootballVC: UITabBarController {
+class TvFootballVC: RAMAnimatedTabBarController {
     
     // MARK: Life cycle
     override func viewDidLoad() {
+        // Set title image
+        let image : UIImage = #imageLiteral(resourceName: "tv_logo")
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = image
+        self.navigationItem.titleView = imageView
+        
+        // Get live data
         DataManager.shared.getLiveMatches()
     }
 }
