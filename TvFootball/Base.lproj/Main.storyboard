@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="276" y="-645"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tv FootballVC-->
         <scene sceneID="uPV-kO-d6Z">
             <objects>
-                <tabBarController id="1Qw-8T-Jza" sceneMemberID="viewController">
+                <tabBarController id="1Qw-8T-Jza" customClass="TvFootballVC" customModule="TvFootball" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jjg-04-IUW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

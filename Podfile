@@ -7,6 +7,7 @@ target 'TvFootball' do
   # Pods for TvFootball
   pod 'SwiftyJSON', '~> 4.0'
   pod 'RAMAnimatedTabBarController'
+  pod 'Alamofire', '~> 4.5'
 
   target 'TvFootballTests' do
     inherit! :search_paths

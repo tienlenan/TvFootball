@@ -13,8 +13,12 @@
 		9E6FCD442119AACD0059DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6FCD432119AACD0059DDE0 /* Assets.xcassets */; };
 		9E6FCD522119AACD0059DDE0 /* TvFootballTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6FCD512119AACD0059DDE0 /* TvFootballTests.swift */; };
 		9E6FCD5D2119AACD0059DDE0 /* TvFootballUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6FCD5C2119AACD0059DDE0 /* TvFootballUITests.swift */; };
-		9EDFA37E2119B5AA0019E321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EDFA37A2119B5AA0019E321 /* LaunchScreen.storyboard */; };
-		9EDFA37F2119B5AA0019E321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EDFA37C2119B5AA0019E321 /* Main.storyboard */; };
+		9EDFA382211AA6A00019E321 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA381211AA6A00019E321 /* DataManager.swift */; };
+		9EDFA387211ACBBF0019E321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EDFA383211ACBBF0019E321 /* LaunchScreen.storyboard */; };
+		9EDFA388211ACBBF0019E321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EDFA385211ACBBF0019E321 /* Main.storyboard */; };
+		9EDFA38A211AF4CF0019E321 /* LiveMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA389211AF4CF0019E321 /* LiveMatch.swift */; };
+		9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */; };
+		9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */; };
 		C3049BE85A5B85CD51B0462B /* Pods_TvFootball.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +57,12 @@
 		9E6FCD582119AACD0059DDE0 /* TvFootballUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TvFootballUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6FCD5C2119AACD0059DDE0 /* TvFootballUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvFootballUITests.swift; sourceTree = "<group>"; };
 		9E6FCD5E2119AACD0059DDE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EDFA37B2119B5AA0019E321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TvFootball/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		9EDFA37D2119B5AA0019E321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TvFootball/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		9EDFA381211AA6A00019E321 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		9EDFA384211ACBBF0019E321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9EDFA386211ACBBF0019E321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9EDFA389211AF4CF0019E321 /* LiveMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatch.swift; sourceTree = "<group>"; };
+		9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDelegate.swift; sourceTree = "<group>"; };
+		9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvFootballVC.swift; sourceTree = "<group>"; };
 		B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TvFootball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BC835DECC456B78614AA12 /* Pods-TvFootball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TvFootball.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TvFootball/Pods-TvFootball.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,9 +134,10 @@
 			isa = PBXGroup;
 			children = (
 				9EDFA3772119B1830019E321 /* Model */,
-				9EDFA3782119B1960019E321 /* View */,
 				9EDFA3792119B19E0019E321 /* Controller */,
 				9E6FCD3C2119AACB0059DDE0 /* AppDelegate.swift */,
+				9EDFA383211ACBBF0019E321 /* LaunchScreen.storyboard */,
+				9EDFA385211ACBBF0019E321 /* Main.storyboard */,
 				9E6FCD432119AACD0059DDE0 /* Assets.xcassets */,
 				9E6FCD482119AACD0059DDE0 /* Info.plist */,
 			);
@@ -156,22 +165,17 @@
 		9EDFA3772119B1830019E321 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9EDFA381211AA6A00019E321 /* DataManager.swift */,
+				9EDFA389211AF4CF0019E321 /* LiveMatch.swift */,
+				9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		9EDFA3782119B1960019E321 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9EDFA37A2119B5AA0019E321 /* LaunchScreen.storyboard */,
-				9EDFA37C2119B5AA0019E321 /* Main.storyboard */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9EDFA3792119B19E0019E321 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -293,9 +297,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EDFA37F2119B5AA0019E321 /* Main.storyboard in Resources */,
+				9EDFA388211ACBBF0019E321 /* Main.storyboard in Resources */,
 				9E6FCD442119AACD0059DDE0 /* Assets.xcassets in Resources */,
-				9EDFA37E2119B5AA0019E321 /* LaunchScreen.storyboard in Resources */,
+				9EDFA387211ACBBF0019E321 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,11 +327,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TvFootball/Pods-TvFootball-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -397,7 +403,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */,
 				9E6FCD3D2119AACB0059DDE0 /* AppDelegate.swift in Sources */,
+				9EDFA38A211AF4CF0019E321 /* LiveMatch.swift in Sources */,
+				9EDFA382211AA6A00019E321 /* DataManager.swift in Sources */,
+				9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,18 +443,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9EDFA37A2119B5AA0019E321 /* LaunchScreen.storyboard */ = {
+		9EDFA383211ACBBF0019E321 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9EDFA37B2119B5AA0019E321 /* Base */,
+				9EDFA384211ACBBF0019E321 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		9EDFA37C2119B5AA0019E321 /* Main.storyboard */ = {
+		9EDFA385211ACBBF0019E321 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9EDFA37D2119B5AA0019E321 /* Base */,
+				9EDFA386211ACBBF0019E321 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
