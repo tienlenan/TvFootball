@@ -11,6 +11,7 @@
 		84013E50211B423900DB6F45 /* MatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E4E211B423900DB6F45 /* MatchRow.swift */; };
 		84013E51211B423900DB6F45 /* MatchRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84013E4F211B423900DB6F45 /* MatchRow.xib */; };
 		84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */; };
+		84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */; };
 		9555EE65230EACC14AF3982D /* Pods_TvFootballTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414F52925936404B48A087EA /* Pods_TvFootballTests.framework */; };
 		9E6FCD3D2119AACB0059DDE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6FCD3C2119AACB0059DDE0 /* AppDelegate.swift */; };
 		9E6FCD442119AACD0059DDE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E6FCD432119AACD0059DDE0 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		84013E4E211B423900DB6F45 /* MatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRow.swift; sourceTree = "<group>"; };
 		84013E4F211B423900DB6F45 /* MatchRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchRow.xib; sourceTree = "<group>"; };
 		84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchesVC.swift; sourceTree = "<group>"; };
+		84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
 		91164E89C94D1A29849A06B8 /* Pods_TvFootballUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TvFootballUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6FCD392119AACB0059DDE0 /* TvFootball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TvFootball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E6FCD3C2119AACB0059DDE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		84F0E1C5211B60A100485ABE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		9E6FCD302119AACB0059DDE0 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 		9E6FCD3B2119AACB0059DDE0 /* TvFootball */ = {
 			isa = PBXGroup;
 			children = (
+				84F0E1C5211B60A100485ABE /* Helper */,
 				9EDFA3772119B1830019E321 /* Model */,
 				84013E49211B3E2F00DB6F45 /* View */,
 				9EDFA3792119B19E0019E321 /* Controller */,
@@ -184,8 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				9EDFA381211AA6A00019E321 /* DataManager.swift */,
-				9EDFA389211AF4CF0019E321 /* LiveMatch.swift */,
 				9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */,
+				9EDFA389211AF4CF0019E321 /* LiveMatch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +437,7 @@
 			files = (
 				84013E50211B423900DB6F45 /* MatchRow.swift in Sources */,
 				9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */,
+				84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */,
 				9E6FCD3D2119AACB0059DDE0 /* AppDelegate.swift in Sources */,
 				9EDFA394211B08010019E321 /* FixtureVC.swift in Sources */,
 				84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */,

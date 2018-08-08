@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MatchRow" id="gTV-IL-0wX" customClass="MatchRow" customModule="TvFootball" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="matchRow" id="gTV-IL-0wX" customClass="MatchRow" customModule="TvFootball" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -41,6 +41,8 @@ Napoli</string>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="323" height="69"/>
             <connections>
+                <outlet property="awayTeamImg" destination="4jv-Ia-WEM" id="1Zs-XC-3Ie"/>
+                <outlet property="homeTeamImg" destination="WrI-kH-2jH" id="MhD-Lb-3fm"/>
                 <outlet property="teamsLabel" destination="By4-Ta-Lng" id="IkQ-t4-uam"/>
             </connections>
             <point key="canvasLocation" x="234" y="185.5"/>
