@@ -22,15 +22,15 @@ struct LiveMatch {
     
     init(jsonData: JSON) {
         self.liveMatchId        = jsonData["LiveMatchId"].intValue
-        self.slug               = jsonData["LiveMatchId"].stringValue
-        self.teamHomeName       = jsonData["LiveMatchId"].stringValue
-        self.teamHomeImgUrl     = jsonData["LiveMatchId"].string
-        self.teamAwayName       = jsonData["LiveMatchId"].stringValue
-        self.teamAwayImgUrl     = jsonData["LiveMatchId"].string
-        self.startDate          = jsonData["LiveMatchId"].stringValue
-        self.tournamentName     = jsonData["LiveMatchId"].stringValue
-        self.liveMatchTypeId    = jsonData["LiveMatchId"].intValue
-        self.type               = jsonData["LiveMatchId"].intValue
+        self.slug               = jsonData["Slug"].stringValue
+        self.teamHomeName       = jsonData["TeamHome_name"].stringValue
+        self.teamHomeImgUrl     = jsonData["TeamHome_image"].string
+        self.teamAwayName       = jsonData["TeamAway_name"].stringValue
+        self.teamAwayImgUrl     = jsonData["TeamAway_image"].string
+        self.startDate          = jsonData["StartDate"].stringValue
+        self.tournamentName     = jsonData["Tournament_name"].stringValue
+        self.liveMatchTypeId    = jsonData["LiveMatchTypeId"].intValue
+        self.type               = jsonData["Type"].intValue
     }
 }
 
