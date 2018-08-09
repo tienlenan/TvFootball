@@ -22,7 +22,7 @@ class DataManager: NSObject {
     var liveMatches: [LiveMatch] = []
     var streamURLs: [String] = []
     var mainTabBarVC: TvFootballVC!
-    var liveMatchId: Int?
+    var streamingMatch: LiveMatch?
     
     /// Handle response from server
     ///

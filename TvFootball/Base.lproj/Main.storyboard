@@ -89,10 +89,115 @@
         <!--Live-->
         <scene sceneID="04b-7o-4Mo">
             <objects>
-                <viewController id="q6e-hp-oUk" sceneMemberID="viewController">
+                <viewController id="q6e-hp-oUk" customClass="StreamLinksVC" customModule="TvFootball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ADT-dg-iuc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c5G-F4-n9F">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.90107965850000005" green="0.90107965850000005" blue="0.90107965850000005" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DP3-S0-g4K">
+                                    <size key="itemSize" width="320" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="matchRow" id="J2E-oU-bHS">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K4C-ny-xZd" userLabel="awayTeamImg">
+                                                    <rect key="frame" x="244" y="5" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="rUT-MC-jiU"/>
+                                                        <constraint firstAttribute="width" constant="70" id="vtF-nD-J7F"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVm-6r-mCT" userLabel="teamsLabel">
+                                                    <rect key="frame" x="78" y="18" width="164.5" height="45.5"/>
+                                                    <string key="text">Borussia Dortmund
+Napoli</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oMA-s0-sl6" userLabel="homeTeamImg">
+                                                    <rect key="frame" x="6" y="5" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="EMR-gp-ZEY"/>
+                                                        <constraint firstAttribute="width" constant="70" id="VLs-cD-63e"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="K4C-ny-xZd" secondAttribute="trailing" constant="6" id="LyZ-Ud-f9o"/>
+                                            <constraint firstItem="YVm-6r-mCT" firstAttribute="centerX" secondItem="J2E-oU-bHS" secondAttribute="centerX" id="fNf-Pb-Wyx"/>
+                                            <constraint firstItem="oMA-s0-sl6" firstAttribute="leading" secondItem="J2E-oU-bHS" secondAttribute="leading" constant="6" id="fP7-jx-DE0"/>
+                                            <constraint firstItem="YVm-6r-mCT" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="kr5-Jp-m2e"/>
+                                            <constraint firstItem="oMA-s0-sl6" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="nyb-zI-uK2"/>
+                                            <constraint firstItem="K4C-ny-xZd" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="twk-Cs-Kkr"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="linkRow" id="CVN-LI-6DA" userLabel="linkRow">
+                                        <rect key="frame" x="0.0" y="90" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VR8-Yb-nrB">
+                                                    <rect key="frame" x="136" y="14" width="48.5" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="VR8-Yb-nrB" firstAttribute="centerY" secondItem="CVN-LI-6DA" secondAttribute="centerY" id="3Fd-46-kji"/>
+                                            <constraint firstItem="VR8-Yb-nrB" firstAttribute="centerX" secondItem="CVN-LI-6DA" secondAttribute="centerX" id="z8G-TE-73i"/>
+                                        </constraints>
+                                        <size key="customSize" width="320" height="50"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="q6e-hp-oUk" id="ZQP-48-Bch"/>
+                                    <outlet property="delegate" destination="q6e-hp-oUk" id="0hX-Pc-rie"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-Sh-RMB" userLabel="bannerView">
+                                <rect key="frame" x="0.0" y="469" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7m-QO-2uG">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MlP-CB-3TA">
+                                        <rect key="frame" x="298" y="-10" width="30" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeBanner:" destination="q6e-hp-oUk" eventType="touchUpInside" id="lVh-54-owm"/>
+                                            <action selector="closeBanner:" destination="xi5-Cb-sjI" eventType="touchUpInside" id="oue-SY-7WJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xQV-bW-Crf"/>
                     </view>
@@ -103,10 +208,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="bannerImg" destination="b7m-QO-2uG" id="RAG-nl-mVD"/>
+                        <outlet property="bannerView" destination="6aE-Sh-RMB" id="SLB-RW-uIx"/>
+                        <outlet property="collectionView" destination="c5G-F4-n9F" id="dEO-Sc-Fdy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8y-fo-RE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-676" y="-1056"/>
+            <point key="canvasLocation" x="-676.875" y="-1056.338028169014"/>
         </scene>
         <!--Home-->
         <scene sceneID="9bx-rP-fhI">

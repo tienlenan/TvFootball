@@ -57,7 +57,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     // MARK:-  Collection view data source and delegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.dataManager.liveMatches.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -95,7 +95,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.dataManager.mainTabBarVC.selectedIndex = 2
-        DataManager.shared.liveMatchId = self.dataManager.liveMatches[indexPath.row].liveMatchId
+        DataManager.shared.streamingMatch = self.dataManager.liveMatches[indexPath.row]
     }
     
     // MARK: - HTTPDelegate
