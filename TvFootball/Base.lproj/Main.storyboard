@@ -47,7 +47,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jpH-AX-HLq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Live" image="ball-icon" id="mFS-mL-DGg" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController">
+                    <tabBarItem key="tabBarItem" title="Live" image="ball-icon" id="mFS-mL-DGg">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
                                 <color key="value" cocoaTouchSystemColor="darkTextColor"/>
@@ -72,7 +72,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xQV-bW-Crf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Streaming" image="live-icon" selectedImage="live-icon" id="Tv1-ds-Chn" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController"/>
+                    <tabBarItem key="tabBarItem" title="Streaming" image="live-icon" selectedImage="live-icon" id="Tv1-ds-Chn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8y-fo-RE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,7 +95,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="q8h-kH-0m4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Fixtures" image="schedule-icon" id="B2D-Se-QDa" customClass="RAMAnimatedTabBarItem" customModule="RAMAnimatedTabBarController"/>
+                    <tabBarItem key="tabBarItem" title="Fixtures" image="schedule-icon" id="B2D-Se-QDa"/>
                     <connections>
                         <outlet property="tvWebView" destination="8jH-fh-DtV" id="Bd1-D3-TWg"/>
                     </connections>

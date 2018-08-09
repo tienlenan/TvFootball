@@ -8,7 +8,6 @@
 
 import UIKit
 import WebKit
-import RAMAnimatedTabBarController
 
 class FixtureVC: UIViewController, WKNavigationDelegate {
     

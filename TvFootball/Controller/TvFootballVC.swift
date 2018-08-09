@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import RAMAnimatedTabBarController
 
-class TvFootballVC: RAMAnimatedTabBarController {
+class TvFootballVC: UITabBarController {
     
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -21,6 +20,8 @@ class TvFootballVC: RAMAnimatedTabBarController {
         self.navigationItem.titleView = imageView
         
         // Get live data
-        DataManager.shared.getLiveMatches()
+        DataManager.shared.mainTabBarVC = self
+        DataManager.shared.getLiveMatches(nil)
+        
     }
 }

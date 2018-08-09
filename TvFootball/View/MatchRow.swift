@@ -13,6 +13,8 @@ class MatchRow: UICollectionViewCell {
     @IBOutlet weak var teamsLabel: UILabel!
     @IBOutlet weak var homeTeamImg: UIImageView!
     @IBOutlet weak var awayTeamImg: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +24,6 @@ class MatchRow: UICollectionViewCell {
         self.bringSubview(toFront: teamsLabel)
         self.bringSubview(toFront: homeTeamImg)
         self.bringSubview(toFront: awayTeamImg)
+        self.bringSubview(toFront: dateLabel)
     }
 }

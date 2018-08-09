@@ -9,6 +9,7 @@ target 'TvFootball' do
   pod 'RAMAnimatedTabBarController'
   pod 'Alamofire', '~> 4.5'
   pod 'VegaScrollFlowLayout'
+  pod 'CRRefresh'
 
   target 'TvFootballTests' do
     inherit! :search_paths

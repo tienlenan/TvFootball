@@ -15,7 +15,7 @@ struct LiveMatch {
     var teamHomeImgUrl: String?
     var teamAwayName: String
     var teamAwayImgUrl: String?
-    var startDate: String
+    var startDate: Int
     var tournamentName: String
     var liveMatchTypeId: Int
     var type: Int
@@ -27,7 +27,7 @@ struct LiveMatch {
         self.teamHomeImgUrl     = jsonData["TeamHome_image"].string
         self.teamAwayName       = jsonData["TeamAway_name"].stringValue
         self.teamAwayImgUrl     = jsonData["TeamAway_image"].string
-        self.startDate          = jsonData["StartDate"].stringValue
+        self.startDate          = jsonData["StartDate"].intValue
         self.tournamentName     = jsonData["Tournament_name"].stringValue
         self.liveMatchTypeId    = jsonData["LiveMatchTypeId"].intValue
         self.type               = jsonData["Type"].intValue
