@@ -12,6 +12,8 @@ import WebKit
 class FixtureVC: UIViewController, WKNavigationDelegate {
     
     @IBOutlet weak var tvWebView: UIView!
+    @IBOutlet weak var bannerImg: UIImageView!
+    @IBOutlet weak var bannerView: UIView!
     
     let adsURL = "https:www.fun88angels.com/vi/album"
     var webView : WKWebView!
@@ -21,14 +23,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         
         // Do any additional setup after loading the view.
         self.loadTvWebView()
-        
-        let bannerView = BannerView()
-        let widthOfParent = self.tvWebView.bounds.size.width
-        let heightOfParent = self.tvWebView.bounds.size.height
-        let rect = CGRect(x: 0, y: heightOfParent - 50, width: widthOfParent, height: 50)
-        let customView = UIView(frame: rect)
-        customView.addSubview(bannerView)
-        self.tvWebView.addSubview(customView)
+        self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,6 +39,10 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         webView.load(request)
         tvWebView.addSubview(webView)
         tvWebView.sendSubview(toBack: webView)
+    }
+    
+    @IBAction func closeBanner(_ sender: UIButton) {
+        self.bannerView.removeFromSuperview()
     }
     
     // MARK: - WKWebViewNavigation

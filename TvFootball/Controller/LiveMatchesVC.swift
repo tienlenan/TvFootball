@@ -14,6 +14,8 @@ import SwiftyJSON
 class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var bannerImg: UIImageView!
+    @IBOutlet weak var bannerView: UIView!
     
     var dataManager: DataManager! = DataManager.shared
     
@@ -40,11 +42,16 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 DataManager.shared.getLiveMatches(self)
             })
         }
+        self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func closeBanner(_ sender: UIButton) {
+        self.bannerView.removeFromSuperview()
     }
     
     // MARK:-  Collection view data source and delegate

@@ -19,7 +19,7 @@ class MatchRow: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 10
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.white.cgColor
         self.teamsLabel.font = UIFont.fontAwesome(ofSize: 19, style: .regular)
