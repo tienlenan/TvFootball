@@ -10,6 +10,7 @@ target 'TvFootball' do
   pod 'Alamofire', '~> 4.5'
   pod 'VegaScrollFlowLayout'
   pod 'CRRefresh'
+  pod 'FontAwesome.swift'
 
   target 'TvFootballTests' do
     inherit! :search_paths

@@ -36,7 +36,6 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         webView.load(request)
         tvWebView.addSubview(webView)
         tvWebView.sendSubview(toBack: webView)
-        
     }
     
     // MARK: - WKWebViewNavigation
