@@ -19,5 +19,8 @@ class MatchRow: UICollectionViewCell {
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.white.cgColor
+        self.bringSubview(toFront: teamsLabel)
+        self.bringSubview(toFront: homeTeamImg)
+        self.bringSubview(toFront: awayTeamImg)
     }
 }
