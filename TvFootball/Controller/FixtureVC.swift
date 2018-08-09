@@ -21,6 +21,14 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         
         // Do any additional setup after loading the view.
         self.loadTvWebView()
+        
+        let bannerView = BannerView()
+        let widthOfParent = self.tvWebView.bounds.size.width
+        let heightOfParent = self.tvWebView.bounds.size.height
+        let rect = CGRect(x: 0, y: heightOfParent - 50, width: widthOfParent, height: 50)
+        let customView = UIView(frame: rect)
+        customView.addSubview(bannerView)
+        self.tvWebView.addSubview(customView)
     }
     
     override func didReceiveMemoryWarning() {

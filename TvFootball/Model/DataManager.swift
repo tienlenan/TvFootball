@@ -10,9 +10,12 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+let BANNER_IMAGE_URL = "https://i.imgur.com/QZ6j8Mg.png"
+
 enum HTTPResult {
     case httpSuccess, httpErrorFromServer, httpConnectionError
 }
+
 class DataManager: NSObject {
     static let shared: DataManager = DataManager()
     weak var delegate: HTTPDelegate?

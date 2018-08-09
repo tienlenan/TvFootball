@@ -22,6 +22,13 @@ class TvFootballVC: UITabBarController {
         // Get live data
         DataManager.shared.mainTabBarVC = self
         DataManager.shared.getLiveMatches(nil)
+    }
+    
+    
+    /// View did appear
+    ///
+    /// - Parameter animated: animated
+    override func viewDidAppear(_ animated: Bool) {
         
     }
 }
