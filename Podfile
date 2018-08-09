@@ -8,6 +8,7 @@ target 'TvFootball' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'RAMAnimatedTabBarController'
   pod 'Alamofire', '~> 4.5'
+  pod 'VegaScrollFlowLayout'
 
   target 'TvFootballTests' do
     inherit! :search_paths
