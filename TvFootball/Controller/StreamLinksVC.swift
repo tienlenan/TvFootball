@@ -117,6 +117,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
             // Show streaming screen
+            self.performSegue(withIdentifier: "goToStreamingVC", sender: nil)
         }
     }
     

@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4c-ep-nTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275.625" y="17.95774647887324"/>
+            <point key="canvasLocation" x="276" y="-314"/>
         </scene>
         <!--Live-->
         <scene sceneID="04b-7o-4Mo">
@@ -212,11 +212,27 @@ Napoli</string>
                         <outlet property="bannerImg" destination="b7m-QO-2uG" id="RAG-nl-mVD"/>
                         <outlet property="bannerView" destination="6aE-Sh-RMB" id="SLB-RW-uIx"/>
                         <outlet property="collectionView" destination="c5G-F4-n9F" id="dEO-Sc-Fdy"/>
+                        <segue destination="NUD-fU-79K" kind="show" identifier="goToStreamingVC" id="DAQ-Zu-Yps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8y-fo-RE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-676.875" y="-1056.338028169014"/>
+            <point key="canvasLocation" x="276" y="458"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fc5-L5-QwK">
+            <objects>
+                <viewController id="NUD-fU-79K" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qNX-pH-B9c">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hqe-ET-Nxn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="COS-F7-IWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1099" y="457"/>
         </scene>
         <!--Home-->
         <scene sceneID="9bx-rP-fhI">
@@ -266,7 +282,7 @@ Napoli</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klP-cn-UvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275.625" y="-645.42253521126759"/>
+            <point key="canvasLocation" x="276" y="-1045"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WOz-Yf-OLJ">

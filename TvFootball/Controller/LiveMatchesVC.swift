@@ -34,7 +34,6 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         let layout = VegaScrollFlowLayout()
         collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 20
-        layout.itemSize = CGSize(width: collectionView.frame.width - 16, height: 80)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         /// animator: your customize animator, default is NormalHeaderAnimator
@@ -105,6 +104,15 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.dataManager.mainTabBarVC.selectedIndex = 2
         DataManager.shared.streamingMatch = self.dataManager.liveMatches[indexPath.row]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width - 16, height: 80)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.collectionView.reloadData()
     }
     
     // MARK: - HTTPDelegate
