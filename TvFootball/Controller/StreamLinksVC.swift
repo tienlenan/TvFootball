@@ -10,6 +10,8 @@ import UIKit
 import VegaScrollFlowLayout
 import CRRefresh
 import SwiftyJSON
+import Alamofire
+import AlamofireImage
 
 class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
@@ -76,11 +78,19 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 homeTeamImgView.image = UIImage(named: DEFAULT_TEAM_IMG)
                 awayTeamImgView.image = UIImage(named: DEFAULT_TEAM_IMG)
                 if let teamHomeImgUrl = self.dataManager.streamingMatch?.teamHomeImgUrl {
-                    homeTeamImgView.downloadTeamImageFrom(link: teamHomeImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+                    Alamofire.request(teamHomeImgUrl).responseImage { response in
+                        if let image = response.result.value {
+                            homeTeamImgView.image = image
+                        }
+                    }
                 }
                 
                 if let teamAwayImgUrl = self.dataManager.streamingMatch?.teamAwayImgUrl {
-                    awayTeamImgView.downloadTeamImageFrom(link: teamAwayImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+                    Alamofire.request(teamAwayImgUrl).responseImage { response in
+                        if let image = response.result.value {
+                            awayTeamImgView.image = image
+                        }
+                    }
                 }
                 
                 if let streamingMatch = self.dataManager.streamingMatch {

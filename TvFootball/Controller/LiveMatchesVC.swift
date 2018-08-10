@@ -10,6 +10,8 @@ import UIKit
 import VegaScrollFlowLayout
 import CRRefresh
 import SwiftyJSON
+import Alamofire
+import AlamofireImage
 
 class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
@@ -43,6 +45,8 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             })
         }
         self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
+        
+        DataManager.shared.getLiveMatches(self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,13 +81,22 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         cell.dateLabel.text = "\(match.liveMatchId.fromIntToDateStr())"
         
         // Download images
+        cell.homeTeamImg.image = UIImage(named: DEFAULT_TEAM_IMG)
+        cell.awayTeamImg.image = UIImage(named: DEFAULT_TEAM_IMG)
         if let teamHomeImgUrl = match.teamHomeImgUrl {
-            cell.homeTeamImg
-                .downloadTeamImageFrom(link: teamHomeImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+            Alamofire.request(teamHomeImgUrl).responseImage { response in
+                if let image = response.result.value {
+                    cell.homeTeamImg.image = image
+                }
+            }
         }
         
         if let teamAwayImgUrl = match.teamAwayImgUrl {
-            cell.awayTeamImg.downloadTeamImageFrom(link: teamAwayImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+            Alamofire.request(teamAwayImgUrl).responseImage { response in
+                if let image = response.result.value {
+                    cell.awayTeamImg.image = image
+                }
+            }
         }
         
         return cell

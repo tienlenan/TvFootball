@@ -1,36 +1,37 @@
 PODS:
   - Alamofire (4.7.3)
+  - AlamofireImage (3.3.1):
+    - Alamofire (~> 4.5)
   - CRRefresh (1.0.9)
   - FontAwesome.swift (1.4.3)
-  - RAMAnimatedTabBarController (3.5.0)
   - SwiftyJSON (4.1.0)
   - VegaScrollFlowLayout (1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - AlamofireImage (~> 3.3)
   - CRRefresh
   - FontAwesome.swift
-  - RAMAnimatedTabBarController
   - SwiftyJSON (~> 4.0)
   - VegaScrollFlowLayout
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - AlamofireImage
     - CRRefresh
     - FontAwesome.swift
-    - RAMAnimatedTabBarController
     - SwiftyJSON
     - VegaScrollFlowLayout
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   CRRefresh: b1c53f32bcb3edef8d60ef414a329b06dc6af34f
   FontAwesome.swift: 4b9ba1e1f3418a626f3ab67b230856ab6eb4860f
-  RAMAnimatedTabBarController: 7e259e89b669c7bc833a6441c7d8fbfd6580f473
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
 
-PODFILE CHECKSUM: 33641dd27e54a8c5e07cc72d5fbd65a232f0d7bc
+PODFILE CHECKSUM: 77fa6895626932025c9ab0f90d90b6f0c304905e
 
 COCOAPODS: 1.5.0

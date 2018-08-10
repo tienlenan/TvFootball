@@ -21,7 +21,6 @@ class TvFootballVC: UITabBarController {
         
         // Get live data
         DataManager.shared.mainTabBarVC = self
-        DataManager.shared.getLiveMatches(nil)
     }
     
     

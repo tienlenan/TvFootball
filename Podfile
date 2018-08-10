@@ -6,11 +6,11 @@ target 'TvFootball' do
   use_frameworks!
   # Pods for TvFootball
   pod 'SwiftyJSON', '~> 4.0'
-  pod 'RAMAnimatedTabBarController'
   pod 'Alamofire', '~> 4.5'
   pod 'VegaScrollFlowLayout'
   pod 'CRRefresh'
   pod 'FontAwesome.swift'
+  pod 'AlamofireImage', '~> 3.3'
 
   target 'TvFootballTests' do
     inherit! :search_paths

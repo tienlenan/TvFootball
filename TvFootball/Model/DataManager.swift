@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 let BANNER_IMAGE_URL = "https://i.imgur.com/QZ6j8Mg.png"
-let DEFAULT_TEAM_IMG = "tv-logo"
+let DEFAULT_TEAM_IMG = "tv_logo"
 
 enum HTTPResult {
     case httpSuccess, httpErrorFromServer, httpConnectionError

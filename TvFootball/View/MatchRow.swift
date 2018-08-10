@@ -16,8 +16,6 @@ class MatchRow: UICollectionViewCell {
     @IBOutlet weak var awayTeamImg: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
-    lazy var lazyImage: LazyImage = LazyImage()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
