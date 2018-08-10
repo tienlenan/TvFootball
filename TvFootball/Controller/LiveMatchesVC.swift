@@ -76,18 +76,14 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         // Set date title
         cell.dateLabel.text = "\(match.liveMatchId.fromIntToDateStr())"
         
-        // Init default image for team's logo
-        cell.homeTeamImg.image = UIImage(named: "tv-logo")
-        cell.awayTeamImg.image = UIImage(named: "tv-logo")
-        
         // Download images
         if let teamHomeImgUrl = match.teamHomeImgUrl {
             cell.homeTeamImg
-                .downloadImageFrom(link: teamHomeImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+                .downloadTeamImageFrom(link: teamHomeImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
         }
         
         if let teamAwayImgUrl = match.teamAwayImgUrl {
-            cell.awayTeamImg.downloadImageFrom(link: teamAwayImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+            cell.awayTeamImg.downloadTeamImageFrom(link: teamAwayImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
         }
         
         return cell

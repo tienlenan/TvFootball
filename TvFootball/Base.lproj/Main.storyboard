@@ -146,7 +146,7 @@ Napoli</string>
                                             <constraint firstItem="K4C-ny-xZd" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="twk-Cs-Kkr"/>
                                         </constraints>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="linkRow" id="CVN-LI-6DA" userLabel="linkRow">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="linkRow" id="CVN-LI-6DA" userLabel="linkRow">
                                         <rect key="frame" x="0.0" y="90" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

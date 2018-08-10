@@ -18,7 +18,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var bannerView: UIView!
     
     var dataManager: DataManager! = DataManager.shared
-    let urls = ["", ""]
+    var urls: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,9 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        collectionView.reloadData()
+        if let match = self.dataManager.streamingMatch {
+            self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,12 +73,14 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 let awayTeamImgView = cell.viewWithTag(102) as? UIImageView,
                 let teamsLabel = cell.viewWithTag(101) as? UILabel {
                 
+                homeTeamImgView.image = UIImage(named: DEFAULT_TEAM_IMG)
+                awayTeamImgView.image = UIImage(named: DEFAULT_TEAM_IMG)
                 if let teamHomeImgUrl = self.dataManager.streamingMatch?.teamHomeImgUrl {
-                    homeTeamImgView.downloadImageFrom(link: teamHomeImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+                    homeTeamImgView.downloadTeamImageFrom(link: teamHomeImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
                 }
                 
                 if let teamAwayImgUrl = self.dataManager.streamingMatch?.teamAwayImgUrl {
-                    awayTeamImgView.downloadImageFrom(link: teamAwayImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
+                    awayTeamImgView.downloadTeamImageFrom(link: teamAwayImgUrl, contentMode: UIViewContentMode.scaleAspectFit)
                 }
                 
                 if let streamingMatch = self.dataManager.streamingMatch {
@@ -87,7 +91,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "linkRow", for: indexPath)
             if let linkLabel = cell.viewWithTag(100) as? UILabel {
-                linkLabel.text = "Link \(indexPath.row - 1)"
+                linkLabel.text = "Link \(indexPath.row)"
                 linkLabel.font = UIFont.fontAwesome(ofSize: 19, style: .regular)
             }
         }
@@ -108,6 +112,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     // MARK: - HTTPDelegate
     func didGetSuccessRespond(data: JSON?) {
+        self.urls = ["", ""]
         self.collectionView.cr.endHeaderRefresh()
         self.collectionView.reloadData()
     }

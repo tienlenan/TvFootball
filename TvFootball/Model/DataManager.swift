@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 let BANNER_IMAGE_URL = "https://i.imgur.com/QZ6j8Mg.png"
+let DEFAULT_TEAM_IMG = "tv-logo"
 
 enum HTTPResult {
     case httpSuccess, httpErrorFromServer, httpConnectionError
@@ -59,6 +60,7 @@ class DataManager: NSObject {
                     let statusCode = (response.response?.statusCode)
                     if statusCode == 200 {
                         // Parse data
+                        self.liveMatches = []
                         let matchesDataJSON = responseJSONData["result"]
                         for i in 0..<matchesDataJSON.count {
                             let match = LiveMatch.init(jsonData: matchesDataJSON[i])
@@ -79,8 +81,10 @@ class DataManager: NSObject {
     /// Get stream urls
     ///
     /// - Parameter httpDelegate: delegate
-    func getStreamUrls(_ httpDelegate: HTTPDelegate?) {
+    func getStreamUrls(_ httpDelegate: HTTPDelegate?, liveMatchId: Int) {
         self.delegate = httpDelegate
+        self.handleResponse(type: .httpSuccess, data: [])
+        /*
         let requestURL = "stream url"
         Alamofire.request(requestURL, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -104,5 +108,6 @@ class DataManager: NSObject {
                     }
                 }
         }
+        */
     }
 }
