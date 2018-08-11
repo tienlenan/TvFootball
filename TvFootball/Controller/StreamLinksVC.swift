@@ -31,11 +31,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.dataManager = DataManager.shared
         
         // Setup layout
-        let layout = VegaScrollFlowLayout()
-        collectionView.collectionViewLayout = layout
-        layout.minimumLineSpacing = 20
-        layout.itemSize = CGSize(width: collectionView.frame.width - 16, height: 80)
-        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
+        self.setupRefreshView()
         
         // Download banner
         self.downloadBanner()
@@ -50,11 +46,29 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
-        Alamofire.request(BANNER_IMAGE_URL).responseImage { response in
+        Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
                 self.bannerImg.image = image
                 self.bannerView.isHidden = false
             }
+        }
+    }
+    
+    /// Setting up refresh view, load data again when user scroll down list
+    /// And setting up scroll view
+    private func setupRefreshView() {
+        // When user scroll view app will get data once time again
+        let layout = VegaScrollFlowLayout()
+        collectionView.collectionViewLayout = layout
+        layout.minimumLineSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
+        self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
+            /// Start refresh - Get live data
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                if let match = self?.dataManager.streamingMatch {
+                    self?.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId)
+                }
+            })
         }
     }
     
@@ -100,8 +114,8 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 let awayTeamImgView = cell.viewWithTag(102) as? UIImageView,
                 let teamsLabel = cell.viewWithTag(101) as? UILabel {
                 
-                homeTeamImgView.image = UIImage(named: DEFAULT_TEAM_IMG)
-                awayTeamImgView.image = UIImage(named: DEFAULT_TEAM_IMG)
+                homeTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
+                awayTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
                 if let teamHomeImgUrl = self.dataManager.streamingMatch?.teamHomeImgUrl {
                     Alamofire.request(teamHomeImgUrl).responseImage { response in
                         if let image = response.result.value {
@@ -151,6 +165,10 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             playerVC.activityItems = [videoURL]
             present(playerVC, animated: false, completion: nil)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width - 16, height: 80)
     }
     
     // MARK: - HTTPDelegate

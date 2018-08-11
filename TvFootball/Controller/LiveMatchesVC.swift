@@ -32,6 +32,28 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.collectionView.register(UINib(nibName: "MatchRow", bundle: nil), forCellWithReuseIdentifier: "matchRow")
         
         // Setup refresh view
+        self.setupRefreshView()
+        
+        // Download banner image
+        self.downloadBanner()
+        
+        DataManager.shared.getLiveMatches(self)
+    }
+    
+    /// Download banner, show banner view when completed download banner image
+    private func downloadBanner() {
+        Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
+            if let image = response.result.value {
+                self.bannerImg.image = image
+                self.bannerView.isHidden = false
+            }
+        }
+    }
+    
+    
+    /// Setting up refresh view, load data again when user scroll down list
+    /// And setting up scroll view
+    private func setupRefreshView() {
         // When user scroll view app will get data once time again
         let layout = VegaScrollFlowLayout()
         collectionView.collectionViewLayout = layout
@@ -42,22 +64,6 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 DataManager.shared.getLiveMatches(self)
             })
-        }
-        
-        // Download banner image
-        self.downloadBanner()
-        
-        DataManager.shared.getLiveMatches(self)
-    }
-    
-    
-    /// Download banner, show banner view when completed download banner image
-    private func downloadBanner() {
-        Alamofire.request(BANNER_IMAGE_URL).responseImage { response in
-            if let image = response.result.value {
-                self.bannerImg.image = image
-                self.bannerView.isHidden = false
-            }
         }
     }
     
@@ -89,8 +95,8 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         cell.dateLabel.text = "\(match.liveMatchId.fromIntToDateStr())"
         
         // Download images
-        cell.homeTeamImg.image = UIImage(named: DEFAULT_TEAM_IMG)
-        cell.awayTeamImg.image = UIImage(named: DEFAULT_TEAM_IMG)
+        cell.homeTeamImg.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
+        cell.awayTeamImg.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
         if let teamHomeImgUrl = match.teamHomeImgUrl {
             Alamofire.request(teamHomeImgUrl).responseImage { response in
                 if let image = response.result.value {

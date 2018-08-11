@@ -34,7 +34,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
-        Alamofire.request(BANNER_IMAGE_URL).responseImage { response in
+        Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
                 self.bannerImg.image = image
                 self.bannerView.isHidden = false
@@ -51,7 +51,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     
     /// Load webview content
     private func loadTvWebView() {
-        let url = URL(string: ADS_URL)
+        let url = URL(string: TvConstant.ADS_URL)
         let request = URLRequest(url: url!)
         webView = WKWebView(frame: tvWebView.frame)
         webView.navigationDelegate = self
