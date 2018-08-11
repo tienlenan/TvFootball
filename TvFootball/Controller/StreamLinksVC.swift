@@ -35,15 +35,26 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 20
         layout.itemSize = CGSize(width: collectionView.frame.width - 16, height: 80)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
         
-        self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
+        // Download banner
+        self.downloadBanner()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if let match = self.dataManager.streamingMatch {
             self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId)
+        }
+    }
+    
+    /// Download banner, show banner view when completed download banner image
+    private func downloadBanner() {
+        Alamofire.request(BANNER_IMAGE_URL).responseImage { response in
+            if let image = response.result.value {
+                self.bannerImg.image = image
+                self.bannerView.isHidden = false
+            }
         }
     }
     
@@ -135,7 +146,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             guard let videoURL = URL(string: self.urls[indexPath.row - 1]) else { return }
             let playerVC = MobilePlayerViewController(
                 contentURL: videoURL,
-                config: MobilePlayerConfig())
+                pauseOverlayViewController: MobilePlayerOverlayViewController())
             playerVC.title = "\(match.teamHomeName) - \(match.teamAwayName)"
             playerVC.activityItems = [videoURL]
             present(playerVC, animated: false, completion: nil)

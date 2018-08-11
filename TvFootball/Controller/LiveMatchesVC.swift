@@ -36,7 +36,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         let layout = VegaScrollFlowLayout()
         collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 20
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
         self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
             /// Start refresh - Get live data
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
@@ -45,9 +45,20 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         }
         
         // Download banner image
-        self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
+        self.downloadBanner()
         
         DataManager.shared.getLiveMatches(self)
+    }
+    
+    
+    /// Download banner, show banner view when completed download banner image
+    private func downloadBanner() {
+        Alamofire.request(BANNER_IMAGE_URL).responseImage { response in
+            if let image = response.result.value {
+                self.bannerImg.image = image
+                self.bannerView.isHidden = false
+            }
+        }
     }
     
     // MARK: - IBACtion
@@ -102,6 +113,10 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.dataManager.mainTabBarVC.selectedIndex = 2
         DataManager.shared.streamingMatch = self.dataManager.liveMatches[indexPath.row]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return UICollectionReusableView()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
