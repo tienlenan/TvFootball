@@ -79,13 +79,17 @@ class DataManager: NSObject {
     
     /// Get stream urls
     ///
-    /// - Parameter httpDelegate: delegate
+    /// - Parameters:
+    ///   - httpDelegate: delegate
+    ///   - liveMatchId: live match identifier
     func getStreamUrls(_ httpDelegate: HTTPDelegate?, liveMatchId: Int) {
         self.delegate = httpDelegate
-        self.handleResponse(type: .httpSuccess, data: [])
-        /*
-        let requestURL = "stream url"
-        Alamofire.request(requestURL, encoding: JSONEncoding.default)
+        
+        let parameters: [String:Any] = [
+            "LiveMatchId": liveMatchId,
+            "UserId": "dkfdf"
+        ]
+        Alamofire.request(TvConstant.GET_STREAM_LINKS_API,method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -97,7 +101,7 @@ class DataManager: NSObject {
                     let statusCode = (response.response?.statusCode)
                     if statusCode == 200 {
                         // Parse data
-                        
+                        print("links: \(responseJSONData)")
                         // Return http success
                         self.handleResponse(type: .httpSuccess, data: responseJSONData)
                         
@@ -107,6 +111,5 @@ class DataManager: NSObject {
                     }
                 }
         }
-        */
     }
 }
