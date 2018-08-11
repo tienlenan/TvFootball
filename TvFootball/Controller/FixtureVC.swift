@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class FixtureVC: UIViewController, WKNavigationDelegate, UIApplicationDelegate {
+class FixtureVC: UIViewController, WKNavigationDelegate {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tvWebView: UIView!
@@ -47,8 +47,6 @@ class FixtureVC: UIViewController, WKNavigationDelegate, UIApplicationDelegate {
         tvWebView.addSubview(webView)
         tvWebView.sendSubview(toBack: webView)
     }
-    
-    
     
     // MARK: - WKWebViewNavigation
     

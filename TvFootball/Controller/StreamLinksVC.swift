@@ -13,6 +13,7 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage
 import MobilePlayer
+import AVFoundation
 
 class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
@@ -37,6 +38,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +50,23 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    /// Enable audio even if app is on silent/ringer mode
+    private func enableAudioSession() {
+        do {
+            try AVAudioSession
+                .sharedInstance()
+                .setCategory(AVAudioSessionCategoryPlayback)
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch _ as NSError {
+                print("Error when enable audio session")
+            }
+        } catch _ as NSError {
+            print("Error when set category blayback for audio session")
+        }
     }
     
     @IBAction func closeBanner(_ sender: UIButton) {
