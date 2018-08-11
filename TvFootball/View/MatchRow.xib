@@ -20,11 +20,11 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="WrI-kH-2jH">
-                        <rect key="frame" x="0.0" y="5" width="70" height="70"/>
+                        <rect key="frame" x="5" y="5" width="70" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="4jv-Ia-WEM">
-                        <rect key="frame" x="250" y="5" width="70" height="70"/>
+                        <rect key="frame" x="245" y="5" width="70" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="By4-Ta-Lng">
@@ -54,7 +54,7 @@ Napoli</string>
                 <outlet property="homeTeamImg" destination="WrI-kH-2jH" id="MhD-Lb-3fm"/>
                 <outlet property="teamsLabel" destination="By4-Ta-Lng" id="IkQ-t4-uam"/>
             </connections>
-            <point key="canvasLocation" x="234" y="185.5"/>
+            <point key="canvasLocation" x="234" y="185"/>
         </collectionViewCell>
     </objects>
     <resources>

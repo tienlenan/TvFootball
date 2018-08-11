@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FontAwesome_swift
 
 class MatchRow: UICollectionViewCell {
 
@@ -22,7 +21,5 @@ class MatchRow: UICollectionViewCell {
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.white.cgColor
-        self.teamsLabel.font = UIFont.fontAwesome(ofSize: 19, style: .regular)
-        self.dateLabel.font = UIFont.fontAwesome(ofSize: 16, style: .regular)
     }
 }

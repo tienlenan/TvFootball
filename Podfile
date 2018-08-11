@@ -9,7 +9,6 @@ target 'TvFootball' do
   pod 'Alamofire', '~> 4.5'
   pod 'VegaScrollFlowLayout'
   pod 'CRRefresh'
-  pod 'FontAwesome.swift'
   pod 'AlamofireImage', '~> 3.3'
   pod "MobilePlayer"
 

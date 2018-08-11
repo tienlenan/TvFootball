@@ -111,8 +111,9 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         if indexPath.row == 0 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "matchRow", for: indexPath)
             if let homeTeamImgView = cell.viewWithTag(100) as? UIImageView,
-                let awayTeamImgView = cell.viewWithTag(102) as? UIImageView,
-                let teamsLabel = cell.viewWithTag(101) as? UILabel {
+                let awayTeamImgView = cell.viewWithTag(103) as? UIImageView,
+                let teamsLabel = cell.viewWithTag(101) as? UILabel,
+                let leagueLabel = cell.viewWithTag(102) as? UILabel{
                 
                 homeTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
                 awayTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
@@ -134,14 +135,14 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 
                 if let streamingMatch = self.dataManager.streamingMatch {
                     teamsLabel.text = "\(streamingMatch.teamHomeName)\n\(streamingMatch.teamAwayName)"
-                    teamsLabel.font = UIFont.fontAwesome(ofSize: 19, style: .regular)
+                    
+                    leagueLabel.text = "\(streamingMatch.tournamentName)"
                 }
             }
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "linkRow", for: indexPath)
             if let linkLabel = cell.viewWithTag(100) as? UILabel {
                 linkLabel.text = "Link \(indexPath.row)"
-                linkLabel.font = UIFont.fontAwesome(ofSize: 19, style: .regular)
             }
         }
         

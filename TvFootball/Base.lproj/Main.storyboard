@@ -117,7 +117,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K4C-ny-xZd" userLabel="awayTeamImg">
+                                                <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K4C-ny-xZd" userLabel="awayTeamImg">
                                                     <rect key="frame" x="244" y="5" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="rUT-MC-jiU"/>
@@ -125,11 +125,17 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVm-6r-mCT" userLabel="teamsLabel">
-                                                    <rect key="frame" x="78" y="18" width="164.5" height="45.5"/>
+                                                    <rect key="frame" x="78" y="7.5" width="164.5" height="45.5"/>
                                                     <string key="text">Borussia Dortmund
 Napoli</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bundes Liga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj1-tE-nv0" userLabel="leagueLabel">
+                                                    <rect key="frame" x="115" y="53" width="90" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oMA-s0-sl6" userLabel="homeTeamImg">
@@ -144,9 +150,11 @@ Napoli</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="K4C-ny-xZd" secondAttribute="trailing" constant="6" id="LyZ-Ud-f9o"/>
+                                            <constraint firstItem="rj1-tE-nv0" firstAttribute="top" secondItem="YVm-6r-mCT" secondAttribute="bottom" id="aEd-eP-wTy"/>
                                             <constraint firstItem="YVm-6r-mCT" firstAttribute="centerX" secondItem="J2E-oU-bHS" secondAttribute="centerX" id="fNf-Pb-Wyx"/>
                                             <constraint firstItem="oMA-s0-sl6" firstAttribute="leading" secondItem="J2E-oU-bHS" secondAttribute="leading" constant="6" id="fP7-jx-DE0"/>
-                                            <constraint firstItem="YVm-6r-mCT" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="kr5-Jp-m2e"/>
+                                            <constraint firstItem="rj1-tE-nv0" firstAttribute="centerX" secondItem="J2E-oU-bHS" secondAttribute="centerX" id="hNi-py-cIa"/>
+                                            <constraint firstItem="YVm-6r-mCT" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" constant="-10" id="kr5-Jp-m2e"/>
                                             <constraint firstItem="oMA-s0-sl6" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="nyb-zI-uK2"/>
                                             <constraint firstItem="K4C-ny-xZd" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="twk-Cs-Kkr"/>
                                         </constraints>
