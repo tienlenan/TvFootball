@@ -24,4 +24,19 @@ class TvFootballVC: UITabBarController {
         // Get live data
         DataManager.shared.mainTabBarVC = self
     }
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Lock portrait
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Reset lock
+        AppUtility.lockOrientation(.all, andRotateTo: .landscapeRight)
+    }
 }
