@@ -12,6 +12,7 @@ import SwiftyJSON
 
 let BANNER_IMAGE_URL = "https://i.imgur.com/QZ6j8Mg.png"
 let ADS_URL = "https:www.fun88angels.com/vi/album"
+let GET_LIVE_MATCHES_API_URL = "http://api.bongdahd.info/api/fixture/list"
 let DEFAULT_TEAM_IMG = "tv_logo"
 
 enum HTTPResult {
@@ -48,8 +49,7 @@ class DataManager: NSObject {
     /// - Parameter httpDelegate: delegate
     func getLiveMatches(_ httpDelegate: HTTPDelegate?) {
         self.delegate = httpDelegate
-        let requestURL = "http://api.bongdahd.info/api/fixture/list"
-        Alamofire.request(requestURL, encoding: JSONEncoding.default)
+        Alamofire.request(GET_LIVE_MATCHES_API_URL, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -67,6 +67,9 @@ class DataManager: NSObject {
                             let match = LiveMatch.init(jsonData: matchesDataJSON[i])
                             self.liveMatches.append(match)
                         }
+                        
+                        // Sorted array by league name
+                        self.liveMatches = self.liveMatches.sorted(by: { $0.tournamentName > $1.tournamentName })
                         
                         // Return http success
                         self.handleResponse(type: .httpSuccess, data: responseJSONData)

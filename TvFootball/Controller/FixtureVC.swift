@@ -8,6 +8,8 @@
 
 import UIKit
 import WebKit
+import Alamofire
+import AlamofireImage
 
 class FixtureVC: UIViewController, WKNavigationDelegate {
     
