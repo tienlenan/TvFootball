@@ -47,12 +47,6 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     /// Enable audio even if app is on silent/ringer mode
     private func enableAudioSession() {
         do {
