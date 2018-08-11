@@ -21,6 +21,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     var dataManager: DataManager! = DataManager.shared
     
+    /// View did load
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,29 +31,26 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         // Register collection view cell
         self.collectionView.register(UINib(nibName: "MatchRow", bundle: nil), forCellWithReuseIdentifier: "matchRow")
         
-        // Setup layout
+        // Setup refresh view
+        // When user scroll view app will get data once time again
         let layout = VegaScrollFlowLayout()
         collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        
-        /// animator: your customize animator, default is NormalHeaderAnimator
         self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
             /// Start refresh - Get live data
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 DataManager.shared.getLiveMatches(self)
             })
         }
+        
+        // Download banner image
         self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
         
         DataManager.shared.getLiveMatches(self)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    // MARK: - IBACtion
     @IBAction func closeBanner(_ sender: UIButton) {
         self.bannerView.removeFromSuperview()
     }
@@ -108,11 +106,6 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width - 16, height: 80)
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        self.collectionView.reloadData()
     }
     
     // MARK: - HTTPDelegate

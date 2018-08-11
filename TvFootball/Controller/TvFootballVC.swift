@@ -11,6 +11,8 @@ import UIKit
 class TvFootballVC: UITabBarController {
     
     // MARK: Life cycle
+    
+    /// View did load
     override func viewDidLoad() {
         // Set title image
         let image : UIImage = #imageLiteral(resourceName: "tv_logo")
@@ -21,13 +23,5 @@ class TvFootballVC: UITabBarController {
         
         // Get live data
         DataManager.shared.mainTabBarVC = self
-    }
-    
-    
-    /// View did appear
-    ///
-    /// - Parameter animated: animated
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
 }

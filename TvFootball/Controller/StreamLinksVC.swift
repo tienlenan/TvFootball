@@ -12,6 +12,7 @@ import CRRefresh
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
+import MobilePlayer
 
 class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
@@ -117,13 +118,22 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
             // Show streaming screen
-            self.performSegue(withIdentifier: "goToStreamingVC", sender: nil)
+            guard let match = self.dataManager.streamingMatch else { return }
+            guard let videoURL = URL(string: self.urls[indexPath.row - 1]) else { return }
+            let playerVC = MobilePlayerViewController(
+                contentURL: videoURL,
+                config: MobilePlayerConfig())
+            playerVC.title = "\(match.teamHomeName) - \(match.teamAwayName)"
+            playerVC.activityItems = [videoURL]
+            present(playerVC, animated: false, completion: nil)
         }
     }
     
     // MARK: - HTTPDelegate
+    
     func didGetSuccessRespond(data: JSON?) {
-        self.urls = ["", ""]
+        self.urls = ["http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8",
+                     "http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8"]
         self.collectionView.cr.endHeaderRefresh()
         self.collectionView.reloadData()
     }

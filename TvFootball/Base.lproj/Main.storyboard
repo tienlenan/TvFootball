@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-f4-ABP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-f4-ABP">
+                                <rect key="frame" x="0.0" y="7.5" width="320" height="568"/>
                                 <color key="backgroundColor" red="0.90107965848806371" green="0.90107965848806371" blue="0.90107965848806371" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5hK-Dt-zxr">
                                     <size key="itemSize" width="320" height="80"/>
@@ -67,6 +66,12 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pLb-f4-ABP" firstAttribute="width" secondItem="m8I-wi-Q1n" secondAttribute="width" id="MDF-SZ-gg6"/>
+                            <constraint firstItem="pLb-f4-ABP" firstAttribute="centerX" secondItem="jpH-AX-HLq" secondAttribute="centerX" id="clb-OC-jT9"/>
+                            <constraint firstItem="pLb-f4-ABP" firstAttribute="centerY" secondItem="jpH-AX-HLq" secondAttribute="centerY" id="wxk-eI-hjX"/>
+                            <constraint firstItem="pLb-f4-ABP" firstAttribute="height" secondItem="m8I-wi-Q1n" secondAttribute="height" id="yD5-Tk-Hdj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jpH-AX-HLq"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Matches" image="streaming-icon" id="mFS-mL-DGg">
@@ -212,27 +217,11 @@ Napoli</string>
                         <outlet property="bannerImg" destination="b7m-QO-2uG" id="RAG-nl-mVD"/>
                         <outlet property="bannerView" destination="6aE-Sh-RMB" id="SLB-RW-uIx"/>
                         <outlet property="collectionView" destination="c5G-F4-n9F" id="dEO-Sc-Fdy"/>
-                        <segue destination="NUD-fU-79K" kind="show" identifier="goToStreamingVC" id="DAQ-Zu-Yps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8y-fo-RE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="276" y="458"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fc5-L5-QwK">
-            <objects>
-                <viewController id="NUD-fU-79K" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qNX-pH-B9c">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="hqe-ET-Nxn"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="COS-F7-IWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1099" y="457"/>
         </scene>
         <!--Home-->
         <scene sceneID="9bx-rP-fhI">

@@ -9,30 +9,37 @@
 import UIKit
 import WebKit
 
-class FixtureVC: UIViewController, WKNavigationDelegate {
+class FixtureVC: UIViewController, WKNavigationDelegate, UIApplicationDelegate {
     
+    // MARK: - IBOutlet
     @IBOutlet weak var tvWebView: UIView!
     @IBOutlet weak var bannerImg: UIImageView!
     @IBOutlet weak var bannerView: UIView!
     
-    let adsURL = "https:www.fun88angels.com/vi/album"
+    // MARK: - Variables
     var webView : WKWebView!
-    
+
+    /// View did load
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // Load webview
         self.loadTvWebView()
+        
+        // Download banner image
         self.bannerImg.downloadImageFrom(link: BANNER_IMAGE_URL, contentMode: .scaleToFill)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - IBACtion
+    @IBAction func closeBanner(_ sender: UIButton) {
+        self.bannerView.removeFromSuperview()
     }
     
+    // MARK: - Private function
+    
+    /// Load webview content
     private func loadTvWebView() {
-        let url = URL(string: adsURL)
+        let url = URL(string: ADS_URL)
         let request = URLRequest(url: url!)
         webView = WKWebView(frame: tvWebView.frame)
         webView.navigationDelegate = self
@@ -41,9 +48,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         tvWebView.sendSubview(toBack: webView)
     }
     
-    @IBAction func closeBanner(_ sender: UIButton) {
-        self.bannerView.removeFromSuperview()
-    }
+    
     
     // MARK: - WKWebViewNavigation
     
