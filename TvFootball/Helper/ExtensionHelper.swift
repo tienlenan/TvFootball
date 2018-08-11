@@ -24,7 +24,7 @@ extension UIImageView {
 
 extension Int {
     func fromIntToDateStr() -> String {
-        let date = Date(timeIntervalSinceNow: TimeInterval(self))
+        let date = Date(timeIntervalSince1970: TimeInterval(self))
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: Calendar.Identifier.iso8601)
         formatter.locale = Locale(identifier: "en_US_POSIX")

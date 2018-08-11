@@ -92,7 +92,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         cell.teamsLabel.text = "\(match.teamHomeName)\n\(match.teamAwayName)"
         
         // Set date title
-        cell.dateLabel.text = "\(match.liveMatchId.fromIntToDateStr())"
+        cell.dateLabel.text = "\(match.startDate.fromIntToDateStr())"
         
         // Download images
         cell.homeTeamImg.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)

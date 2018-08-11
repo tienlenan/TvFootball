@@ -87,7 +87,7 @@ class DataManager: NSObject {
         
         let parameters: [String:Any] = [
             "LiveMatchId": liveMatchId,
-            "UserId": "dkfdf"
+            "UserId": "1917019558317843"
         ]
         Alamofire.request(TvConstant.GET_STREAM_LINKS_API,method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
