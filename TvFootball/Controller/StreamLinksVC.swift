@@ -36,6 +36,8 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         // Download banner
         self.downloadBanner()
         
+        // Enable audio session
+        self.enableAudioSession()
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -31,8 +31,8 @@ class DataManager: NSObject {
     var streamingMatch: LiveMatch?
     
     /// Current user
-    //var user: TvUser? = TvUser(uid: 1917019558317843, coins: 200000)
-    var user: TvUser? = nil
+    var user: TvUser? = TvUser(uid: 1917019558317843, coins: 200000)
+    //var user: TvUser? = nil
     
     /// Handle response from server
     ///

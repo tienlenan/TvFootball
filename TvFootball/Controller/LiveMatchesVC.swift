@@ -28,6 +28,9 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     /// Current action is none
     lazy var tvAction: TvAction = TvAction.none
     
+    /// Current working match
+    var processingMatch: LiveMatch?
+    
     // MARK: - Life cycle
     /// View did load
     override func viewDidLoad() {
@@ -148,26 +151,24 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             return
         }
         
-        
         // Chosen match
         let match = self.dataManager.liveMatches[indexPath.row]
-
-        // Get streaming links action
-        let getStreamingLinks = {
-            self.dataManager.mainTabBarVC.selectedIndex = 2
-            self.dataManager.streamingMatch = match
-        }
 
         // Check free or not
         if match.type == MatchType.free.rawValue {
             // Get links immediately if free
-            getStreamingLinks()
+            self.dataManager.mainTabBarVC.selectedIndex = 2
+            self.dataManager.streamingMatch = match
         } else {
+            // Set tapped match
+            self.processingMatch = match
+            
             // Send get streaming links to check this match was bought or not
             self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
             
             // Set current action
             self.tvAction = TvAction.getStreamingLinks
+            
         }
     }
 
@@ -187,13 +188,44 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             self.collectionView.reloadData()
             
         } else if self.tvAction == TvAction.getStreamingLinks {
-            // Show confirm message, asked user want to buy match or not
-            // If user tap OK -> Get links
-            // If user tap Cancel -> Dismiss popup
+            // Show error message if don't have data from server
+            guard let responseData = data else {
+                self.tvAction = TvAction.none
+                AppUtility.showErrorMessage("Something is horribly wrong from server!")
+                return
+            }
+            
+            guard let user = self.dataManager.user else {
+                self.tvAction = TvAction.none
+                AppUtility.showErrorMessage("You aren't logged in. Please login first!")
+                return
+            }
+            
+            // Check data: If didn't bought
+            if responseData["message"].stringValue == TvConstant.NOT_BOUGHT_MESSAGE {
+                if user.coins > 3000 {
+                    // Show confirm message, asked user want to buy match or not
+                    // If user tap OK -> Get links
+                    // If user tap Cancel -> Dismiss popup
+                } else {
+                    self.tvAction = TvAction.none
+                    AppUtility.showErrorMessage("You don't have enought coins to buy this match!")
+                }
+                
+            } else {
+                self.tvAction = TvAction.none
+                self.dataManager.mainTabBarVC.selectedIndex = 2
+                self.dataManager.streamingMatch = self.processingMatch
+            }
             
         } else if self.tvAction == TvAction.buyStreamingMatch {
             // Buy match successful
             AppUtility.showSuccessMessage("You've already bought this match, enjoy it!")
+            
+            // Go to streaming tab
+            self.tvAction = TvAction.none
+            self.dataManager.mainTabBarVC.selectedIndex = 2
+            self.dataManager.streamingMatch = self.processingMatch
         }
     }
     

@@ -21,11 +21,14 @@ class TvConstant {
     /// For get streaming links
     /// If bought, return links
     /// If not bought, return "NotBought" in response
-    static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream"
+    static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream?tick=asdsd,test,luyen"
     
     /// Buying match
     static let TRY_GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/trylinkstream"
     
     /// Default logo
     static let DEFAULT_TEAM_IMG = "tv_logo"
+    
+    /// Not bought message
+    static let NOT_BOUGHT_MESSAGE = "NotBought"
 }
