@@ -8,6 +8,9 @@
 
 import SwiftyJSON
 
+enum MatchType: Int {
+    case free = 0, paid = 1
+}
 struct LiveMatch {
     var liveMatchId: Int
     var slug: String

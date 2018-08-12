@@ -17,10 +17,24 @@ enum HTTPResult {
 class DataManager: NSObject {
     static let shared: DataManager = DataManager()
     weak var delegate: HTTPDelegate?
+    
+    /// List of streaming match
     var liveMatches: [LiveMatch] = []
+    
+    /// Streaming urls for current match
     var streamURLs: [String] = []
+    
+    /// Main view controller
     var mainTabBarVC: TvFootballVC!
+    
+    /// Current match
     var streamingMatch: LiveMatch?
+    
+    /// List of bought match
+    var boughtMatches: [Int] = []
+    
+    ///
+    var user: TvUser? = TvUser(uid: 1917019558317843, coins: 200000)
     
     /// Handle response from server
     ///

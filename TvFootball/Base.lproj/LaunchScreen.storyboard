@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tv_logo" width="600" height="600"/>
+        <image name="tv_logo" width="512" height="512"/>
     </resources>
 </document>

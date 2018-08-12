@@ -19,7 +19,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var bannerImg: UIImageView!
     @IBOutlet weak var bannerView: UIView!
     
-    var dataManager: DataManager! = DataManager.shared
+    var dataManager: DataManager!
     
     /// View did load
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         // Download banner image
         self.downloadBanner()
         
-        DataManager.shared.getLiveMatches(self)
+        self.dataManager.getLiveMatches(self)
     }
     
     /// Download banner, show banner view when completed download banner image
@@ -62,7 +62,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
             /// Start refresh - Get live data
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                DataManager.shared.getLiveMatches(self)
+                self?.dataManager.getLiveMatches(self)
             })
         }
     }
@@ -117,10 +117,32 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.dataManager.mainTabBarVC.selectedIndex = 2
-        DataManager.shared.streamingMatch = self.dataManager.liveMatches[indexPath.row]
+        // Chosen match
+        let match = self.dataManager.liveMatches[indexPath.row]
+        
+        // Get streaming links action
+        let getStreamingLinks = {
+            self.dataManager.mainTabBarVC.selectedIndex = 2
+            self.dataManager.streamingMatch = self.dataManager.liveMatches[indexPath.row]
+        }
+        
+        // Check free or not
+        if match.type == MatchType.free.rawValue {
+            // Get links immediately if free
+            getStreamingLinks()
+        } else {
+            // This match was bought or not
+            if self.dataManager.boughtMatches.contains(match.liveMatchId) {
+                // Get links if match was bought
+                getStreamingLinks()
+            } else {
+                // Show confirm message, asked user want to buy match or not
+                // If user tap OK -> Get links
+                // If user tap Cancel -> Dismiss popup
+            }
+        }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         return UICollectionReusableView()
     }

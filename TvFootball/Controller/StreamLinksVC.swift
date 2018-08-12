@@ -102,7 +102,10 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        if let _ = self.dataManager.streamingMatch {
+            return 1
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
