@@ -12,6 +12,7 @@ import CRRefresh
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
+import SwiftMessages
 
 class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
@@ -204,9 +205,30 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             // Check data: If didn't bought
             if responseData["message"].stringValue == TvConstant.NOT_BOUGHT_MESSAGE {
                 if user.coins > 3000 {
+                    guard let match = self.processingMatch else {
+                        self.tvAction = TvAction.none
+                        AppUtility.showErrorMessage("YSomething is horribly wrong!")
+                        return
+                    }
+                    
                     // Show confirm message, asked user want to buy match or not
                     // If user tap OK -> Get links
                     // If user tap Cancel -> Dismiss popup
+                    let messageView: MessageView = MessageView.viewFromNib(layout: .centeredView)
+                    messageView.configureBackgroundView(width: 290)
+                    messageView.configureContent(title: "TvFootball", body: "Press 'Yes' to buy this match. If you don't want, please try swiping to dismiss this message.", iconImage: nil, iconText: "🦄", buttonImage: nil, buttonTitle: "Yes") { _ in
+                        self.tvAction = TvAction.buyStreamingMatch
+                        self.dataManager.buyStreamingMatch(self, liveMatchId: match.liveMatchId, userId: user.uid)
+                        SwiftMessages.hide()
+                    }
+                    messageView.backgroundView.backgroundColor = UIColor.init(white: 0.97, alpha: 1)
+                    messageView.backgroundView.layer.cornerRadius = 10
+                    var config = SwiftMessages.defaultConfig
+                    config.presentationStyle = .center
+                    config.duration = .forever
+                    config.dimMode = .blur(style: .dark, alpha: 1, interactive: true)
+                    config.presentationContext  = .window(windowLevel: UIWindowLevelStatusBar)
+                    SwiftMessages.show(config: config, view: messageView)
                 } else {
                     self.tvAction = TvAction.none
                     AppUtility.showErrorMessage("You don't have enought coins to buy this match!")

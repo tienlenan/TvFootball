@@ -6,6 +6,8 @@
 //  Copyright © 2018 Le Tien An. All rights reserved.
 //
 
+import UIKit
+
 enum TvAction {
     case none
     case getLiveMatches
@@ -16,5 +18,3 @@ enum TvAction {
 enum MatchType: Int {
     case free = 0, paid = 1
 }
-
-
