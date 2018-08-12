@@ -18,11 +18,13 @@ class TvConstant {
     /// For getting live matches url
     static let GET_LIVE_MATCHES_API_URL = "http://api.bongdahd.info/api/fixture/list"
     
-    /// For buying match
+    /// For get streaming links
+    /// If bought, return links
+    /// If not bought, return "NotBought" in response
     static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream"
     
-    /// For checking status of match, was bought or not
-    static let TRY_GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream"
+    /// Buying match
+    static let TRY_GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/trylinkstream"
     
     /// Default logo
     static let DEFAULT_TEAM_IMG = "tv_logo"

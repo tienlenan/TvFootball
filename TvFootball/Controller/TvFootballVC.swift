@@ -14,6 +14,8 @@ class TvFootballVC: UITabBarController {
     
     /// View did load
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         // Set title image
         let image : UIImage = #imageLiteral(resourceName: "tv_logo")
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -24,7 +26,6 @@ class TvFootballVC: UITabBarController {
         // Get live data
         DataManager.shared.mainTabBarVC = self
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

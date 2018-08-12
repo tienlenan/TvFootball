@@ -39,8 +39,9 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let match = self.dataManager.streamingMatch {
-            self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId)
+        if let match = self.dataManager.streamingMatch,
+            let user = self.dataManager.user {
+            self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
         }
     }
     
@@ -65,8 +66,9 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
             /// Start refresh - Get live data
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                if let match = self?.dataManager.streamingMatch {
-                    self?.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId)
+                if let match = self?.dataManager.streamingMatch,
+                    let user = self?.dataManager.user {
+                    self?.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
                 }
             })
         }

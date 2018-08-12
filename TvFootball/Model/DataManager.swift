@@ -30,11 +30,9 @@ class DataManager: NSObject {
     /// Current match
     var streamingMatch: LiveMatch?
     
-    /// List of bought match
-    var boughtMatches: [Int] = []
-    
-    ///
-    var user: TvUser? = TvUser(uid: 1917019558317843, coins: 200000)
+    /// Current user
+    //var user: TvUser? = TvUser(uid: 1917019558317843, coins: 200000)
+    var user: TvUser? = nil
     
     /// Handle response from server
     ///
@@ -92,18 +90,22 @@ class DataManager: NSObject {
     }
     
     /// Get stream urls
+    /// Purpose
+    /// - 1. Get streaming links of match
+    /// - 2. Check match is bought or not
     ///
     /// - Parameters:
     ///   - httpDelegate: delegate
     ///   - liveMatchId: live match identifier
-    func getStreamUrls(_ httpDelegate: HTTPDelegate?, liveMatchId: Int) {
+    ///   - userId: id of user who wants to watch match
+    func getStreamUrls(_ httpDelegate: HTTPDelegate?, liveMatchId: Int, userId: Int) {
         self.delegate = httpDelegate
         
         let parameters: [String:Any] = [
             "LiveMatchId": liveMatchId,
-            "UserId": "1917019558317843"
+            "UserId": userId
         ]
-        Alamofire.request(TvConstant.GET_STREAM_LINKS_API,method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(TvConstant.GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -126,4 +128,45 @@ class DataManager: NSObject {
                 }
         }
     }
+    
+    /// Buy streaming match
+    /// Purpose
+    /// - Get streaming links of match
+    ///
+    /// - Parameters:
+    ///   - httpDelegate: delegate
+    ///   - liveMatchId: live match identifier
+    ///   - userId: id of user who wants to buy match
+    func buyStreamingMatch(_ httpDelegate: HTTPDelegate?, liveMatchId: Int, userId: Int) {
+        self.delegate = httpDelegate
+        
+        let parameters: [String:Any] = [
+            "LiveMatchId": liveMatchId,
+            "UserId": userId
+        ]
+        Alamofire.request(TvConstant.TRY_GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                debugPrint(response)
+                if let _ = response.result.error {
+                    // Return connection error
+                    self.handleResponse(type: .httpConnectionError, data: nil)
+                    
+                } else {
+                    let responseJSONData = JSON(response.result.value!)
+                    let statusCode = (response.response?.statusCode)
+                    if statusCode == 200 {
+                        // Parse data
+                        print("links: \(responseJSONData)")
+                        
+                        // Return http success
+                        self.handleResponse(type: .httpSuccess, data: responseJSONData)
+                        
+                    } else {
+                        // Return error from server
+                        self.handleResponse(type: .httpConnectionError, data: nil)
+                    }
+                }
+        }
+    }
+    
 }

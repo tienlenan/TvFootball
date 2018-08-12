@@ -11,6 +11,7 @@ target 'TvFootball' do
   pod 'CRRefresh'
   pod 'AlamofireImage', '~> 3.3'
   pod "MobilePlayer"
+  pod 'SwiftMessages'
 
   target 'TvFootballTests' do
     inherit! :search_paths

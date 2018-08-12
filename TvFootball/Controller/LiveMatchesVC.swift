@@ -15,12 +15,20 @@ import AlamofireImage
 
 class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
+    // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bannerImg: UIImageView!
     @IBOutlet weak var bannerView: UIView!
     
+    // MARK: - Variables
+    
+    /// Data manager
     var dataManager: DataManager!
     
+    /// Current action is none
+    lazy var tvAction: TvAction = TvAction.none
+    
+    // MARK: - Life cycle
     /// View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +44,26 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         // Download banner image
         self.downloadBanner()
-        
-        self.dataManager.getLiveMatches(self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Get matches if action is none
+        if self.tvAction == TvAction.none {
+            self.dataManager.getLiveMatches(self)
+            self.tvAction = TvAction.getLiveMatches
+        }
+    }
+    
+    /// On tapped this view controller
+    public func onTapped() {
+        // Get matches if action is none
+        if self.tvAction == TvAction.none {
+            self.dataManager.getLiveMatches(self)
+            self.tvAction = TvAction.getLiveMatches
+        }
+    }
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
         Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
@@ -63,6 +87,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             /// Start refresh - Get live data
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 self?.dataManager.getLiveMatches(self)
+                self?.tvAction = TvAction.getLiveMatches
             })
         }
     }
@@ -117,29 +142,32 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = self.dataManager.user else {
+            // Show message notify app user that him/her didn't logged in
+            AppUtility.showWarningMessage("You aren't logged in. Please login first!")
+            return
+        }
+        
+        
         // Chosen match
         let match = self.dataManager.liveMatches[indexPath.row]
-        
+
         // Get streaming links action
         let getStreamingLinks = {
             self.dataManager.mainTabBarVC.selectedIndex = 2
-            self.dataManager.streamingMatch = self.dataManager.liveMatches[indexPath.row]
+            self.dataManager.streamingMatch = match
         }
-        
+
         // Check free or not
         if match.type == MatchType.free.rawValue {
             // Get links immediately if free
             getStreamingLinks()
         } else {
-            // This match was bought or not
-            if self.dataManager.boughtMatches.contains(match.liveMatchId) {
-                // Get links if match was bought
-                getStreamingLinks()
-            } else {
-                // Show confirm message, asked user want to buy match or not
-                // If user tap OK -> Get links
-                // If user tap Cancel -> Dismiss popup
-            }
+            // Send get streaming links to check this match was bought or not
+            self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
+            
+            // Set current action
+            self.tvAction = TvAction.getStreamingLinks
         }
     }
 
@@ -153,17 +181,31 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     // MARK: - HTTPDelegate
     func didGetSuccessRespond(data: JSON?) {
-        self.collectionView.cr.endHeaderRefresh()
-        self.collectionView.reloadData()
+        if self.tvAction == TvAction.getLiveMatches {
+            // Reload table after get live match successful
+            self.collectionView.cr.endHeaderRefresh()
+            self.collectionView.reloadData()
+            
+        } else if self.tvAction == TvAction.getStreamingLinks {
+            // Show confirm message, asked user want to buy match or not
+            // If user tap OK -> Get links
+            // If user tap Cancel -> Dismiss popup
+            
+        } else if self.tvAction == TvAction.buyStreamingMatch {
+            // Buy match successful
+            AppUtility.showSuccessMessage("You've already bought this match, enjoy it!")
+        }
     }
     
     func didGetErrorFromServer(message: String) {
-        print("Error")
         self.collectionView.cr.endHeaderRefresh()
+        self.tvAction = TvAction.none
+        AppUtility.showErrorMessage("Something is horribly wrong from server!")
     }
     
     func didGetConnectionError(message: String) {
-        print("Error")
         self.collectionView.cr.endHeaderRefresh()
+        self.tvAction = TvAction.none
+        AppUtility.showErrorMessage("Please check your network connection!")
     }
 }
