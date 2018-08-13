@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CryptoSwift
 
 enum HTTPResult {
     case httpSuccess, httpErrorFromServer, httpConnectionError
@@ -105,7 +106,9 @@ class DataManager: NSObject {
             "LiveMatchId": liveMatchId,
             "UserId": userId
         ]
-        Alamofire.request(TvConstant.GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        let tick = "\(Double(Date().timeIntervalSince1970))"
+        let requestURL = TvConstant.GET_STREAM_LINKS_API + "?tick=\(tick)&format=json"
+        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -168,5 +171,14 @@ class DataManager: NSObject {
                 }
         }
     }
+    
+//    private func decrypt(input: String, key: String) -> String {
+//        let iv: Array<UInt8> = AES.randomIV(AES.blockSize)
+//        var decrypted: String
+//        do {
+//            decrypted = try AES(key: key.bytes, blockMode: CBC(iv: iv), padding: .pkcs7).decrypt(input.arr)
+//        } catch { }
+//        return decrypted
+//    }
     
 }

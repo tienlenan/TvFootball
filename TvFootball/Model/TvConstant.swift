@@ -31,4 +31,6 @@ class TvConstant {
     
     /// Not bought message
     static let NOT_BOUGHT_MESSAGE = "NotBought"
+    
+    static let AES_KEY = "1234567891234567"
 }
