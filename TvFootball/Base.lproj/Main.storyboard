@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,6 +91,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4c-ep-nTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="276" y="-314"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="4XK-QN-HaE">
+            <objects>
+                <viewController id="y9L-jF-JOG" customClass="UserManagerVC" customModule="TvFootball" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MZf-JN-EOr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="msd-qb-yiB" userLabel="userImageView">
+                                <rect key="frame" x="100" y="113" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="ITz-Og-7OJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="f7f-01-9gB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tien An" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tT-Fw-drd" userLabel="userNameLabel">
+                                <rect key="frame" x="80" y="238" width="160" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6w-9c-5zM" userLabel="coinsLabel">
+                                <rect key="frame" x="80" y="261" width="160" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="C6w-9c-5zM" firstAttribute="top" secondItem="8tT-Fw-drd" secondAttribute="bottom" id="6u9-bh-3sq"/>
+                            <constraint firstItem="C6w-9c-5zM" firstAttribute="width" secondItem="MZf-JN-EOr" secondAttribute="width" multiplier="1/2" id="RaI-XW-FIP"/>
+                            <constraint firstItem="8tT-Fw-drd" firstAttribute="top" secondItem="msd-qb-yiB" secondAttribute="bottom" constant="5" id="WQb-aU-4eZ"/>
+                            <constraint firstItem="8tT-Fw-drd" firstAttribute="width" secondItem="MZf-JN-EOr" secondAttribute="width" multiplier="1/2" id="Xff-OP-FSH"/>
+                            <constraint firstItem="msd-qb-yiB" firstAttribute="top" secondItem="RY7-Xo-uDJ" secondAttribute="top" constant="49" id="fCu-a0-4iA"/>
+                            <constraint firstItem="8tT-Fw-drd" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="vZk-oJ-N6z"/>
+                            <constraint firstItem="msd-qb-yiB" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="xLv-se-UG5"/>
+                            <constraint firstItem="C6w-9c-5zM" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="xt7-av-pCQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RY7-Xo-uDJ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="user-icon" id="2we-0a-uyd"/>
+                    <connections>
+                        <outlet property="coinsLabel" destination="C6w-9c-5zM" id="Jci-BH-gAq"/>
+                        <outlet property="imageView" destination="msd-qb-yiB" id="OFr-wz-apc"/>
+                        <outlet property="label" destination="8tT-Fw-drd" id="lz3-AA-Xij"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vfO-TB-aq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-677" y="571"/>
         </scene>
         <!--Live-->
         <scene sceneID="04b-7o-4Mo">
@@ -311,6 +364,7 @@ Napoli</string>
                         <segue destination="3i3-Vw-kgY" kind="relationship" relationship="viewControllers" id="Cd1-TM-Lpo"/>
                         <segue destination="xi5-Cb-sjI" kind="relationship" relationship="viewControllers" id="6rt-PR-FyM"/>
                         <segue destination="q6e-hp-oUk" kind="relationship" relationship="viewControllers" id="6UX-eH-O9m"/>
+                        <segue destination="y9L-jF-JOG" kind="relationship" relationship="viewControllers" id="p6K-9d-Po0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvo-W8-v1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,5 +376,6 @@ Napoli</string>
         <image name="home-icon" width="24" height="24"/>
         <image name="live-icon" width="24" height="24"/>
         <image name="streaming-icon" width="32" height="32"/>
+        <image name="user-icon" width="32" height="32"/>
     </resources>
 </document>

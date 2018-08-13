@@ -12,6 +12,7 @@ target 'TvFootball' do
   pod 'AlamofireImage', '~> 3.3'
   pod "MobilePlayer"
   pod 'SwiftMessages'
+  pod 'FBSDKLoginKit'
 
   target 'TvFootballTests' do
     inherit! :search_paths

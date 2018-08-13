@@ -11,6 +11,7 @@
 		84013E50211B423900DB6F45 /* MatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E4E211B423900DB6F45 /* MatchRow.swift */; };
 		84013E51211B423900DB6F45 /* MatchRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84013E4F211B423900DB6F45 /* MatchRow.xib */; };
 		84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */; };
+		8467C4812121D02600EB8B08 /* UserManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467C4802121D02600EB8B08 /* UserManagerVC.swift */; };
 		84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */; };
 		84F16FCD211C8C190027DA75 /* StreamLinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */; };
 		84F3CD23211F03DF0077278D /* TvConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3CD22211F03DF0077278D /* TvConstant.swift */; };
@@ -59,6 +60,7 @@
 		84013E4E211B423900DB6F45 /* MatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRow.swift; sourceTree = "<group>"; };
 		84013E4F211B423900DB6F45 /* MatchRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchRow.xib; sourceTree = "<group>"; };
 		84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchesVC.swift; sourceTree = "<group>"; };
+		8467C4802121D02600EB8B08 /* UserManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerVC.swift; sourceTree = "<group>"; };
 		84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
 		84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamLinksVC.swift; sourceTree = "<group>"; };
 		84F3CD22211F03DF0077278D /* TvConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvConstant.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				9EDFA393211B08010019E321 /* FixtureVC.swift */,
 				84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */,
 				84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */,
+				8467C4802121D02600EB8B08 /* UserManagerVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -376,7 +379,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TvFootball/Pods-TvFootball-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MobilePlayer/MobilePlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -386,7 +392,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MobilePlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -472,6 +481,7 @@
 				9EDFA382211AA6A00019E321 /* DataManager.swift in Sources */,
 				9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */,
 				84F71497211FCC1600F77B53 /* TvUSer.swift in Sources */,
+				8467C4812121D02600EB8B08 /* UserManagerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
