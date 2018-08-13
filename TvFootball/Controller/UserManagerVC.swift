@@ -18,6 +18,10 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.layer.cornerRadius = 5
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.clear.cgColor
+        imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: "profile-img")
         
         label.text = "Non-user"
