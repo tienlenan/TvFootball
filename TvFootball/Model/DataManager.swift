@@ -187,7 +187,7 @@ class DataManager: NSObject {
     /// - Parameter httpDelegate: delegate
     func getDeviceIP(_ httpDelegate: HTTPDelegate?) {
         self.delegate = httpDelegate
-        Alamofire.request(TvConstant.IP_TRACKING_URL, encoding: JSONEncoding.default)
+        Alamofire.request(TvConstant.IP_TRACKING_URL, method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -198,6 +198,7 @@ class DataManager: NSObject {
                     let responseJSONData = JSON(response.result.value!)
                     let statusCode = (response.response?.statusCode)
                     if statusCode == 200 {
+                        print("IP: \(responseJSONData)")
                         // Parse data
                         self.ip = responseJSONData["IP"].string
                         
@@ -240,12 +241,16 @@ class DataManager: NSObject {
     func decrypt(input: String, key: String) -> String {
         var encrypted: String!
         do {
-            let aes = try AES(key: "1234567891234567", iv: "drowssapdrowssap") // aes128
+            let aes = try AES(key: "1234567891234567", iv: "") // aes128
             let ciphertext = try aes.decrypt(Array(input.utf8))
             encrypted = String(bytes: ciphertext, encoding: .utf8)
+            if let data = NSData(base64Encoded: encrypted, options: NSData.Base64DecodingOptions(rawValue: 0)) {
+                encrypted = String(data: data as Data, encoding: String.Encoding.utf8)
+            }
+            return encrypted
         } catch { }
         
-        return encrypted
+        return ""
     }
     
 }
