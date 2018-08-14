@@ -30,6 +30,7 @@
 		9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */; };
 		9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */; };
 		9EDFA394211B08010019E321 /* FixtureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA393211B08010019E321 /* FixtureVC.swift */; };
+		9EF76661212277F4000EE5A5 /* TvFacebookUSer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF76660212277F4000EE5A5 /* TvFacebookUSer.swift */; };
 		C3049BE85A5B85CD51B0462B /* Pods_TvFootball.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDelegate.swift; sourceTree = "<group>"; };
 		9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvFootballVC.swift; sourceTree = "<group>"; };
 		9EDFA393211B08010019E321 /* FixtureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureVC.swift; sourceTree = "<group>"; };
+		9EF76660212277F4000EE5A5 /* TvFacebookUSer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvFacebookUSer.swift; sourceTree = "<group>"; };
 		B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TvFootball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BC835DECC456B78614AA12 /* Pods-TvFootball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TvFootball.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TvFootball/Pods-TvFootball.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 				9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */,
 				9EDFA389211AF4CF0019E321 /* LiveMatch.swift */,
 				84F71496211FCC1600F77B53 /* TvUSer.swift */,
+				9EF76660212277F4000EE5A5 /* TvFacebookUSer.swift */,
 				84F3CD22211F03DF0077278D /* TvConstant.swift */,
 				84F9284F212052CC00069D35 /* TvEnumaration.swift */,
 			);
@@ -471,6 +474,7 @@
 			files = (
 				84013E50211B423900DB6F45 /* MatchRow.swift in Sources */,
 				9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */,
+				9EF76661212277F4000EE5A5 /* TvFacebookUSer.swift in Sources */,
 				84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */,
 				9E6FCD3D2119AACB0059DDE0 /* AppDelegate.swift in Sources */,
 				84F3CD23211F03DF0077278D /* TvConstant.swift in Sources */,

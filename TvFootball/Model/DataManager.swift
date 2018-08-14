@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import CryptoSwift
+/// 894971103969882
+/// TvFootball
 
 enum HTTPResult {
     case httpSuccess, httpErrorFromServer, httpConnectionError
@@ -33,7 +35,15 @@ class DataManager: NSObject {
     
     /// Current user
     var user: TvUser? = TvUser(uid: 1917019558317843, coins: 200000)
+    
     //var user: TvUser? = nil
+    
+    /// Facebook user
+    var fUser: TvFacebookUSer?
+    
+    /// IP
+    var ip: String? = "192.168.1.1"
+    
     
     /// Handle response from server
     ///
@@ -172,13 +182,70 @@ class DataManager: NSObject {
         }
     }
     
-//    private func decrypt(input: String, key: String) -> String {
-//        let iv: Array<UInt8> = AES.randomIV(AES.blockSize)
-//        var decrypted: String
-//        do {
-//            decrypted = try AES(key: key.bytes, blockMode: CBC(iv: iv), padding: .pkcs7).decrypt(input.arr)
-//        } catch { }
-//        return decrypted
-//    }
+    /// Get live matches
+    ///
+    /// - Parameter httpDelegate: delegate
+    func getDeviceIP(_ httpDelegate: HTTPDelegate?) {
+        self.delegate = httpDelegate
+        Alamofire.request(TvConstant.IP_TRACKING_URL, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                debugPrint(response)
+                if let _ = response.result.error {
+                    // Return connection error
+                    self.handleResponse(type: .httpConnectionError, data: nil)
+                    
+                } else {
+                    let responseJSONData = JSON(response.result.value!)
+                    let statusCode = (response.response?.statusCode)
+                    if statusCode == 200 {
+                        // Parse data
+                        self.ip = responseJSONData["IP"].string
+                        
+                        // Return http success
+                        self.handleResponse(type: .httpSuccess, data: responseJSONData)
+                        
+                    } else {
+                        // Return error from server
+                        self.handleResponse(type: .httpConnectionError, data: nil)
+                    }
+                }
+        }
+        
+        
+    }
+    
+    
+    /// Prepare streaming url
+    ///
+    /// - Parameter originURL: origin url
+    /// - Returns: actual url
+    func prepareStreamingURL(_ originURL: String) -> String {
+        var actualURL = originURL
+        if actualURL.contains(find: "token") {
+            actualURL = String(actualURL.split(separator: "?").first!)
+            let tick = String(Date().timeIntervalSince1970 + 7000)
+            let t3 = ("livestream" + self.ip! + tick)
+                .data(using: String.Encoding.utf8)?.base64EncodedString() ?? ""
+            actualURL = actualURL
+                + "?token="
+                + t3.replacingOccurrences(of: "=", with: "")
+                    .replacingOccurrences(of: "+", with: "-")
+                    .replacingOccurrences(of: "/", with: "_")
+                + "&e=" + tick
+        }
+        return actualURL
+    }
+    
+    
+    func decrypt(input: String, key: String) -> String {
+        var encrypted: String!
+        do {
+            let aes = try AES(key: "1234567891234567", iv: "drowssapdrowssap") // aes128
+            let ciphertext = try aes.decrypt(Array(input.utf8))
+            encrypted = String(bytes: ciphertext, encoding: .utf8)
+        } catch { }
+        
+        return encrypted
+    }
     
 }

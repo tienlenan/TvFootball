@@ -57,13 +57,21 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
             connection.add(graphRequest, completionHandler: { (connection, result, error) -> Void in
                 
                 let data = result as! [String : AnyObject]
+                let fUser = TvFacebookUSer(fid: (data["id"] as? String) ?? "",
+                                           email: (data["email"] as? String) ?? "",
+                                           name: (data["name"] as? String) ?? "")
                 
-                self.label.text = data["name"] as? String
+                self.label.text = fUser.name
                 
-                let FBid = data["id"] as? String
+                let FBid = fUser.fid
                 
-                let url = NSURL(string: "https://graph.facebook.com/\(FBid!)/picture?type=large&return_ssl_resources=1")
+                let url = NSURL(string: "https://graph.facebook.com/\(FBid)/picture?type=large&return_ssl_resources=1")
                 self.imageView.image = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
+                
+                DataManager.shared.fUser = fUser
+                
+                // Get user info from bongdahd
+                
             })
             connection.start()
         }

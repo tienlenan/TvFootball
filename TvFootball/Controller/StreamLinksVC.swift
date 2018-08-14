@@ -182,8 +182,18 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     // MARK: - HTTPDelegate
     
     func didGetSuccessRespond(data: JSON?) {
-        self.urls = ["http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8",
-                     "http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8"]
+        guard let responseData = data else {
+            return
+        }
+        self.urls = []
+        let result = responseData["result"].stringValue
+        let jsonLinksStr = self.dataManager.decrypt(input: result, key: TvConstant.AES_KEY)
+        let jsonLinks: JSON = JSON.init(parseJSON: jsonLinksStr)
+        for item in jsonLinks {
+            var link = item.1["Link"].stringValue
+            link = self.dataManager.prepareStreamingURL(link)
+            self.urls.append(link)
+        }
         self.collectionView.cr.endHeaderRefresh()
         self.collectionView.reloadData()
     }

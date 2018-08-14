@@ -26,6 +26,9 @@ class TvConstant {
     /// Buying match
     static let TRY_GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/trylinkstream"
     
+    /// Tracking IP url
+    static let IP_TRACKING_URL = "https://www.trackip.net/ip?json"
+    
     /// Default logo
     static let DEFAULT_TEAM_IMG = "tv_logo"
     
