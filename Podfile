@@ -14,6 +14,8 @@ target 'TvFootball' do
   pod 'SwiftMessages'
   pod 'FBSDKLoginKit'
   pod 'CryptoSwift'
+  pod "Player", "~> 0.9.0"
+  pod 'BMPlayer', '~> 1.0.0'
 
   target 'TvFootballTests' do
     inherit! :search_paths

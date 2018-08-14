@@ -12,6 +12,7 @@
 		84013E51211B423900DB6F45 /* MatchRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84013E4F211B423900DB6F45 /* MatchRow.xib */; };
 		84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */; };
 		8467C4812121D02600EB8B08 /* UserManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467C4802121D02600EB8B08 /* UserManagerVC.swift */; };
+		846A524C2123122F0016BB08 /* StreamingMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A524B2123122F0016BB08 /* StreamingMatchVC.swift */; };
 		84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */; };
 		84F16FCD211C8C190027DA75 /* StreamLinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */; };
 		84F3CD23211F03DF0077278D /* TvConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3CD22211F03DF0077278D /* TvConstant.swift */; };
@@ -62,6 +63,7 @@
 		84013E4F211B423900DB6F45 /* MatchRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchRow.xib; sourceTree = "<group>"; };
 		84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchesVC.swift; sourceTree = "<group>"; };
 		8467C4802121D02600EB8B08 /* UserManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerVC.swift; sourceTree = "<group>"; };
+		846A524B2123122F0016BB08 /* StreamingMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingMatchVC.swift; sourceTree = "<group>"; };
 		84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
 		84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamLinksVC.swift; sourceTree = "<group>"; };
 		84F3CD22211F03DF0077278D /* TvConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvConstant.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */,
 				84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */,
 				8467C4802121D02600EB8B08 /* UserManagerVC.swift */,
+				846A524B2123122F0016BB08 /* StreamingMatchVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -382,12 +385,16 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-TvFootball/Pods-TvFootball-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/BMPlayer/BMPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MobilePlayer/MobilePlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/VegaScrollFlowLayout/VegaScrollFlowLayout.framework",
@@ -396,12 +403,16 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MobilePlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VegaScrollFlowLayout.framework",
@@ -477,6 +488,7 @@
 				9EF76661212277F4000EE5A5 /* TvFacebookUSer.swift in Sources */,
 				84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */,
 				9E6FCD3D2119AACB0059DDE0 /* AppDelegate.swift in Sources */,
+				846A524C2123122F0016BB08 /* StreamingMatchVC.swift in Sources */,
 				84F3CD23211F03DF0077278D /* TvConstant.swift in Sources */,
 				84F16FCD211C8C190027DA75 /* StreamLinksVC.swift in Sources */,
 				9EDFA394211B08010019E321 /* FixtureVC.swift in Sources */,

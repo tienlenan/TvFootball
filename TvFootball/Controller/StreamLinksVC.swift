@@ -65,15 +65,15 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
-        self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
-            /// Start refresh - Get live data
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                if let match = self?.dataManager.streamingMatch,
-                    let user = self?.dataManager.user {
-                    self?.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
-                }
-            })
-        }
+//        self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
+//            /// Start refresh - Get live data
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+//                if let match = self?.dataManager.streamingMatch,
+//                    let user = self?.dataManager.user {
+//                    self?.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
+//                }
+//            })
+//        }
     }
     
     /// Enable audio even if app is on silent/ringer mode
@@ -162,16 +162,19 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row > 0 {
+        if indexPath.row >= 0 {
             // Show streaming screen
-            guard let match = self.dataManager.streamingMatch else { return }
-            guard let videoURL = URL(string: self.urls[indexPath.row - 1]) else { return }
-            let playerVC = MobilePlayerViewController(
-                contentURL: videoURL,
-                pauseOverlayViewController: MobilePlayerOverlayViewController())
-            playerVC.title = "\(match.teamHomeName) - \(match.teamAwayName)"
-            playerVC.activityItems = [videoURL]
-            present(playerVC, animated: false, completion: nil)
+            guard let _ = self.dataManager.streamingMatch else { return }
+            let streamingURL = self.dataManager.prepareStreamingURL(self.urls[indexPath.row - 1])
+            self.dataManager.temp = streamingURL
+            self.performSegue(withIdentifier: "goToStreamingVC", sender: nil)
+//            guard let videoURL = URL(string: streamingURL) else { return }
+//            let playerVC = MobilePlayerViewController(
+//                contentURL: videoURL,
+//                pauseOverlayViewController: MobilePlayerOverlayViewController())
+//            playerVC.title = "\(match.teamHomeName) - \(match.teamAwayName)"
+//            playerVC.activityItems = [videoURL]
+//            present(playerVC, animated: false, completion: nil)
         }
     }
     
@@ -190,8 +193,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         let jsonLinksStr = self.dataManager.decrypt(input: result, key: TvConstant.AES_KEY)
         let jsonLinks: JSON = JSON.init(parseJSON: jsonLinksStr)
         for item in jsonLinks {
-            var link = item.1["Link"].stringValue
-            link = self.dataManager.prepareStreamingURL(link)
+            let link = item.1["Link"].stringValue
             self.urls.append(link)
         }
         self.collectionView.cr.endHeaderRefresh()

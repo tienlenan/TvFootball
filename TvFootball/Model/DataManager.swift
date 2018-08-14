@@ -44,6 +44,8 @@ class DataManager: NSObject {
     /// IP
     var ip: String? = "192.168.1.1"
     
+    var temp = ""
+    
     
     /// Handle response from server
     ///
@@ -116,7 +118,8 @@ class DataManager: NSObject {
             "LiveMatchId": liveMatchId,
             "UserId": userId
         ]
-        let tick = "\(Double(Date().timeIntervalSince1970))"
+        let tick = "\(Int(Date().timeIntervalSince1970))"
+        let dataHeader = tick + ",test,luyen"
         let requestURL = TvConstant.GET_STREAM_LINKS_API + "?tick=\(tick)&format=json"
         Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -130,7 +133,8 @@ class DataManager: NSObject {
                     let statusCode = (response.response?.statusCode)
                     if statusCode == 200 {
                         // Parse data
-                        print("links: \(responseJSONData)")
+                        print("Links: \(responseJSONData)")
+                        
                         // Return http success
                         self.handleResponse(type: .httpSuccess, data: responseJSONData)
                         
@@ -168,9 +172,6 @@ class DataManager: NSObject {
                     let responseJSONData = JSON(response.result.value!)
                     let statusCode = (response.response?.statusCode)
                     if statusCode == 200 {
-                        // Parse data
-                        print("links: \(responseJSONData)")
-                        
                         // Return http success
                         self.handleResponse(type: .httpSuccess, data: responseJSONData)
                         
@@ -224,8 +225,8 @@ class DataManager: NSObject {
         var actualURL = originURL
         if actualURL.contains(find: "token") {
             actualURL = String(actualURL.split(separator: "?").first!)
-            let tick = String(Date().timeIntervalSince1970 + 7000)
-            let t3 = ("livestream" + self.ip! + tick)
+            let tick = String(Int(Date().timeIntervalSince1970 + 7000))
+            let t3 = ("livestream" + self.ip! + tick).md5()
                 .data(using: String.Encoding.utf8)?.base64EncodedString() ?? ""
             actualURL = actualURL
                 + "?token="
@@ -239,35 +240,8 @@ class DataManager: NSObject {
     
     
     func decrypt(input: String, key: String) -> String {
-//        var encrypted: String!
-//        do {
-//            // In combined mode, the authentication tag is directly appended to the encrypted message. This is usually what you want.
-//            let iv: Array<UInt8> = AES.randomIV(AES.blockSize)
-//            let gcm = GCM(iv: iv, mode: .combined)
-//            let aes = try AES(key: Array(key.utf8), blockMode: gcm, padding: .noPadding)
-//            let cipherText = try aes.decrypt(Array(input.utf8))
-//            encrypted = String(bytes: cipherText, encoding: .utf8)
-//            if let data = NSData(base64Encoded: encrypted, options: NSData.Base64DecodingOptions(rawValue: 0)) {
-//                encrypted = String(data: data as Data, encoding: String.Encoding.utf8)
-//            }
-//            return encrypted
-//        } catch {
-//            // failed
-//        }
-        
-        let inputBytes: Array<UInt8> = Array(input.utf8)
-        
-        let keyBytes: Array<UInt8> = Array(key.utf8)
-        let iv: Array<UInt8> = AES.randomIV(AES.blockSize)
-        
-        do {
-            let decrypted = try AES(key: keyBytes, blockMode: CBC(iv: iv), padding: .pkcs7).decrypt(inputBytes)
-            if let data = NSData(base64Encoded: decrypted, options: NSData.Base64DecodingOptions(rawValue: 0)) {
-                return String(data: data as Data, encoding: String.Encoding.utf8)!
-            }
-            return ""
-        } catch {
-            print(error)
+        if let actualStr = input.aesAndBase64Decript(key: TvConstant.AES_KEY) {
+            return actualStr
         }
         
         return ""

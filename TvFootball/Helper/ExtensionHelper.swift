@@ -16,6 +16,29 @@ extension String {
     func containsIgnoringCase(find: String) -> Bool{
         return self.range(of: find, options: .caseInsensitive) != nil
     }
+    
+    func aesAndBase64Encrypt(key: String) -> String? {
+        do {
+            let keyBytes: Array<UInt8> = key.bytes
+            let inputBytes: Array<UInt8> = self.bytes
+            let encryptedData = try AES(key: keyBytes, blockMode: ECB(), padding: .pkcs5).encrypt(inputBytes)
+            return encryptedData.toBase64()
+        } catch { }
+        return nil
+    }
+    func aesAndBase64Decript(key: String) -> String? {
+        do {
+            guard let encodedBase64Data = Data(base64Encoded: self) else {
+                return nil
+            }
+            let keyBytes: Array<UInt8> = key.bytes
+            let inputBytes: Array<UInt8> = encodedBase64Data.bytes
+            let decryptedData = try AES(key: keyBytes, blockMode: ECB(), padding: .pkcs5).decrypt(inputBytes)
+            let decrypted = String(bytes: decryptedData, encoding: .utf8)
+            return decrypted
+        } catch { }
+        return nil
+    }
 }
 
 extension Int {
