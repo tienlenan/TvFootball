@@ -239,18 +239,39 @@ class DataManager: NSObject {
     
     
     func decrypt(input: String, key: String) -> String {
-        var encrypted: String!
+//        var encrypted: String!
+//        do {
+//            // In combined mode, the authentication tag is directly appended to the encrypted message. This is usually what you want.
+//            let iv: Array<UInt8> = AES.randomIV(AES.blockSize)
+//            let gcm = GCM(iv: iv, mode: .combined)
+//            let aes = try AES(key: Array(key.utf8), blockMode: gcm, padding: .noPadding)
+//            let cipherText = try aes.decrypt(Array(input.utf8))
+//            encrypted = String(bytes: cipherText, encoding: .utf8)
+//            if let data = NSData(base64Encoded: encrypted, options: NSData.Base64DecodingOptions(rawValue: 0)) {
+//                encrypted = String(data: data as Data, encoding: String.Encoding.utf8)
+//            }
+//            return encrypted
+//        } catch {
+//            // failed
+//        }
+        
+        let inputBytes: Array<UInt8> = Array(input.utf8)
+        
+        let keyBytes: Array<UInt8> = Array(key.utf8)
+        let iv: Array<UInt8> = AES.randomIV(AES.blockSize)
+        
         do {
-            let aes = try AES(key: "1234567891234567", iv: "") // aes128
-            let ciphertext = try aes.decrypt(Array(input.utf8))
-            encrypted = String(bytes: ciphertext, encoding: .utf8)
-            if let data = NSData(base64Encoded: encrypted, options: NSData.Base64DecodingOptions(rawValue: 0)) {
-                encrypted = String(data: data as Data, encoding: String.Encoding.utf8)
+            let decrypted = try AES(key: keyBytes, blockMode: CBC(iv: iv), padding: .pkcs7).decrypt(inputBytes)
+            if let data = NSData(base64Encoded: decrypted, options: NSData.Base64DecodingOptions(rawValue: 0)) {
+                return String(data: data as Data, encoding: String.Encoding.utf8)!
             }
-            return encrypted
-        } catch { }
+            return ""
+        } catch {
+            print(error)
+        }
         
         return ""
     }
+
     
 }

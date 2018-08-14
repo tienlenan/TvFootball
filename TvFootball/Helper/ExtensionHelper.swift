@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CryptoSwift
 
 extension String {
     func contains(find: String) -> Bool{

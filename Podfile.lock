@@ -33,7 +33,7 @@ DEPENDENCIES:
   - VegaScrollFlowLayout
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
     - Bolts
@@ -61,4 +61,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 44dd157c910e1444cb8ed12871325423d9fae495
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
