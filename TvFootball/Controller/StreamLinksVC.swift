@@ -12,7 +12,6 @@ import CRRefresh
 import SwiftyJSON
 import Alamofire
 import AlamofireImage
-import MobilePlayer
 import AVFoundation
 
 class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {

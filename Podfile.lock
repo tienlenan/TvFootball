@@ -2,13 +2,6 @@ PODS:
   - Alamofire (4.7.3)
   - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
-  - BMPlayer (1.0.1):
-    - BMPlayer/Full (= 1.0.1)
-  - BMPlayer/Core (1.0.1)
-  - BMPlayer/Full (1.0.1):
-    - BMPlayer/Core
-    - NVActivityIndicatorView (~> 4.0.0)
-    - SnapKit (~> 4.0.0)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -21,13 +14,8 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.35.0):
     - FBSDKCoreKit
-  - MobilePlayer (1.2.0)
   - MobileVLCKit (3.1.3)
-  - NVActivityIndicatorView (4.0.1):
-    - NVActivityIndicatorView/Presenter (= 4.0.1)
-  - NVActivityIndicatorView/Presenter (4.0.1)
   - Player (0.9.1)
-  - SnapKit (4.0.0)
   - SwiftMessages (4.1.4):
     - SwiftMessages/App (= 4.1.4)
   - SwiftMessages/App (4.1.4)
@@ -37,11 +25,9 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireImage (~> 3.3)
-  - BMPlayer (~> 1.0.0)
   - CRRefresh
   - CryptoSwift
   - FBSDKLoginKit
-  - MobilePlayer
   - MobileVLCKit
   - Player (~> 0.9.0)
   - SwiftMessages
@@ -52,17 +38,13 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
-    - BMPlayer
     - Bolts
     - CRRefresh
     - CryptoSwift
     - FBSDKCoreKit
     - FBSDKLoginKit
-    - MobilePlayer
     - MobileVLCKit
-    - NVActivityIndicatorView
     - Player
-    - SnapKit
     - SwiftMessages
     - SwiftyJSON
     - VegaScrollFlowLayout
@@ -70,21 +52,17 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
-  BMPlayer: 44eebf06eb01450dd14ea74b27d07c5222f0eed1
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CRRefresh: b1c53f32bcb3edef8d60ef414a329b06dc6af34f
   CryptoSwift: ad5208dd2aae0a764ea4ce2c2d34bd067cae67f0
   FBSDKCoreKit: 1a5b2e3ceb5ca827a53c54aa5f4a3480efff80d2
   FBSDKLoginKit: 00a3d65d1226852f9d76dcddff01981e5e6d9c38
-  MobilePlayer: 069b13482499f14c25b6ce53f63a91e17975b073
   MobileVLCKit: 1965a1337063d141abccb67b25cba49336214130
-  NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
   Player: 939f9432361bfa944d9eaf3df1c783a1e3d6df81
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
 
-PODFILE CHECKSUM: 88de4fbae28843a5a1c10abd9d0a30a2a6fb97f6
+PODFILE CHECKSUM: 0ebc28ae898493243f9757c74b981eca37545d2a
 
 COCOAPODS: 1.5.3

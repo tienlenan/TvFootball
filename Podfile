@@ -10,12 +10,10 @@ target 'TvFootball' do
   pod 'VegaScrollFlowLayout'
   pod 'CRRefresh'
   pod 'AlamofireImage', '~> 3.3'
-  pod "MobilePlayer"
   pod 'SwiftMessages'
   pod 'FBSDKLoginKit'
   pod 'CryptoSwift'
   pod "Player", "~> 0.9.0"
-  pod 'BMPlayer', '~> 1.0.0'
   pod 'MobileVLCKit'
 
   target 'TvFootballTests' do
