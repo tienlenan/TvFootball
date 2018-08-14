@@ -67,5 +67,13 @@
         <string>fbauth2</string>
         <string>fbshareextension</string>
     </array>
+    <key>NSExceptionDomains</key>
+    <dict>
+        <key>devimages-cdn.apple.com</key>
+        <dict>
+            <key>NSExceptionRequiresForwardSecrecy</key>
+            <false/>
+        </dict>
+    </dict>
 </dict>
 </plist>

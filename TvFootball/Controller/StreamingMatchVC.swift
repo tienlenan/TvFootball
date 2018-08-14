@@ -8,37 +8,50 @@
 
 import Foundation
 import UIKit
-import BMPlayer
 
-class StreamingMatchVC: UIViewController {
+class StreamingMatchVC: UIViewController, VLCMediaPlayerDelegate {
     
     var dataManager: DataManager!
-    var player: BMPlayer!
     
-    @IBOutlet weak var view1: UIView!
+    let player: VLCMediaPlayer = {
+        let p = VLCMediaPlayer()
+        return p
+    }()
+    @IBOutlet weak var playerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.dataManager = DataManager.shared
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        
+        self.navigationController?.hidesBarsOnSwipe = true
+        
+        setupPlayer()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        player = BMPlayer()
-        view1.addSubview(player)
-        player.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view1).offset(-64)
-            make.left.right.equalTo(self.view1)
-            // Note here, the aspect ratio 16:9 priority is lower than 1000 on the line, because the 4S iPhone aspect ratio is not 16:9
-            make.height.equalTo(player.snp.width).multipliedBy(9.0/16.0).priority(750)
-        }
-        // Back button event
-        player.backBlock = { [unowned self] (isFullScreen) in
-            if isFullScreen == true { return }
-            let _ = self.navigationController?.popViewController(animated: true)
-        }
+    func setupPlayer() {
+        playerView.backgroundColor = UIColor.black
         
-        let asset = BMPlayerResource(url: URL(string: self.dataManager.temp)!,
-                                     name: "ABC")
-        player.setVideo(resource: asset)
+        let streamURL = URL(string: self.dataManager.temp)!
+        
+        let media = VLCMedia(url: streamURL)
+        
+        player.media = media
+        player.delegate = self
+        player.drawable = playerView
+        
+        player.play()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.tintColor = nil
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.hidesBarsOnSwipe = false
     }
 }

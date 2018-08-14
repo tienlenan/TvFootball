@@ -11,6 +11,7 @@
 		84013E50211B423900DB6F45 /* MatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E4E211B423900DB6F45 /* MatchRow.swift */; };
 		84013E51211B423900DB6F45 /* MatchRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84013E4F211B423900DB6F45 /* MatchRow.xib */; };
 		84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */; };
+		8405BCF621233BD700E10235 /* header.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405BCF521233BD700E10235 /* header.m */; };
 		8467C4812121D02600EB8B08 /* UserManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467C4802121D02600EB8B08 /* UserManagerVC.swift */; };
 		846A524C2123122F0016BB08 /* StreamingMatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A524B2123122F0016BB08 /* StreamingMatchVC.swift */; };
 		84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */; };
@@ -62,6 +63,8 @@
 		84013E4E211B423900DB6F45 /* MatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRow.swift; sourceTree = "<group>"; };
 		84013E4F211B423900DB6F45 /* MatchRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchRow.xib; sourceTree = "<group>"; };
 		84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchesVC.swift; sourceTree = "<group>"; };
+		8405BCF421233BD700E10235 /* TvFootball-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TvFootball-Bridging-Header.h"; sourceTree = "<group>"; };
+		8405BCF521233BD700E10235 /* header.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = header.m; sourceTree = "<group>"; };
 		8467C4802121D02600EB8B08 /* UserManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerVC.swift; sourceTree = "<group>"; };
 		846A524B2123122F0016BB08 /* StreamingMatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingMatchVC.swift; sourceTree = "<group>"; };
 		84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
@@ -182,10 +185,12 @@
 				84013E49211B3E2F00DB6F45 /* View */,
 				9EDFA3792119B19E0019E321 /* Controller */,
 				9E6FCD3C2119AACB0059DDE0 /* AppDelegate.swift */,
+				8405BCF521233BD700E10235 /* header.m */,
 				9EDFA383211ACBBF0019E321 /* LaunchScreen.storyboard */,
 				9EDFA385211ACBBF0019E321 /* Main.storyboard */,
 				9E6FCD432119AACD0059DDE0 /* Assets.xcassets */,
 				9E6FCD482119AACD0059DDE0 /* Info.plist */,
+				8405BCF421233BD700E10235 /* TvFootball-Bridging-Header.h */,
 			);
 			path = TvFootball;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				TargetAttributes = {
 					9E6FCD382119AACB0059DDE0 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					9E6FCD4C2119AACD0059DDE0 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -483,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8405BCF621233BD700E10235 /* header.m in Sources */,
 				84013E50211B423900DB6F45 /* MatchRow.swift in Sources */,
 				9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */,
 				9EF76661212277F4000EE5A5 /* TvFacebookUSer.swift in Sources */,
@@ -673,8 +680,10 @@
 			baseConfigurationReference = F1BC835DECC456B78614AA12 /* Pods-TvFootball.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EXR8AK87DX;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TvFootball/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -685,6 +694,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anlt.TvFootball;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TvFootball/TvFootball-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -695,8 +706,10 @@
 			baseConfigurationReference = 7A1D574ED345E218BEF7D249 /* Pods-TvFootball.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EXR8AK87DX;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TvFootball/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -707,6 +720,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.anlt.TvFootball;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TvFootball/TvFootball-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

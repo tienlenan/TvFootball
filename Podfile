@@ -16,6 +16,7 @@ target 'TvFootball' do
   pod 'CryptoSwift'
   pod "Player", "~> 0.9.0"
   pod 'BMPlayer', '~> 1.0.0'
+  pod 'MobileVLCKit'
 
   target 'TvFootballTests' do
     inherit! :search_paths

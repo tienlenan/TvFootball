@@ -293,8 +293,8 @@ Napoli</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmX-hG-X5v">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmX-hG-X5v" userLabel="playerView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -302,13 +302,13 @@ Napoli</string>
                         <constraints>
                             <constraint firstItem="dmX-hG-X5v" firstAttribute="width" secondItem="EYT-Qp-adV" secondAttribute="width" id="7ck-Eo-6jm"/>
                             <constraint firstItem="r2m-Mv-owc" firstAttribute="bottom" secondItem="dmX-hG-X5v" secondAttribute="bottom" id="U1Q-t4-GpE"/>
-                            <constraint firstItem="dmX-hG-X5v" firstAttribute="height" secondItem="EYT-Qp-adV" secondAttribute="height" constant="-64" id="gE3-wx-3dd"/>
+                            <constraint firstItem="dmX-hG-X5v" firstAttribute="height" secondItem="EYT-Qp-adV" secondAttribute="height" id="gE3-wx-3dd"/>
                             <constraint firstItem="dmX-hG-X5v" firstAttribute="centerX" secondItem="r2m-Mv-owc" secondAttribute="centerX" id="lP0-27-yVi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r2m-Mv-owc"/>
                     </view>
                     <connections>
-                        <outlet property="view1" destination="dmX-hG-X5v" id="Kof-J1-RDZ"/>
+                        <outlet property="playerView" destination="dmX-hG-X5v" id="NtO-lM-sVC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J12-YG-rqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
