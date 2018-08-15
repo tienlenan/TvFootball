@@ -13,6 +13,9 @@ import CryptoSwift
 /// 894971103969882
 /// TvFootball
 
+// http://api.bongdahd.info/api/customer/userinfo?tick=" + stick + "&format=json
+// id name email -> fb user
+
 enum HTTPResult {
     case httpSuccess, httpErrorFromServer, httpConnectionError
 }
@@ -231,8 +234,7 @@ class DataManager: NSObject {
         if actualURL.contains(find: "token") {
             actualURL = String(actualURL.split(separator: "?").first!)
             let tick = String(Int(Date().timeIntervalSince1970 + 7000))
-            let t3 = ("livestream" + self.ip! + tick).md5()
-                .data(using: String.Encoding.utf8)?.base64EncodedString() ?? ""
+            let t3 = ("livestream" + self.ip! + tick).bytes.md5().toBase64() ?? ""
             actualURL = actualURL
                 + "?token="
                 + t3.replacingOccurrences(of: "=", with: "")
