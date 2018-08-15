@@ -119,9 +119,14 @@ class DataManager: NSObject {
             "UserId": userId
         ]
         let tick = "\(Int(Date().timeIntervalSince1970))"
-        let dataHeader = tick + ",test,luyen"
+        let xAuthHeader = (tick + ",test,luyen").aesAndBase64Encrypt(key: TvConstant.AES_KEY) ?? ""
+        
+        let headers: HTTPHeaders = [
+            "X-AUTH-API": xAuthHeader,
+            "Accept": "application/json"
+        ]
         let requestURL = TvConstant.GET_STREAM_LINKS_API + "?tick=\(tick)&format=json"
-        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {

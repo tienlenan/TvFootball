@@ -30,6 +30,8 @@ class StreamingMatchVC: UIViewController, VLCMediaPlayerDelegate {
         
         self.navigationController?.hidesBarsOnSwipe = true
         
+        VLCLibrary.shared().setHumanReadableName("iOS Player", withHTTPUserAgent: "ExoMedia")
+        
         setupPlayer()
     }
     
@@ -43,8 +45,6 @@ class StreamingMatchVC: UIViewController, VLCMediaPlayerDelegate {
         player.media = media
         player.delegate = self
         player.drawable = playerView
-        
-        player.play()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,4 +54,10 @@ class StreamingMatchVC: UIViewController, VLCMediaPlayerDelegate {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.hidesBarsOnSwipe = false
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        player.play()
+    }
+    
+    
 }
