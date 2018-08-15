@@ -161,7 +161,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row >= 0 {
+        if indexPath.row > 0 {
             // Show streaming screen
             guard let _ = self.dataManager.streamingMatch else { return }
             let streamingURL = self.dataManager.prepareStreamingURL(self.urls[indexPath.row - 1])
