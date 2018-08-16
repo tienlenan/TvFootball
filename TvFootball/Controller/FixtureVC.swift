@@ -20,6 +20,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     
     // MARK: - Variables
     var webView : WKWebView!
+    var idLoaded = false
 
     /// View did load
     override func viewDidLoad() {
@@ -30,6 +31,15 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         
         // Download banner image
         self.downloadBanner()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !idLoaded {
+            let url = URL(string: TvConstant.ADS_URL)
+            let request = URLRequest(url: url!)
+            webView.load(request)
+        }
     }
     
     /// Download banner, show banner view when completed download banner image
@@ -70,7 +80,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     ///   - error: error
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         // Debug
-        print(error.localizedDescription)
+        AppUtility.showErrorMessage("Can't load website!")
     }
     
     /// Did start provisional navigation
@@ -89,6 +99,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     ///   - navigation: navigation
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("Web View finished...")
+        self.idLoaded = true
     }
     
     /// Decide policy for navigation response

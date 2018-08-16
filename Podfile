@@ -8,12 +8,12 @@ target 'TvFootball' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Alamofire', '~> 4.5'
   pod 'VegaScrollFlowLayout'
-  pod 'CRRefresh'
   pod 'AlamofireImage', '~> 3.3'
   pod 'SwiftMessages'
   pod 'FBSDKLoginKit'
   pod 'CryptoSwift'
   pod 'MobilePlayer'
+  pod 'CRRefresh'
 
   target 'TvFootballTests' do
     inherit! :search_paths

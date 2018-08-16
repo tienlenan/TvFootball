@@ -17,23 +17,32 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var coinsLabel: UILabel!
     
+    let nc = NotificationCenter.default
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Setup image view
         imageView.layer.cornerRadius = 5
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.clear.cgColor
         imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: "profile-img")
         
+        // Setup label view
         label.text = "Non-user"
         label.textAlignment = NSTextAlignment.center
         
+        // Setup login button
         let loginButton = FBSDKLoginButton()
         loginButton.center = self.view.center
         loginButton.delegate = self
         view.addSubview(loginButton)
         
+        // Get fb user info
         getFacebookUserInfo()
+        
+        // Register notification
+        nc.addObserver(self, selector: #selector(userInfoLoaded), name: NSNotification.Name(rawValue: TvConstant.USER_INFO_WAS_LOADED), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,13 +54,13 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("loginButtonDidLogOut")
         imageView.image = UIImage(named: "profile-img")
         label.text = "Non-user"
+        DataManager.shared.fUser = nil
+        DataManager.shared.user = nil
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("didCompleteWith")
         getFacebookUserInfo()
     }
     
@@ -64,28 +73,41 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
             
             connection.add(graphRequest, completionHandler: { (connection, result, error) -> Void in
                 guard let data = result as? [String : AnyObject] else {
-                    AppUtility.showErrorMessage("Can't get user data!")
+                    AppUtility.showErrorMessage("Can't get your facebook information!")
                     return
                 }
                 
-                let fUser = TvFacebookUSer(fid: (data["id"] as? String) ?? "",
-                                           email: (data["email"] as? String) ?? "",
-                                           name: (data["name"] as? String) ?? "")
-                
-                self.label.text = fUser.name
-                
-                let FBid = fUser.fid
-                
-                let url = NSURL(string: "https://graph.facebook.com/\(FBid)/picture?type=large&return_ssl_resources=1")
-                self.imageView.image = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
+                guard let id = data["id"] as? String,
+                    let name = data["name"] as? String,
+                    let email = data["email"] as? String else {
+                        return
+                }
+                let url = NSURL(string: "https://graph.facebook.com/\(id)/picture?type=large&return_ssl_resources=1")
+                let avatar = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
+                let fUser: TvFacebookUSer = TvFacebookUSer(fid: id,
+                                           email: email,
+                                           name: name,
+                                           avatar: avatar)
                 
                 DataManager.shared.fUser = fUser
+                self.label.text = fUser.name
+                self.imageView.image = fUser.avatar
                 
                 // Get user info from bongdahd
                 DataManager.shared.getUSerInfo(self, fUser: fUser)
             })
             connection.start()
         }
+    }
+    
+    @objc private func userInfoLoaded() {
+        guard let user = DataManager.shared.user,
+        let fUser = DataManager.shared.fUser else {
+            return
+        }
+        self.label.text = fUser.name
+        self.imageView.image = fUser.avatar
+        self.coinsLabel.text = "\(user.coins) coins"
     }
     
     // MARK: - HTTPDelegate
@@ -103,11 +125,11 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
     
     func didGetErrorFromServer(message: String) {
         print("Error")
-        
+        AppUtility.showErrorMessage("Can't get your account information from TvFootball!")
     }
     
     func didGetConnectionError(message: String) {
         print("Error")
-        
+        AppUtility.showErrorMessage("Can't get your account information from TvFootball!")
     }
 }

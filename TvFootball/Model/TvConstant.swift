@@ -38,5 +38,9 @@ class TvConstant {
     /// Not bought message
     static let NOT_BOUGHT_MESSAGE = "NotBought"
     
+    // AES en/decript key
     static let AES_KEY = "1234567891234567"
+    
+    // Notification for loading user info
+    static let USER_INFO_WAS_LOADED = "USER_INFO_WAS_LOADED"
 }

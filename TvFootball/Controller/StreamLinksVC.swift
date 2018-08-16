@@ -65,15 +65,6 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         collectionView.collectionViewLayout = layout
         layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
-//        self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
-//            /// Start refresh - Get live data
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-//                if let match = self?.dataManager.streamingMatch,
-//                    let user = self?.dataManager.user {
-//                    self?.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
-//                }
-//            })
-//        }
     }
     
     /// Enable audio even if app is on silent/ringer mode

@@ -10,11 +10,8 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import CryptoSwift
-/// 894971103969882
-/// TvFootball
-
-// http://api.bongdahd.info/api/customer/userinfo?tick=" + stick + "&format=json
-// id name email -> fb user
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 enum HTTPResult {
     case httpSuccess, httpErrorFromServer, httpConnectionError
@@ -47,6 +44,12 @@ class DataManager: NSObject {
     /// IP
     var ip: String?
     
+    // Timer
+    var timer: Timer?
+    
+    // Notification center
+    let nc = NotificationCenter.default
+    
     /// Handle response from server
     ///
     /// - Parameters:
@@ -62,6 +65,11 @@ class DataManager: NSObject {
         }
         
         self.delegate = nil
+    }
+    
+    override init() {
+        super.init()
+        self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getUserInfoSchedule), userInfo: nil, repeats: true)
     }
     
     /// Get live matches
@@ -257,8 +265,13 @@ class DataManager: NSObject {
                         let user = TvUser(uid: Int(id), coins: wallet)
                         self.user = user
                         
-                        // Return http success
-                        self.handleResponse(type: .httpSuccess, data: responseJSONData)
+                        if httpDelegate == nil {
+                            // Notify to UserManagerVC
+                            self.nc.post(name: NSNotification.Name(rawValue: TvConstant.USER_INFO_WAS_LOADED), object: nil)
+                        } else {
+                            // Return http success
+                            self.handleResponse(type: .httpSuccess, data: responseJSONData)
+                        }
                         
                     } else {
                         // Return error from server
@@ -268,6 +281,49 @@ class DataManager: NSObject {
         }
     }
     
+    
+    /// Get user information per 5s
+    @objc private func getUserInfoSchedule() {
+        if let fbUser = self.fUser {
+            self.getUSerInfo(nil, fUser: fbUser)
+        } else {
+            self.getFacebookUserInfo()
+        }
+    }
+    
+    func getFacebookUserInfo() {
+        if FBSDKAccessToken.current() != nil {
+            //print permissions, such as public_profile
+            print(FBSDKAccessToken.current().permissions)
+            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"])
+            let connection = FBSDKGraphRequestConnection()
+            
+            connection.add(graphRequest, completionHandler: { (connection, result, error) -> Void in
+                guard let data = result as? [String : AnyObject] else {
+                    return
+                }
+                
+                guard let id = data["id"] as? String,
+                    let name = data["name"] as? String,
+                    let email = data["email"] as? String else {
+                        return
+                }
+                let url = NSURL(string: "https://graph.facebook.com/\(id)/picture?type=large&return_ssl_resources=1")
+                let avatar = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
+                let fUser: TvFacebookUSer = TvFacebookUSer(fid: id,
+                                                           email: email,
+                                                           name: name,
+                                                           avatar: avatar)
+                
+                // Set current facebook user
+                self.fUser = fUser
+                
+                // Get user info from bongdahd
+                self.getUSerInfo(nil, fUser: fUser)
+            })
+            connection.start()
+        }
+    }
     
     /// Prepare streaming url
     ///
@@ -289,13 +345,16 @@ class DataManager: NSObject {
         return actualURL
     }
     
-    
+    /// Decrypt data
+    ///
+    /// - Parameters:
+    ///   - input: input data which want to decrypt
+    ///   - key: key
+    /// - Returns: decrypted data
     func decrypt(input: String, key: String) -> String {
         if let actualStr = input.aesAndBase64Decript(key: TvConstant.AES_KEY) {
             return actualStr
         }
         return ""
     }
-
-    
 }
