@@ -9,8 +9,9 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftyJSON
 
-class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
+class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
     
     @IBOutlet weak var imageView : UIImageView!
     @IBOutlet weak var label: UILabel!
@@ -35,6 +36,14 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         getFacebookUserInfo()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let user = DataManager.shared.user {
+            self.coinsLabel.text = "\(user.coins) coins"
+        }
+    }
+    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("loginButtonDidLogOut")
         imageView.image = UIImage(named: "profile-img")
@@ -47,8 +56,7 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func getFacebookUserInfo() {
-        if(FBSDKAccessToken.current() != nil)
-        {
+        if FBSDKAccessToken.current() != nil {
             //print permissions, such as public_profile
             print(FBSDKAccessToken.current().permissions)
             let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"])
@@ -74,9 +82,32 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
                 DataManager.shared.fUser = fUser
                 
                 // Get user info from bongdahd
-                
+                DataManager.shared.getUSerInfo(self, fUser: fUser)
             })
             connection.start()
         }
+    }
+    
+    // MARK: - HTTPDelegate
+    
+    func didGetSuccessRespond(data: JSON?) {
+        guard let _ = data else {
+            return
+        }
+        
+        if let coins = DataManager.shared.user?.coins {
+            self.coinsLabel.text = "\(coins) coins"
+        }
+        
+    }
+    
+    func didGetErrorFromServer(message: String) {
+        print("Error")
+        
+    }
+    
+    func didGetConnectionError(message: String) {
+        print("Error")
+        
     }
 }

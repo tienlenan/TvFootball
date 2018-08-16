@@ -37,7 +37,7 @@ class DataManager: NSObject {
     var streamingMatch: LiveMatch?
     
     /// Current user
-    var user: TvUser? = TvUser(uid: 1917019558317843, coins: 200000)
+    var user: TvUser?
     
     //var user: TvUser? = nil
     
@@ -45,10 +45,7 @@ class DataManager: NSObject {
     var fUser: TvFacebookUSer?
     
     /// IP
-    var ip: String? = "192.168.1.1"
-    
-    var temp = ""
-    
+    var ip: String?
     
     /// Handle response from server
     ///
@@ -122,7 +119,7 @@ class DataManager: NSObject {
             "UserId": userId
         ]
         let tick = "\(Int(Date().timeIntervalSince1970))"
-        let xAuthHeader = (tick + ",test,luyen").aesAndBase64Encrypt(key: TvConstant.AES_KEY) ?? ""
+        let xAuthHeader = (tick + ",test,an").aesAndBase64Encrypt(key: TvConstant.AES_KEY) ?? ""
         
         let headers: HTTPHeaders = [
             "X-AUTH-API": xAuthHeader,
@@ -220,8 +217,55 @@ class DataManager: NSObject {
                     }
                 }
         }
+    }
+    
+    func getUSerInfo(_ httpDelegate: HTTPDelegate?, fUser: TvFacebookUSer) {
+        self.delegate = httpDelegate
         
+        let parameters: [String:Any] = [
+            "id": fUser.fid,
+            "name": fUser.name,
+            "email": fUser.email
+        ]
+        let tick = "\(Int(Date().timeIntervalSince1970))"
+        let xAuthHeader = (tick + ",test,an").aesAndBase64Encrypt(key: TvConstant.AES_KEY) ?? ""
         
+        let headers: HTTPHeaders = [
+            "X-AUTH-API": xAuthHeader,
+            "Accept": "application/json"
+        ]
+        let requestURL = TvConstant.GET_USER_INFO_API + "?tick=\(tick)&format=json"
+        Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { response in
+                debugPrint(response)
+                if let _ = response.result.error {
+                    // Return connection error
+                    self.handleResponse(type: .httpConnectionError, data: nil)
+                    
+                } else {
+                    let responseJSONData = JSON(response.result.value!)
+                    let statusCode = (response.response?.statusCode)
+                    if statusCode == 200 {
+                        // Parse data
+                        print("User info: \(responseJSONData)")
+                        
+                        guard let wallet = Int(responseJSONData["wallet"].stringValue),
+                            let id = Int(responseJSONData["id"].stringValue) else {
+                                return
+                        }
+                        
+                        let user = TvUser(uid: Int(id), coins: wallet)
+                        self.user = user
+                        
+                        // Return http success
+                        self.handleResponse(type: .httpSuccess, data: responseJSONData)
+                        
+                    } else {
+                        // Return error from server
+                        self.handleResponse(type: .httpConnectionError, data: nil)
+                    }
+                }
+        }
     }
     
     

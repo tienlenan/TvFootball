@@ -21,10 +21,13 @@ class TvConstant {
     /// For get streaming links
     /// If bought, return links
     /// If not bought, return "NotBought" in response
-    static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream?tick=asdsd,test,luyen"
+    static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream"
     
-    /// Buying match
+    /// Buying match url
     static let TRY_GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/trylinkstream"
+    
+    /// Get user info url
+    static let GET_USER_INFO_API = "http://api.bongdahd.info/api/customer/userinfo"
     
     /// Tracking IP url
     static let IP_TRACKING_URL = "https://www.trackip.net/ip?json"

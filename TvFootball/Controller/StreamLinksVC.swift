@@ -167,8 +167,6 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             guard let match = self.dataManager.streamingMatch else { return }
             let streamingURL = self.dataManager.prepareStreamingURL(self.urls[indexPath.row - 1])
             
-            self.dataManager.temp = streamingURL
-            
             guard let videoURL = URL(string: streamingURL) else { return }
             let playerVC = MobilePlayerViewController(
                 contentURL: videoURL,
