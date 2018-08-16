@@ -13,8 +13,7 @@ target 'TvFootball' do
   pod 'SwiftMessages'
   pod 'FBSDKLoginKit'
   pod 'CryptoSwift'
-  pod "Player", "~> 0.9.0"
-  pod 'MobileVLCKit'
+  pod 'MobilePlayer'
 
   target 'TvFootballTests' do
     inherit! :search_paths

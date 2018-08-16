@@ -92,7 +92,7 @@ class DataManager: NSObject {
                         }
                         
                         // Sorted array by league name
-                        self.liveMatches = self.liveMatches.sorted(by: { $0.tournamentName > $1.tournamentName })
+                        self.liveMatches = self.liveMatches.sorted(by: { $0.startDate < $1.startDate })
                         
                         // Return http success
                         self.handleResponse(type: .httpSuccess, data: responseJSONData)
@@ -250,7 +250,6 @@ class DataManager: NSObject {
         if let actualStr = input.aesAndBase64Decript(key: TvConstant.AES_KEY) {
             return actualStr
         }
-        
         return ""
     }
 

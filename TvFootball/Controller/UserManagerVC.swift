@@ -55,8 +55,11 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
             let connection = FBSDKGraphRequestConnection()
             
             connection.add(graphRequest, completionHandler: { (connection, result, error) -> Void in
+                guard let data = result as? [String : AnyObject] else {
+                    AppUtility.showErrorMessage("Can't get user data!")
+                    return
+                }
                 
-                let data = result as! [String : AnyObject]
                 let fUser = TvFacebookUSer(fid: (data["id"] as? String) ?? "",
                                            email: (data["email"] as? String) ?? "",
                                            name: (data["name"] as? String) ?? "")

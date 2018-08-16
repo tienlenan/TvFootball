@@ -13,6 +13,7 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage
 import AVFoundation
+import MobilePlayer
 
 class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HTTPDelegate {
     
@@ -163,17 +164,18 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
             // Show streaming screen
-            guard let _ = self.dataManager.streamingMatch else { return }
+            guard let match = self.dataManager.streamingMatch else { return }
             let streamingURL = self.dataManager.prepareStreamingURL(self.urls[indexPath.row - 1])
+            
             self.dataManager.temp = streamingURL
-            self.performSegue(withIdentifier: "goToStreamingVC", sender: nil)
-//            guard let videoURL = URL(string: streamingURL) else { return }
-//            let playerVC = MobilePlayerViewController(
-//                contentURL: videoURL,
-//                pauseOverlayViewController: MobilePlayerOverlayViewController())
-//            playerVC.title = "\(match.teamHomeName) - \(match.teamAwayName)"
-//            playerVC.activityItems = [videoURL]
-//            present(playerVC, animated: false, completion: nil)
+            
+            guard let videoURL = URL(string: streamingURL) else { return }
+            let playerVC = MobilePlayerViewController(
+                contentURL: videoURL,
+                pauseOverlayViewController: MobilePlayerOverlayViewController())
+            playerVC.title = "\(match.teamHomeName) - \(match.teamAwayName)"
+            playerVC.activityItems = [videoURL]
+            present(playerVC, animated: false, completion: nil)
         }
     }
     
