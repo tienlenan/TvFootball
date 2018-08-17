@@ -50,12 +50,15 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
         
         if let user = DataManager.shared.user {
             self.coinsLabel.text = "\(user.coins) coins"
+        } else {
+            self.coinsLabel.text = "0 coins"
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         imageView.image = UIImage(named: "profile-img")
         label.text = "Non-user"
+        self.coinsLabel.text = "0 coins"
         DataManager.shared.fUser = nil
         DataManager.shared.user = nil
     }

@@ -79,8 +79,6 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     ///   - navigaion: navigation
     ///   - error: error
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        // Debug
-        AppUtility.showErrorMessage("Can't load website!")
     }
     
     /// Did start provisional navigation

@@ -39,6 +39,6 @@ class TvFootballVC: UITabBarController {
         super.viewWillDisappear(animated)
         
         // Reset lock
-        AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
+        //AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
     }
 }

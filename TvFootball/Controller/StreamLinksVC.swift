@@ -44,6 +44,8 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         if let match = self.dataManager.streamingMatch,
             let user = self.dataManager.user {
             self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
+        } else {
+            AppUtility.showWarningMessage("You have to choose one match from \"Matches\" tab!")
         }
     }
     
@@ -165,6 +167,9 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             playerVC.title = "\(match.teamHomeName) - \(match.teamAwayName)"
             playerVC.activityItems = [videoURL]
             present(playerVC, animated: false, completion: nil)
+            
+            // Reset lock
+            AppUtility.lockOrientation(.landscape, andRotateTo: .landscapeRight)
         }
     }
     
@@ -186,17 +191,20 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             let link = item.1["Link"].stringValue
             self.urls.append(link)
         }
-        self.collectionView.cr.endHeaderRefresh()
         self.collectionView.reloadData()
+        
+        if self.urls.count == 0 {
+            AppUtility.showWarningMessage("Currently we aren't straming this match. Please come later!")
+        }
     }
     
     func didGetErrorFromServer(message: String) {
         print("Error")
-        self.collectionView.cr.endHeaderRefresh()
+        AppUtility.showErrorMessage("Error when get streaming links!")
     }
     
     func didGetConnectionError(message: String) {
         print("Error")
-        self.collectionView.cr.endHeaderRefresh()
+        AppUtility.showErrorMessage("Please check your network connection!")
     }
 }
