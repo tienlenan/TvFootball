@@ -18,3 +18,14 @@ enum TvAction {
 enum MatchType: Int {
     case free = 0, paid = 1
 }
+
+enum TvUSerState {
+    /// Logged out from server
+    case loggedOut
+    
+    /// Logged in facebook but could not load information
+    case informationNotLoaded
+    
+    /// Information was loaded
+    case informtionLoaded
+}

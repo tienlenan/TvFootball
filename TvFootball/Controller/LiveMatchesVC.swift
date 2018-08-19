@@ -22,10 +22,6 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var bannerView: UIView!
     
     // MARK: - Variables
-    
-    /// Data manager
-    var dataManager: DataManager!
-    
     /// Current action is none
     lazy var tvAction: TvAction = TvAction.none
     
@@ -36,9 +32,6 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     /// View did load
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Data manager object
-        self.dataManager = DataManager.shared
         
         // Register collection view cell
         self.collectionView.register(UINib(nibName: "MatchRow", bundle: nil), forCellWithReuseIdentifier: "matchRow")
@@ -54,8 +47,8 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         super.viewWillAppear(animated)
         
         // Get matches if action is none
-        if self.tvAction == TvAction.none && self.dataManager.liveMatches.count == 0 {
-            self.dataManager.getLiveMatches(self)
+        if self.tvAction == TvAction.none && DataManager.shared.liveMatches.count == 0 {
+            DataManager.shared.getLiveMatches(self)
             self.tvAction = TvAction.getLiveMatches
         }
     }
@@ -64,7 +57,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     public func onTapped() {
         // Get matches if action is none
         if self.tvAction == TvAction.none {
-            self.dataManager.getLiveMatches(self)
+            DataManager.shared.getLiveMatches(self)
             self.tvAction = TvAction.getLiveMatches
         }
     }
@@ -90,7 +83,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.collectionView.cr.addHeadRefresh(animator: SlackLoadingAnimator()) { [weak self] in
             /// Start refresh - Get live data
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                self?.dataManager.getLiveMatches(self)
+                DataManager.shared.getLiveMatches(self)
                 self?.tvAction = TvAction.getLiveMatches
             })
         }
@@ -104,7 +97,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     // MARK:-  Collection view data source and delegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.dataManager.liveMatches.count
+        return DataManager.shared.liveMatches.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -115,7 +108,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         let cell: MatchRow = collectionView.dequeueReusableCell(withReuseIdentifier: "matchRow", for: indexPath) as! MatchRow
         
         // Match object
-        let match = dataManager.liveMatches[indexPath.row]
+        let match = DataManager.shared.liveMatches[indexPath.row]
         
         // Set match title
         cell.teamsLabel.text = "\(match.teamHomeName)\n\(match.teamAwayName)"
@@ -146,30 +139,39 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let user = self.dataManager.user else {
+        if DataManager.shared.userState == TvUSerState.loggedOut {
             // Show message notify app user that him/her didn't logged in
             AppUtility.showWarningMessage("You aren't logged in. Please login first!")
             return
         }
         
+        if DataManager.shared.userState == TvUSerState.informationNotLoaded {
+            // Show message notify app user that user information was not loaded
+            AppUtility.showWarningMessage("Could not load your account information. Please try again later!")
+            return
+        }
+        
+        guard let user = DataManager.shared.user else {
+            return
+        }
+        
         // Chosen match
-        let match = self.dataManager.liveMatches[indexPath.row]
-
+        let match = DataManager.shared.liveMatches[indexPath.row]
+        
         // Check free or not
         if match.type == MatchType.free.rawValue {
             // Get links immediately if free
-            self.dataManager.mainTabBarVC.selectedIndex = 2
-            self.dataManager.streamingMatch = match
+            DataManager.shared.mainTabBarVC.selectedIndex = 2
+            DataManager.shared.streamingMatch = match
         } else {
             // Set tapped match
             self.processingMatch = match
             
             // Send get streaming links to check this match was bought or not
-            self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
+            DataManager.shared.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
             
             // Set current action
             self.tvAction = TvAction.getStreamingLinks
-            
         }
     }
 
@@ -196,9 +198,9 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 return
             }
             
-            guard let user = self.dataManager.user else {
+            guard let user = DataManager.shared.user else {
                 self.tvAction = TvAction.none
-                AppUtility.showErrorMessage("You aren't logged in. Please login first!")
+                AppUtility.showErrorMessage("Something is horribly wrong!")
                 return
             }
             
@@ -218,7 +220,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                     messageView.configureBackgroundView(width: 290)
                     messageView.configureContent(title: "TvFootball", body: "Press 'Yes' to buy this match. If you don't want, please try swiping to dismiss this message.", iconImage: nil, iconText: "🦄", buttonImage: nil, buttonTitle: "Yes") { _ in
                         self.tvAction = TvAction.buyStreamingMatch
-                        self.dataManager.buyStreamingMatch(self, liveMatchId: match.liveMatchId, userId: user.uid)
+                        DataManager.shared.buyStreamingMatch(self, liveMatchId: match.liveMatchId, userId: user.uid)
                         SwiftMessages.hide()
                     }
                     messageView.backgroundView.backgroundColor = UIColor.init(white: 0.97, alpha: 1)
@@ -236,8 +238,8 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 
             } else {
                 self.tvAction = TvAction.none
-                self.dataManager.mainTabBarVC.selectedIndex = 2
-                self.dataManager.streamingMatch = self.processingMatch
+                DataManager.shared.mainTabBarVC.selectedIndex = 2
+                DataManager.shared.streamingMatch = self.processingMatch
             }
             
         } else if self.tvAction == TvAction.buyStreamingMatch {
@@ -246,8 +248,8 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             
             // Go to streaming tab
             self.tvAction = TvAction.none
-            self.dataManager.mainTabBarVC.selectedIndex = 2
-            self.dataManager.streamingMatch = self.processingMatch
+            DataManager.shared.mainTabBarVC.selectedIndex = 2
+            DataManager.shared.streamingMatch = self.processingMatch
         }
     }
     

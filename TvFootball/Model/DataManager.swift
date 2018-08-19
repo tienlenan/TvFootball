@@ -50,6 +50,10 @@ class DataManager: NSObject {
     // Notification center
     let nc = NotificationCenter.default
     
+    // User state
+    lazy var userState: TvUSerState = TvUSerState.loggedOut
+    
+    
     /// Handle response from server
     ///
     /// - Parameters:
@@ -69,7 +73,8 @@ class DataManager: NSObject {
     
     override init() {
         super.init()
-        self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getUserInfoSchedule), userInfo: nil, repeats: true)
+        self.getUserInfoSchedule()
+        self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(getUserInfoSchedule), userInfo: nil, repeats: true)
     }
     
     /// Get live matches
@@ -284,45 +289,65 @@ class DataManager: NSObject {
     
     /// Get user information per 5s
     @objc private func getUserInfoSchedule() {
-        if let fbUser = self.fUser {
-            self.getUSerInfo(nil, fUser: fbUser)
+        // Check access token
+        if FBSDKAccessToken.current() == nil {
+            // If empty
+            // User logged out from server
+            userState = TvUSerState.loggedOut
         } else {
-            self.getFacebookUserInfo()
+            if let fbUser = fUser {
+                // Logged in facebook
+                if let _ = user {
+                    // Information was loaded
+                    userState = TvUSerState.informtionLoaded
+                } else {
+                    // Information was not loaded
+                    userState = TvUSerState.informationNotLoaded
+                }
+                
+                // Get user infor
+                getUSerInfo(nil, fUser: fbUser)
+                
+            } else {
+                // If not empty
+                // Continue get information
+                getFacebookUserInfo()
+                
+                // Information was not loaded
+                userState = TvUSerState.informationNotLoaded
+            }
         }
     }
     
     func getFacebookUserInfo() {
-        if FBSDKAccessToken.current() != nil {
-            //print permissions, such as public_profile
-            print(FBSDKAccessToken.current().permissions)
-            let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"])
-            let connection = FBSDKGraphRequestConnection()
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields" : "id, name, email"])
+        let connection = FBSDKGraphRequestConnection()
+        
+        connection.add(graphRequest, completionHandler: { (connection, result, error) -> Void in
+            guard let data = result as? [String : AnyObject] else {
+                return
+            }
             
-            connection.add(graphRequest, completionHandler: { (connection, result, error) -> Void in
-                guard let data = result as? [String : AnyObject] else {
+            guard let id = data["id"] as? String,
+                let name = data["name"] as? String,
+                let email = data["email"] as? String else {
                     return
-                }
-                
-                guard let id = data["id"] as? String,
-                    let name = data["name"] as? String,
-                    let email = data["email"] as? String else {
-                        return
-                }
-                let url = NSURL(string: "https://graph.facebook.com/\(id)/picture?type=large&return_ssl_resources=1")
-                let avatar = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
-                let fUser: TvFacebookUSer = TvFacebookUSer(fid: id,
-                                                           email: email,
-                                                           name: name,
-                                                           avatar: avatar)
-                
-                // Set current facebook user
-                self.fUser = fUser
-                
-                // Get user info from bongdahd
-                self.getUSerInfo(nil, fUser: fUser)
-            })
-            connection.start()
-        }
+            }
+            let url = NSURL(string: "https://graph.facebook.com/\(id)/picture?type=large&return_ssl_resources=1")
+            let avatar = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
+            let fUser: TvFacebookUSer = TvFacebookUSer(fid: id,
+                                                       email: email,
+                                                       name: name,
+                                                       avatar: avatar)
+            
+            // Set current facebook user
+            self.fUser = fUser
+            
+            // Get user info from bongdahd
+            self.getUSerInfo(nil, fUser: fUser)
+        })
+        connection.start()
+        
     }
     
     /// Prepare streaming url
