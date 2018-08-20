@@ -17,6 +17,7 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var imageView : UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var coinsLabel: UILabel!
+    @IBOutlet weak var expiryDateLabel: UILabel!
     
     // MARK: - Variables
     /// Notification
@@ -38,12 +39,13 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         imageView.image = UIImage(named: "profile-img")
         
         // Setup label view
-        label.text = "Non-user"
-        label.textAlignment = NSTextAlignment.center
+        label.text = ""
+        coinsLabel.text = ""
+        expiryDateLabel.text = ""
         
         // Setup login button
         let loginButton = FBSDKLoginButton()
-        loginButton.center = CGPoint(x: self.coinsLabel.center.x, y: self.coinsLabel.center.y + 50)
+        loginButton.center = CGPoint(x: self.expiryDateLabel.center.x, y: self.expiryDateLabel.center.y + 50)
         loginButton.delegate = self
         view.addSubview(loginButton)
         
@@ -60,12 +62,6 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
     /// - Parameter animated: animated
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if let user = DataManager.shared.user {
-            self.coinsLabel.text = "\(user.coins) coins"
-        } else {
-            self.coinsLabel.text = "0 coins"
-        }
     }
     
     // MARK: - FBSDKLoginButtonDelegate
@@ -95,12 +91,18 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         guard let user = DataManager.shared.user,
         let fUser = DataManager.shared.fUser else {
             imageView.image = UIImage(named: "profile-img")
-            label.text = "Non-user"
-            self.coinsLabel.text = "0 coins"
+            label.text = ""
+            coinsLabel.text = ""
+            expiryDateLabel.text = ""
             return
         }
         self.label.text = fUser.name
         self.imageView.image = fUser.avatar
         self.coinsLabel.text = "\(user.coins) coins"
+        if user.expiryDate > 0 {
+            expiryDateLabel.text = "Expiry date of monthly rent:\n\(user.expiryDate.fromIntToDateStr())"
+        } else {
+            expiryDateLabel.text = ""
+        }
     }
 }

@@ -35,9 +35,6 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         // Download banner
         self.downloadBanner()
-        
-        // Enable audio session
-        self.enableAudioSession()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,7 +110,8 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             if let homeTeamImgView = cell.viewWithTag(100) as? UIImageView,
                 let awayTeamImgView = cell.viewWithTag(103) as? UIImageView,
                 let teamsLabel = cell.viewWithTag(101) as? UILabel,
-                let leagueLabel = cell.viewWithTag(102) as? UILabel{
+                let leagueLabel = cell.viewWithTag(102) as? UILabel,
+                let dateLabel = cell.viewWithTag(104) as? UILabel {
                 
                 homeTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
                 awayTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
@@ -135,8 +133,8 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 
                 if let streamingMatch = self.dataManager.streamingMatch {
                     teamsLabel.text = "\(streamingMatch.teamHomeName)\n\(streamingMatch.teamAwayName)"
-                    
                     leagueLabel.text = "\(streamingMatch.tournamentName)"
+                    dateLabel.text = "\(streamingMatch.startDate.fromIntToDateStr())"
                 }
             }
         } else {
@@ -160,7 +158,13 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             guard let match = self.dataManager.streamingMatch else { return }
             let streamingURL = self.dataManager.prepareStreamingURL(self.urls[indexPath.row - 1])
             
+            // Check video url
             guard let videoURL = URL(string: streamingURL) else { return }
+            
+            // Enable audio session
+            self.enableAudioSession()
+            
+            // Setup player
             let playerVC = MobilePlayerViewController(
                 contentURL: videoURL,
                 pauseOverlayViewController: MobilePlayerOverlayViewController())
@@ -174,7 +178,13 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width - 16, height: 80)
+        let height: CGFloat!
+        if indexPath.row == 0 {
+            height = 90
+        } else {
+            height = 50
+        }
+        return CGSize(width: collectionView.frame.width - 16, height: height)
     }
     
     // MARK: - HTTPDelegate

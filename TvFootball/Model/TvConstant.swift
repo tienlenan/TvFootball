@@ -23,7 +23,7 @@ class TvConstant {
     /// If not bought, return "NotBought" in response
     static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream"
     
-    /// Buying match url
+    /// Buying match/month url
     static let TRY_GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/trylinkstream"
     
     /// Get user info url

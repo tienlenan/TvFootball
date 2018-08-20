@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - TvAction
 enum TvAction {
     case none
     case getLiveMatches
@@ -15,10 +16,12 @@ enum TvAction {
     case buyStreamingMatch
 }
 
+// MARK: - MatchType
 enum MatchType: Int {
     case free = 0, paid = 1
 }
 
+// MARK: - TvUSerState
 enum TvUSerState {
     /// Logged out from server
     case loggedOut
@@ -28,4 +31,9 @@ enum TvUSerState {
     
     /// Information was loaded
     case informtionLoaded
+}
+
+// MARK: - HTTPResult
+enum HTTPResult {
+    case httpSuccess, httpErrorFromServer, httpConnectionError
 }

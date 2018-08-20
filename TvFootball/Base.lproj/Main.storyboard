@@ -119,6 +119,12 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry date of monthly rent: 09:00 22-08-2018" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOE-9L-soN" userLabel="expiryDateLabel">
+                                <rect key="frame" x="82.5" y="282" width="211" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -126,7 +132,9 @@
                             <constraint firstItem="C6w-9c-5zM" firstAttribute="width" secondItem="MZf-JN-EOr" secondAttribute="width" multiplier="1/2" id="RaI-XW-FIP"/>
                             <constraint firstItem="8tT-Fw-drd" firstAttribute="top" secondItem="msd-qb-yiB" secondAttribute="bottom" constant="5" id="WQb-aU-4eZ"/>
                             <constraint firstItem="8tT-Fw-drd" firstAttribute="width" secondItem="MZf-JN-EOr" secondAttribute="width" multiplier="1/2" id="Xff-OP-FSH"/>
+                            <constraint firstItem="qOE-9L-soN" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="bbo-gM-Fzc"/>
                             <constraint firstItem="msd-qb-yiB" firstAttribute="top" secondItem="RY7-Xo-uDJ" secondAttribute="top" constant="49" id="fCu-a0-4iA"/>
+                            <constraint firstItem="qOE-9L-soN" firstAttribute="top" secondItem="C6w-9c-5zM" secondAttribute="bottom" id="vUJ-x4-c3A"/>
                             <constraint firstItem="8tT-Fw-drd" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="vZk-oJ-N6z"/>
                             <constraint firstItem="msd-qb-yiB" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="xLv-se-UG5"/>
                             <constraint firstItem="C6w-9c-5zM" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="xt7-av-pCQ"/>
@@ -136,6 +144,7 @@
                     <tabBarItem key="tabBarItem" title="Account" image="user-icon" id="2we-0a-uyd"/>
                     <connections>
                         <outlet property="coinsLabel" destination="C6w-9c-5zM" id="Jci-BH-gAq"/>
+                        <outlet property="expiryDateLabel" destination="qOE-9L-soN" id="sHH-HA-88x"/>
                         <outlet property="imageView" destination="msd-qb-yiB" id="OFr-wz-apc"/>
                         <outlet property="label" destination="8tT-Fw-drd" id="lz3-AA-Xij"/>
                     </connections>
@@ -163,21 +172,21 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="matchRow" id="J2E-oU-bHS">
-                                        <rect key="frame" x="27.5" y="0.0" width="320" height="80"/>
+                                        <rect key="frame" x="27.5" y="0.0" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K4C-ny-xZd" userLabel="awayTeamImg">
-                                                    <rect key="frame" x="244" y="5" width="70" height="70"/>
+                                                    <rect key="frame" x="244" y="10" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="rUT-MC-jiU"/>
                                                         <constraint firstAttribute="width" constant="70" id="vtF-nD-J7F"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVm-6r-mCT" userLabel="teamsLabel">
-                                                    <rect key="frame" x="78" y="7.5" width="164.5" height="45.5"/>
+                                                    <rect key="frame" x="78" y="4.5" width="164.5" height="45.5"/>
                                                     <string key="text">Borussia Dortmund
 Napoli</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -185,34 +194,43 @@ Napoli</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bundes Liga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj1-tE-nv0" userLabel="leagueLabel">
-                                                    <rect key="frame" x="115" y="53" width="90" height="20"/>
+                                                    <rect key="frame" x="115" y="50" width="90" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oMA-s0-sl6" userLabel="homeTeamImg">
-                                                    <rect key="frame" x="6" y="5" width="70" height="70"/>
+                                                    <rect key="frame" x="6" y="10" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="EMR-gp-ZEY"/>
                                                         <constraint firstAttribute="width" constant="70" id="VLs-cD-63e"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:30 21-08-2018" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fs-Vh-Pt6" userLabel="dateLabel">
+                                                    <rect key="frame" x="94" y="68" width="132" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="1fs-Vh-Pt6" firstAttribute="centerX" secondItem="J2E-oU-bHS" secondAttribute="centerX" id="3Lg-PA-9X2"/>
+                                            <constraint firstItem="oMA-s0-sl6" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="3aX-bu-sTg"/>
                                             <constraint firstAttribute="trailing" secondItem="K4C-ny-xZd" secondAttribute="trailing" constant="6" id="LyZ-Ud-f9o"/>
+                                            <constraint firstItem="1fs-Vh-Pt6" firstAttribute="top" secondItem="rj1-tE-nv0" secondAttribute="bottom" constant="-2" id="UuJ-p3-P00"/>
                                             <constraint firstItem="rj1-tE-nv0" firstAttribute="top" secondItem="YVm-6r-mCT" secondAttribute="bottom" id="aEd-eP-wTy"/>
                                             <constraint firstItem="YVm-6r-mCT" firstAttribute="centerX" secondItem="J2E-oU-bHS" secondAttribute="centerX" id="fNf-Pb-Wyx"/>
                                             <constraint firstItem="oMA-s0-sl6" firstAttribute="leading" secondItem="J2E-oU-bHS" secondAttribute="leading" constant="6" id="fP7-jx-DE0"/>
                                             <constraint firstItem="rj1-tE-nv0" firstAttribute="centerX" secondItem="J2E-oU-bHS" secondAttribute="centerX" id="hNi-py-cIa"/>
-                                            <constraint firstItem="YVm-6r-mCT" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" constant="-10" id="kr5-Jp-m2e"/>
-                                            <constraint firstItem="oMA-s0-sl6" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="nyb-zI-uK2"/>
+                                            <constraint firstItem="YVm-6r-mCT" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" constant="-18" id="kr5-Jp-m2e"/>
                                             <constraint firstItem="K4C-ny-xZd" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="twk-Cs-Kkr"/>
                                         </constraints>
+                                        <size key="customSize" width="320" height="90"/>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="linkRow" id="CVN-LI-6DA" userLabel="linkRow">
-                                        <rect key="frame" x="27.5" y="90" width="320" height="50"/>
+                                        <rect key="frame" x="27.5" y="100" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>

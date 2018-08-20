@@ -11,13 +11,11 @@ import Foundation
 struct TvUser {
     var uid: Int
     var coins: Int
+    var expiryDate: Int
     
-    init(uid: Int, coins: Int) {
+    init(uid: Int, coins: Int, expiryDate: Int) {
         self.uid = uid
         self.coins = coins
-    }
-    
-    mutating func updateAfterBoughtMatch() {
-        self.coins = self.coins - 3000
+        self.expiryDate = expiryDate
     }
 }

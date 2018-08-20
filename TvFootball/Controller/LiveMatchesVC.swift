@@ -47,9 +47,13 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         super.viewWillAppear(animated)
         
         // Get matches if action is none
-        if self.tvAction == TvAction.none && DataManager.shared.liveMatches.count == 0 {
-            DataManager.shared.getLiveMatches(self)
-            self.tvAction = TvAction.getLiveMatches
+        if self.tvAction == TvAction.none {
+            if DataManager.shared.liveMatches.count == 0 {
+                DataManager.shared.getLiveMatches(self)
+                self.tvAction = TvAction.getLiveMatches
+            } else {
+                self.collectionView.reloadData()
+            }
         }
     }
     

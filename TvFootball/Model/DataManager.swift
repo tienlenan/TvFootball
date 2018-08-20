@@ -13,10 +13,6 @@ import CryptoSwift
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-enum HTTPResult {
-    case httpSuccess, httpErrorFromServer, httpConnectionError
-}
-
 class DataManager: NSObject {
     static let shared: DataManager = DataManager()
     weak var delegate: HTTPDelegate?
@@ -35,8 +31,6 @@ class DataManager: NSObject {
     
     /// Current user
     var user: TvUser?
-    
-    //var user: TvUser? = nil
     
     /// Facebook user
     var fUser: TvFacebookUSer?
@@ -201,6 +195,44 @@ class DataManager: NSObject {
         }
     }
     
+    /// Buy a monthly service
+    /// Purpose
+    /// - Get streaming links of match
+    ///
+    /// - Parameters:
+    ///   - httpDelegate: delegate
+    ///   - liveMatchId: live match identifier
+    ///   - userId: id of user who wants to buy match
+    func buyMonth(_ httpDelegate: HTTPDelegate?, userId: Int) {
+        self.delegate = httpDelegate
+        
+        let parameters: [String:Any] = [
+            "UserId": userId,
+            "LiveMatchId": "",
+            "BuyMonth": true
+        ]
+        Alamofire.request(TvConstant.TRY_GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                debugPrint(response)
+                if let _ = response.result.error {
+                    // Return connection error
+                    self.handleResponse(type: .httpConnectionError, data: nil)
+                    
+                } else {
+                    let responseJSONData = JSON(response.result.value!)
+                    let statusCode = (response.response?.statusCode)
+                    if statusCode == 200 {
+                        // Return http success
+                        self.handleResponse(type: .httpSuccess, data: responseJSONData)
+                        
+                    } else {
+                        // Return error from server
+                        self.handleResponse(type: .httpConnectionError, data: nil)
+                    }
+                }
+        }
+    }
+    
     /// Get live matches
     ///
     /// - Parameter httpDelegate: delegate
@@ -263,11 +295,12 @@ class DataManager: NSObject {
                         print("User info: \(responseJSONData)")
                         
                         guard let wallet = Int(responseJSONData["wallet"].stringValue),
-                            let id = Int(responseJSONData["id"].stringValue) else {
+                            let id = Int(responseJSONData["id"].stringValue),
+                            let expires = Int(responseJSONData["expires"].stringValue) else {
                                 return
                         }
                         
-                        let user = TvUser(uid: Int(id), coins: wallet)
+                        let user = TvUser(uid: id, coins: wallet, expiryDate: expires)
                         self.user = user
                         
                         if httpDelegate == nil {
