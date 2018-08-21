@@ -27,9 +27,6 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Data manager object
-        self.dataManager = DataManager.shared
-        
         // Setup layout
         self.setupRefreshView()
         
@@ -38,10 +35,11 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let match = self.dataManager.streamingMatch,
-            let user = self.dataManager.user {
-            self.dataManager.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
+        if let match = DataManager.shared.streamingMatch,
+            let user = DataManager.shared.user {
+            DataManager.shared.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
         } else {
+            self.collectionView.reloadData()
             AppUtility.showWarningMessage("You have to choose one match from \"Matches\" tab!")
         }
     }
@@ -89,14 +87,14 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     // MARK:-  Collection view data source and delegate
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let _ = self.dataManager.streamingMatch {
+        if let _ = DataManager.shared.streamingMatch {
             return urls.count + 1
         }
         return 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if let _ = self.dataManager.streamingMatch {
+        if let _ = DataManager.shared.streamingMatch {
             return 1
         }
         return 0
@@ -115,7 +113,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 
                 homeTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
                 awayTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
-                if let teamHomeImgUrl = self.dataManager.streamingMatch?.teamHomeImgUrl {
+                if let teamHomeImgUrl = DataManager.shared.streamingMatch?.teamHomeImgUrl {
                     Alamofire.request(teamHomeImgUrl).responseImage { response in
                         if let image = response.result.value {
                             homeTeamImgView.image = image
@@ -123,7 +121,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                     }
                 }
                 
-                if let teamAwayImgUrl = self.dataManager.streamingMatch?.teamAwayImgUrl {
+                if let teamAwayImgUrl = DataManager.shared.streamingMatch?.teamAwayImgUrl {
                     Alamofire.request(teamAwayImgUrl).responseImage { response in
                         if let image = response.result.value {
                             awayTeamImgView.image = image
@@ -131,7 +129,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                     }
                 }
                 
-                if let streamingMatch = self.dataManager.streamingMatch {
+                if let streamingMatch = DataManager.shared.streamingMatch {
                     teamsLabel.text = "\(streamingMatch.teamHomeName)\n\(streamingMatch.teamAwayName)"
                     leagueLabel.text = "\(streamingMatch.tournamentName)"
                     dateLabel.text = "\(streamingMatch.startDate.fromIntToDateStr())"
@@ -155,8 +153,8 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row > 0 {
             // Show streaming screen
-            guard let match = self.dataManager.streamingMatch else { return }
-            let streamingURL = self.dataManager.prepareStreamingURL(self.urls[indexPath.row - 1])
+            guard let match = DataManager.shared.streamingMatch else { return }
+            let streamingURL = DataManager.shared.prepareStreamingURL(self.urls[indexPath.row - 1])
             
             // Check video url
             guard let videoURL = URL(string: streamingURL) else { return }
@@ -195,7 +193,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         }
         self.urls = []
         let result = responseData["result"].stringValue
-        let jsonLinksStr = self.dataManager.decrypt(input: result, key: TvConstant.AES_KEY)
+        let jsonLinksStr = DataManager.shared.decrypt(input: result, key: TvConstant.AES_KEY)
         let jsonLinks: JSON = JSON.init(parseJSON: jsonLinksStr)
         for item in jsonLinks {
             let link = item.1["Link"].stringValue

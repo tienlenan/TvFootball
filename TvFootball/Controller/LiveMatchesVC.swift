@@ -193,6 +193,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             // Reload table after get live match successful
             self.collectionView.cr.endHeaderRefresh()
             self.collectionView.reloadData()
+            self.tvAction = TvAction.none
             
         } else if self.tvAction == TvAction.getStreamingLinks {
             // Show error message if don't have data from server
