@@ -45,7 +45,7 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         
         // Setup login button
         let loginButton = FBSDKLoginButton()
-        loginButton.center = CGPoint(x: self.expiryDateLabel.center.x, y: self.expiryDateLabel.center.y + 50)
+        loginButton.center = CGPoint(x: self.view.center.x, y: self.expiryDateLabel.center.y + 50)
         loginButton.delegate = self
         view.addSubview(loginButton)
         
