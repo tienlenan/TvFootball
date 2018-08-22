@@ -361,11 +361,13 @@ class DataManager: NSObject {
                 return
             }
             
-            guard let id = data["id"] as? String,
-                let name = data["name"] as? String,
-                let email = data["email"] as? String else {
+            guard let id = data["id"] as? String else {
                     return
             }
+            
+            let name = (data["name"] as? String) ?? ""
+            let email = (data["email"] as? String) ?? ""
+            
             let url = NSURL(string: "https://graph.facebook.com/\(id)/picture?type=large&return_ssl_resources=1")
             let avatar = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
             let fUser: TvFacebookUSer = TvFacebookUSer(fid: id,

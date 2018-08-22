@@ -214,7 +214,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 if user.coins > 3000 {
                     guard let match = self.processingMatch else {
                         self.tvAction = TvAction.none
-                        AppUtility.showErrorMessage("YSomething is horribly wrong!")
+                        AppUtility.showErrorMessage("Something is horribly wrong!")
                         return
                     }
                     
