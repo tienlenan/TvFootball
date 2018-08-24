@@ -8,14 +8,6 @@
 
 import UIKit
 
-// MARK: - TvAction
-enum TvAction {
-    case none
-    case getLiveMatches
-    case getStreamingLinks
-    case buyStreamingMatch
-}
-
 // MARK: - MatchType
 enum MatchType: Int {
     case free = 0, paid = 1

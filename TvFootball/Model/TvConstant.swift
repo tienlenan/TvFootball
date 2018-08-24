@@ -10,10 +10,10 @@ import Foundation
 
 class TvConstant {
     /// Banner image url
-    static let BANNER_IMAGE_URL = "https://i.imgur.com/QZ6j8Mg.png"
+    static let BANNER_IMAGE_URL = "http://nghienbongda.net/bottom1.gif"
     
     /// Ads web url
-    static let ADS_URL = "https://www.fun88angels.com/vi/album"
+    static let ADS_URL = "http://nghienbongda.net/app/index.html"
     
     /// For getting live matches url
     static let GET_LIVE_MATCHES_API_URL = "http://api.bongdahd.info/api/fixture/list"
