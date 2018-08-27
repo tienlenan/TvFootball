@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d9n-5C-4F7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pRr-pq-GjF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -394,11 +394,52 @@ Napoli</string>
             </objects>
             <point key="canvasLocation" x="-676" y="-313"/>
         </scene>
+        <!--InitialVC-->
+        <scene sceneID="ybZ-Ia-J7G">
+            <objects>
+                <viewController id="pRr-pq-GjF" customClass="InitialVC" customModule="TvFootball" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MKT-dB-Pgl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tv_logo" translatesAutoresizingMaskIntoConstraints="NO" id="7cw-dS-AO4">
+                                <rect key="frame" x="67" y="279.5" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Xb6-y6-H7n"/>
+                                    <constraint firstAttribute="width" constant="240" id="Y4p-uT-Mqv"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7cw-dS-AO4" firstAttribute="centerY" secondItem="zZq-CO-Cbi" secondAttribute="centerY" id="5bt-mf-Nfp"/>
+                            <constraint firstItem="7cw-dS-AO4" firstAttribute="centerX" secondItem="zZq-CO-Cbi" secondAttribute="centerX" id="kSn-9R-OSQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zZq-CO-Cbi"/>
+                    </view>
+                    <connections>
+                        <segue destination="d9n-5C-4F7" kind="show" identifier="showMainVCSegue" id="E4g-fl-GNl"/>
+                        <segue destination="cZY-A0-QAj" kind="show" identifier="goToBackupVCSegue" id="48Y-o0-TAC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MyF-Ee-p0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2527" y="-314"/>
+        </scene>
+        <!--backupVC-->
+        <scene sceneID="8eL-Rr-b0g">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Backup" referencedIdentifier="backupVC" id="cZY-A0-QAj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MnU-XG-oXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2528" y="170"/>
+        </scene>
     </scenes>
     <resources>
         <image name="home-icon" width="24" height="24"/>
         <image name="live-icon" width="24" height="24"/>
         <image name="streaming-icon" width="32" height="32"/>
+        <image name="tv_logo" width="512" height="512"/>
         <image name="user-icon" width="24" height="24"/>
     </resources>
 </document>

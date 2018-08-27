@@ -12,6 +12,7 @@
 		84013E51211B423900DB6F45 /* MatchRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84013E4F211B423900DB6F45 /* MatchRow.xib */; };
 		84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */; };
 		84140868213456DF003E6D1B /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84140866213456DF003E6D1B /* Backup.storyboard */; };
+		8414086A21346345003E6D1B /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414086921346345003E6D1B /* InitialVC.swift */; };
 		8415E6EA213422D6008CA2D1 /* BNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415E6E9213422D6008CA2D1 /* BNewsVC.swift */; };
 		8415E6EC213422E5008CA2D1 /* BMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415E6EB213422E5008CA2D1 /* BMatchesVC.swift */; };
 		8467C4812121D02600EB8B08 /* UserManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467C4802121D02600EB8B08 /* UserManagerVC.swift */; };
@@ -66,6 +67,7 @@
 		84013E4F211B423900DB6F45 /* MatchRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchRow.xib; sourceTree = "<group>"; };
 		84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchesVC.swift; sourceTree = "<group>"; };
 		84140867213456DF003E6D1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Backup.storyboard; sourceTree = "<group>"; };
+		8414086921346345003E6D1B /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
 		8415E6E9213422D6008CA2D1 /* BNewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNewsVC.swift; sourceTree = "<group>"; };
 		8415E6EB213422E5008CA2D1 /* BMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMatchesVC.swift; sourceTree = "<group>"; };
 		8467C4802121D02600EB8B08 /* UserManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerVC.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				9EE4C3E021340FAF00C5D7D2 /* Backup */,
+				8414086921346345003E6D1B /* InitialVC.swift */,
 				9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */,
 				9EDFA393211B08010019E321 /* FixtureVC.swift */,
 				84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */,
@@ -499,6 +502,7 @@
 				8415E6EA213422D6008CA2D1 /* BNewsVC.swift in Sources */,
 				9EF76661212277F4000EE5A5 /* TvFacebookUSer.swift in Sources */,
 				9EE4C3E221340FD100C5D7D2 /* BHomeVC.swift in Sources */,
+				8414086A21346345003E6D1B /* InitialVC.swift in Sources */,
 				84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */,
 				9E6FCD3D2119AACB0059DDE0 /* AppDelegate.swift in Sources */,
 				84F3CD23211F03DF0077278D /* TvConstant.swift in Sources */,
