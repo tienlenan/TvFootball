@@ -121,6 +121,9 @@ class BMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     // MARK: - HTTPDelegate
     func didGetSuccessRespond(data: JSON?) {
         // Reload table after get live match successful
+        if DataManager.shared.liveMatches.count == 0 {
+            AppUtility.showWarningMessage("Doesn't have any matches. Please get the schedule later!")
+        }
         self.collectionView.cr.endHeaderRefresh()
         self.collectionView.reloadData()
     }

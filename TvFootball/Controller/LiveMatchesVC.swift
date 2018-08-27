@@ -215,7 +215,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                     // If user tap Cancel -> Dismiss popup
                     let messageView: MessageView = MessageView.viewFromNib(layout: .centeredView)
                     messageView.configureBackgroundView(width: 290)
-                    messageView.configureContent(title: "TvFootball", body: "Press 'Yes' to buy this match. If you don't want, please try swiping to dismiss this message.", iconImage: nil, iconText: "🦄", buttonImage: nil, buttonTitle: "Yes") { _ in
+                    messageView.configureContent(title: "TvFootball", body: "Get this match?", iconImage: nil, iconText: "🦄", buttonImage: nil, buttonTitle: "Yes") { _ in
                         self.tvAction = TvAction.buyStreamingMatch
                         DataManager.shared.buyStreamingMatch(self, liveMatchId: match.liveMatchId, userId: user.uid)
                         SwiftMessages.hide()
@@ -230,7 +230,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                     SwiftMessages.show(config: config, view: messageView)
                 } else {
                     self.tvAction = TvAction.none
-                    AppUtility.showErrorMessage("You don't have enought coins to buy this match!")
+                    AppUtility.showErrorMessage("Cannot get this match!")
                 }
                 
             } else {
@@ -241,7 +241,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             
         } else if self.tvAction == TvAction.buyStreamingMatch {
             // Buy match successful
-            AppUtility.showSuccessMessage("You've already bought this match, enjoy it!")
+            AppUtility.showSuccessMessage("Enjoy it!")
             
             // Go to streaming tab
             self.tvAction = TvAction.none

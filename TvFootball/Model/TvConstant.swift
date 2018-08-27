@@ -17,7 +17,7 @@ class TvConstant: NSObject {
     var ADS_URL = "https://www.fun88angels.com/vi/album"
     
     /// Ads web url
-    var ADS2_URL = "http://www.skysports.com/football/news"
+    var ADS2_URL = "https://www.arsenal.com/"
     
     /// For getting live matches url
     var GET_LIVE_MATCHES_API_URL = "http://api.bongdahd.info/api/fixture/list"
