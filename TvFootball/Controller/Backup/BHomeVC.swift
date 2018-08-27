@@ -8,10 +8,9 @@
 
 import UIKit
 
-class BHomeVC: UIViewController {
+class BHomeVC: UITabBarController {
     
     // MARK: Life cycle
-    
     /// View did load
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +28,5 @@ class BHomeVC: UIViewController {
         
         // Lock portrait
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-    }
-    @IBAction func tapNewsButton(_ sender: Any) {
-    }
-    @IBAction func tapMatchesButton(_ sender: Any) {
     }
 }

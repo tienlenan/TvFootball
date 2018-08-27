@@ -50,7 +50,7 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         view.addSubview(loginButton)
         
         // Register notification
-        nc.addObserver(self, selector: #selector(updateUserInfoSchedule), name: NSNotification.Name(rawValue: TvConstant.USER_INFO_WAS_LOADED), object: nil)
+        nc.addObserver(self, selector: #selector(updateUserInfoSchedule), name: NSNotification.Name(rawValue: TvConstant.shared.USER_INFO_WAS_LOADED), object: nil)
         
         // Schedule timer for update user infor in UI
         self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserInfoSchedule), userInfo: nil, repeats: true)

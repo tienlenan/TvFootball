@@ -13,6 +13,7 @@ import CryptoSwift
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+
 class DataManager: NSObject {
     static let shared: DataManager = DataManager()
     weak var delegate: HTTPDelegate?
@@ -76,7 +77,7 @@ class DataManager: NSObject {
     /// - Parameter httpDelegate: delegate
     func getLiveMatches(_ httpDelegate: HTTPDelegate?) {
         self.delegate = httpDelegate
-        Alamofire.request(TvConstant.GET_LIVE_MATCHES_API_URL, encoding: JSONEncoding.default)
+        Alamofire.request(TvConstant.shared.GET_LIVE_MATCHES_API_URL, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -126,13 +127,13 @@ class DataManager: NSObject {
             "UserId": userId
         ]
         let tick = "\(Int(Date().timeIntervalSince1970))"
-        let xAuthHeader = (tick + ",test,an").aesAndBase64Encrypt(key: TvConstant.AES_KEY) ?? ""
+        let xAuthHeader = (tick + ",test,an").aesAndBase64Encrypt(key: TvConstant.shared.AES_KEY) ?? ""
         
         let headers: HTTPHeaders = [
             "X-AUTH-API": xAuthHeader,
             "Accept": "application/json"
         ]
-        let requestURL = TvConstant.GET_STREAM_LINKS_API + "?tick=\(tick)&format=json"
+        let requestURL = TvConstant.shared.GET_STREAM_LINKS_API + "?tick=\(tick)&format=json"
         Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 debugPrint(response)
@@ -173,7 +174,7 @@ class DataManager: NSObject {
             "LiveMatchId": liveMatchId,
             "UserId": userId
         ]
-        Alamofire.request(TvConstant.TRY_GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(TvConstant.shared.TRY_GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -211,7 +212,7 @@ class DataManager: NSObject {
             "LiveMatchId": "",
             "BuyMonth": true
         ]
-        Alamofire.request(TvConstant.TRY_GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(TvConstant.shared.TRY_GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -238,7 +239,7 @@ class DataManager: NSObject {
     /// - Parameter httpDelegate: delegate
     func getDeviceIP(_ httpDelegate: HTTPDelegate?) {
         self.delegate = httpDelegate
-        Alamofire.request(TvConstant.IP_TRACKING_URL, method: .get, encoding: JSONEncoding.default)
+        Alamofire.request(TvConstant.shared.IP_TRACKING_URL, method: .get, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
                 if let _ = response.result.error {
@@ -273,13 +274,13 @@ class DataManager: NSObject {
             "email": fUser.email
         ]
         let tick = "\(Int(Date().timeIntervalSince1970))"
-        let xAuthHeader = (tick + ",test,an").aesAndBase64Encrypt(key: TvConstant.AES_KEY) ?? ""
+        let xAuthHeader = (tick + ",test,an").aesAndBase64Encrypt(key: TvConstant.shared.AES_KEY) ?? ""
         
         let headers: HTTPHeaders = [
             "X-AUTH-API": xAuthHeader,
             "Accept": "application/json"
         ]
-        let requestURL = TvConstant.GET_USER_INFO_API + "?tick=\(tick)&format=json"
+        let requestURL = TvConstant.shared.GET_USER_INFO_API + "?tick=\(tick)&format=json"
         Alamofire.request(requestURL, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 debugPrint(response)
@@ -305,7 +306,7 @@ class DataManager: NSObject {
                         
                         if httpDelegate == nil {
                             // Notify to UserManagerVC
-                            self.nc.post(name: NSNotification.Name(rawValue: TvConstant.USER_INFO_WAS_LOADED), object: nil)
+                            self.nc.post(name: NSNotification.Name(rawValue: TvConstant.shared.USER_INFO_WAS_LOADED), object: nil)
                         } else {
                             // Return http success
                             self.handleResponse(type: .httpSuccess, data: responseJSONData)
@@ -412,7 +413,7 @@ class DataManager: NSObject {
     ///   - key: key
     /// - Returns: decrypted data
     func decrypt(input: String, key: String) -> String {
-        if let actualStr = input.aesAndBase64Decript(key: TvConstant.AES_KEY) {
+        if let actualStr = input.aesAndBase64Decript(key: TvConstant.shared.AES_KEY) {
             return actualStr
         }
         return ""

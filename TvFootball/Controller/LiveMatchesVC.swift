@@ -57,17 +57,9 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    /// On tapped this view controller
-    public func onTapped() {
-        // Get matches if action is none
-        if self.tvAction == TvAction.none {
-            DataManager.shared.getLiveMatches(self)
-            self.tvAction = TvAction.getLiveMatches
-        }
-    }
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
-        Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
+        Alamofire.request(TvConstant.shared.BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
                 self.bannerImg.image = image
                 self.bannerView.isHidden = false
@@ -121,8 +113,8 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         cell.dateLabel.text = "\(match.startDate.fromIntToDateStr())"
         
         // Download images
-        cell.homeTeamImg.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
-        cell.awayTeamImg.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
+        cell.homeTeamImg.image = UIImage(named: TvConstant.shared.DEFAULT_TEAM_IMG)
+        cell.awayTeamImg.image = UIImage(named: TvConstant.shared.DEFAULT_TEAM_IMG)
         if let teamHomeImgUrl = match.teamHomeImgUrl {
             Alamofire.request(teamHomeImgUrl).responseImage { response in
                 if let image = response.result.value {
@@ -210,7 +202,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             }
             
             // Check data: If didn't bought
-            if responseData["message"].stringValue == TvConstant.NOT_BOUGHT_MESSAGE {
+            if responseData["message"].stringValue == TvConstant.shared.NOT_BOUGHT_MESSAGE {
                 if user.coins > 3000 {
                     guard let match = self.processingMatch else {
                         self.tvAction = TvAction.none

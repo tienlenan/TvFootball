@@ -1,60 +1,38 @@
 //
-//  FixtureVC.swift
+//  BNewsVC.swift
 //  TvFootball
 //
-//  Created by Le Tien An on 8/8/18.
+//  Created by admin on 8/27/18.
 //  Copyright © 2018 Le Tien An. All rights reserved.
 //
 
 import UIKit
 import WebKit
-import Alamofire
-import AlamofireImage
 
-class FixtureVC: UIViewController, WKNavigationDelegate {
+class BNewsVC: UIViewController, WKNavigationDelegate {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tvWebView: UIView!
-    @IBOutlet weak var bannerImg: UIImageView!
-    @IBOutlet weak var bannerView: UIView!
     
     // MARK: - Variables
     var webView : WKWebView!
     var idLoaded = false
-
+    
     /// View did load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Load webview
         self.loadTvWebView()
-        
-        // Download banner image
-        self.downloadBanner()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !idLoaded {
-            let url = URL(string: TvConstant.shared.ADS_URL)
+            let url = URL(string: TvConstant.shared.ADS2_URL)
             let request = URLRequest(url: url!)
             webView.load(request)
         }
-    }
-    
-    /// Download banner, show banner view when completed download banner image
-    private func downloadBanner() {
-        Alamofire.request(TvConstant.shared.BANNER_IMAGE_URL).responseImage { response in
-            if let image = response.result.value {
-                self.bannerImg.image = image
-                self.bannerView.isHidden = false
-            }
-        }
-    }
-    
-    // MARK: - IBACtion
-    @IBAction func closeBanner(_ sender: UIButton) {
-        self.bannerView.removeFromSuperview()
     }
     
     // MARK: - Private function

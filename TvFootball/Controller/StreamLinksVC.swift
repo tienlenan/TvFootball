@@ -46,7 +46,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
-        Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
+        Alamofire.request(TvConstant.shared.BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
                 self.bannerImg.image = image
                 self.bannerView.isHidden = false
@@ -111,8 +111,8 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 let leagueLabel = cell.viewWithTag(102) as? UILabel,
                 let dateLabel = cell.viewWithTag(104) as? UILabel {
                 
-                homeTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
-                awayTeamImgView.image = UIImage(named: TvConstant.DEFAULT_TEAM_IMG)
+                homeTeamImgView.image = UIImage(named: TvConstant.shared.DEFAULT_TEAM_IMG)
+                awayTeamImgView.image = UIImage(named: TvConstant.shared.DEFAULT_TEAM_IMG)
                 if let teamHomeImgUrl = DataManager.shared.streamingMatch?.teamHomeImgUrl {
                     Alamofire.request(teamHomeImgUrl).responseImage { response in
                         if let image = response.result.value {
@@ -193,7 +193,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         }
         self.urls = []
         let result = responseData["result"].stringValue
-        let jsonLinksStr = DataManager.shared.decrypt(input: result, key: TvConstant.AES_KEY)
+        let jsonLinksStr = DataManager.shared.decrypt(input: result, key: TvConstant.shared.AES_KEY)
         let jsonLinks: JSON = JSON.init(parseJSON: jsonLinksStr)
         for item in jsonLinks {
             let link = item.1["Link"].stringValue

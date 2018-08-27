@@ -11,6 +11,9 @@
 		84013E50211B423900DB6F45 /* MatchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E4E211B423900DB6F45 /* MatchRow.swift */; };
 		84013E51211B423900DB6F45 /* MatchRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84013E4F211B423900DB6F45 /* MatchRow.xib */; };
 		84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */; };
+		84140868213456DF003E6D1B /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84140866213456DF003E6D1B /* Backup.storyboard */; };
+		8415E6EA213422D6008CA2D1 /* BNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415E6E9213422D6008CA2D1 /* BNewsVC.swift */; };
+		8415E6EC213422E5008CA2D1 /* BMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415E6EB213422E5008CA2D1 /* BMatchesVC.swift */; };
 		8467C4812121D02600EB8B08 /* UserManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8467C4802121D02600EB8B08 /* UserManagerVC.swift */; };
 		84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */; };
 		84F16FCD211C8C190027DA75 /* StreamLinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */; };
@@ -30,7 +33,6 @@
 		9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */; };
 		9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */; };
 		9EDFA394211B08010019E321 /* FixtureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFA393211B08010019E321 /* FixtureVC.swift */; };
-		9EE4C3DF21340C0500C5D7D2 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EE4C3DE21340C0500C5D7D2 /* Backup.storyboard */; };
 		9EE4C3E221340FD100C5D7D2 /* BHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE4C3E121340FD100C5D7D2 /* BHomeVC.swift */; };
 		9EF76661212277F4000EE5A5 /* TvFacebookUSer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF76660212277F4000EE5A5 /* TvFacebookUSer.swift */; };
 		C3049BE85A5B85CD51B0462B /* Pods_TvFootball.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */; };
@@ -63,6 +65,9 @@
 		84013E4E211B423900DB6F45 /* MatchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRow.swift; sourceTree = "<group>"; };
 		84013E4F211B423900DB6F45 /* MatchRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchRow.xib; sourceTree = "<group>"; };
 		84013E52211B470C00DB6F45 /* LiveMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchesVC.swift; sourceTree = "<group>"; };
+		84140867213456DF003E6D1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Backup.storyboard; sourceTree = "<group>"; };
+		8415E6E9213422D6008CA2D1 /* BNewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNewsVC.swift; sourceTree = "<group>"; };
+		8415E6EB213422E5008CA2D1 /* BMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMatchesVC.swift; sourceTree = "<group>"; };
 		8467C4802121D02600EB8B08 /* UserManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerVC.swift; sourceTree = "<group>"; };
 		84F0E1C6211B60C900485ABE /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
 		84F16FCC211C8C190027DA75 /* StreamLinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamLinksVC.swift; sourceTree = "<group>"; };
@@ -88,7 +93,6 @@
 		9EDFA38B211AF5890019E321 /* HTTPDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDelegate.swift; sourceTree = "<group>"; };
 		9EDFA38F211AF9E60019E321 /* TvFootballVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvFootballVC.swift; sourceTree = "<group>"; };
 		9EDFA393211B08010019E321 /* FixtureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureVC.swift; sourceTree = "<group>"; };
-		9EE4C3DE21340C0500C5D7D2 /* Backup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		9EE4C3E121340FD100C5D7D2 /* BHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHomeVC.swift; sourceTree = "<group>"; };
 		9EF76660212277F4000EE5A5 /* TvFacebookUSer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvFacebookUSer.swift; sourceTree = "<group>"; };
 		B446CE1085134A192A6D8B59 /* Pods_TvFootball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TvFootball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,7 +190,7 @@
 				9E6FCD3C2119AACB0059DDE0 /* AppDelegate.swift */,
 				9EDFA383211ACBBF0019E321 /* LaunchScreen.storyboard */,
 				9EDFA385211ACBBF0019E321 /* Main.storyboard */,
-				9EE4C3DE21340C0500C5D7D2 /* Backup.storyboard */,
+				84140866213456DF003E6D1B /* Backup.storyboard */,
 				9E6FCD432119AACD0059DDE0 /* Assets.xcassets */,
 				9E6FCD482119AACD0059DDE0 /* Info.plist */,
 			);
@@ -242,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				9EE4C3E121340FD100C5D7D2 /* BHomeVC.swift */,
+				8415E6E9213422D6008CA2D1 /* BNewsVC.swift */,
+				8415E6EB213422E5008CA2D1 /* BMatchesVC.swift */,
 			);
 			path = Backup;
 			sourceTree = "<group>";
@@ -366,7 +372,7 @@
 			files = (
 				9EDFA388211ACBBF0019E321 /* Main.storyboard in Resources */,
 				9E6FCD442119AACD0059DDE0 /* Assets.xcassets in Resources */,
-				9EE4C3DF21340C0500C5D7D2 /* Backup.storyboard in Resources */,
+				84140868213456DF003E6D1B /* Backup.storyboard in Resources */,
 				84013E51211B423900DB6F45 /* MatchRow.xib in Resources */,
 				9EDFA387211ACBBF0019E321 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -490,6 +496,7 @@
 			files = (
 				84013E50211B423900DB6F45 /* MatchRow.swift in Sources */,
 				9EDFA38C211AF5890019E321 /* HTTPDelegate.swift in Sources */,
+				8415E6EA213422D6008CA2D1 /* BNewsVC.swift in Sources */,
 				9EF76661212277F4000EE5A5 /* TvFacebookUSer.swift in Sources */,
 				9EE4C3E221340FD100C5D7D2 /* BHomeVC.swift in Sources */,
 				84F0E1C7211B60C900485ABE /* ExtensionHelper.swift in Sources */,
@@ -501,6 +508,7 @@
 				84013E53211B470C00DB6F45 /* LiveMatchesVC.swift in Sources */,
 				84F3CD29211F139C0077278D /* AppUtility.swift in Sources */,
 				9EDFA38A211AF4CF0019E321 /* LiveMatch.swift in Sources */,
+				8415E6EC213422E5008CA2D1 /* BMatchesVC.swift in Sources */,
 				9EDFA382211AA6A00019E321 /* DataManager.swift in Sources */,
 				9EDFA390211AF9E60019E321 /* TvFootballVC.swift in Sources */,
 				84F71497211FCC1600F77B53 /* TvUSer.swift in Sources */,
@@ -540,6 +548,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		84140866213456DF003E6D1B /* Backup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84140867213456DF003E6D1B /* Base */,
+			);
+			name = Backup.storyboard;
+			sourceTree = "<group>";
+		};
 		9EDFA383211ACBBF0019E321 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

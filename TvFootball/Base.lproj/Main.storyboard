@@ -360,7 +360,7 @@ Napoli</string>
         <!--Navigation Controller-->
         <scene sceneID="WOz-Yf-OLJ">
             <objects>
-                <navigationController id="d9n-5C-4F7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainVC" id="d9n-5C-4F7" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LdY-ZX-VRM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
