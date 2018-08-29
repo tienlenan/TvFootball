@@ -48,11 +48,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MuG-WQ-QZs">
-                                        <rect key="frame" x="-1" y="-1" width="375" height="30"/>
+                                        <rect key="frame" x="-1" y="-1" width="376" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zID-lw-gd9">
-                                        <rect key="frame" x="351" y="-10" width="31" height="35"/>
+                                        <rect key="frame" x="352" y="-10" width="31" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                                         <state key="normal" title="X">
@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4c-ep-nTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="-314"/>
+            <point key="canvasLocation" x="276" y="-314.39280359820094"/>
         </scene>
         <!--Account-->
         <scene sceneID="4XK-QN-HaE">
