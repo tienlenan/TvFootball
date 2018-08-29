@@ -11,13 +11,14 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import SwiftyJSON
 
-class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
+class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
     
     // MARK: - IBOutlet
     @IBOutlet weak var imageView : UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var coinsLabel: UILabel!
     @IBOutlet weak var expiryDateLabel: UILabel!
+    @IBOutlet weak var buyMonthButton: UIButton!
     
     // MARK: - Variables
     /// Notification
@@ -38,6 +39,12 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         imageView.layer.masksToBounds = true
         imageView.image = UIImage(named: "profile-img")
         
+        // Setup buy month button
+        buyMonthButton.layer.cornerRadius = 2
+        buyMonthButton.layer.borderWidth = 2
+        buyMonthButton.layer.borderColor = UIColor.clear.cgColor
+        buyMonthButton.isHidden = true
+        
         // Setup label view
         label.text = ""
         coinsLabel.text = ""
@@ -45,7 +52,7 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         
         // Setup login button
         let loginButton = FBSDKLoginButton()
-        loginButton.center = CGPoint(x: self.view.center.x, y: self.expiryDateLabel.center.y + 50)
+        loginButton.center = CGPoint(x: self.view.center.x, y: self.view.frame.height - 80)
         loginButton.delegate = self
         view.addSubview(loginButton)
         
@@ -55,7 +62,19 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         // Schedule timer for update user infor in UI
         self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateUserInfoSchedule), userInfo: nil, repeats: true)
     }
-    
+    // MARK: - IBAction
+    @IBAction func tapBuyMonthButton(_ sender: Any) {
+        guard let user = DataManager.shared.user else {
+            return
+        }
+        
+        // Check coins
+        if user.coins > 20000 {
+            DataManager.shared.buyMonth(self, userId: user.uid)
+        } else {
+            AppUtility.showErrorMessage("Do not enough to buy month, your account must has at least 20k coins!")
+        }
+    }
     
     /// View did appear
     ///
@@ -94,6 +113,7 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
             label.text = ""
             coinsLabel.text = ""
             expiryDateLabel.text = ""
+            buyMonthButton.isHidden = true
             return
         }
         self.label.text = fUser.name
@@ -101,8 +121,23 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate {
         self.coinsLabel.text = "\(user.coins) coins"
         if user.expiryDate > 0 {
             expiryDateLabel.text = "Expiry date of monthly rent:\n\(user.expiryDate.fromIntToDateStr())"
+            buyMonthButton.isHidden = true
         } else {
             expiryDateLabel.text = ""
+            buyMonthButton.isHidden = false
         }
+    }
+    
+    // MARK: - HTTPDelegate
+    func didGetSuccessRespond(data: JSON?) {
+        AppUtility.showSuccessMessage("Now you can watch all of the matches in one month!")
+    }
+    
+    func didGetErrorFromServer(message: String) {
+        AppUtility.showErrorMessage("Something is horribly wrong from server!")
+    }
+    
+    func didGetConnectionError(message: String) {
+        AppUtility.showErrorMessage("Please check your network connection!")
     }
 }
