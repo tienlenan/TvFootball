@@ -22,8 +22,6 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var bannerView: UIView!
     
     // MARK: - Variables
-    /// Current action is none
-    lazy var tvAction: TvAction = TvAction.none
     
     /// Current working match
     var processingMatch: LiveMatch?
@@ -46,25 +44,14 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Get matches if action is none
-        if self.tvAction == TvAction.none {
-            if DataManager.shared.liveMatches.count == 0 {
-                DataManager.shared.getLiveMatches(self)
-                self.tvAction = TvAction.getLiveMatches
-            } else {
-                self.collectionView.reloadData()
-            }
+        // Get matches
+        if DataManager.shared.liveMatches.count == 0 {
+            DataManager.shared.getLiveMatches(self)
+        } else {
+            self.collectionView.reloadData()
         }
     }
     
-    /// On tapped this view controller
-    public func onTapped() {
-        // Get matches if action is none
-        if self.tvAction == TvAction.none {
-            DataManager.shared.getLiveMatches(self)
-            self.tvAction = TvAction.getLiveMatches
-        }
-    }
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
         Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
@@ -88,7 +75,6 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             /// Start refresh - Get live data
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 DataManager.shared.getLiveMatches(self)
-                self?.tvAction = TvAction.getLiveMatches
             })
         }
     }
@@ -155,30 +141,18 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             return
         }
         
-        guard let user = DataManager.shared.user else {
+        guard let _ = DataManager.shared.user else {
             return
         }
         
         // Chosen match
         let match = DataManager.shared.liveMatches[indexPath.row]
         
-        // Check free or not
-        if match.type == MatchType.free.rawValue {
-            // Get links immediately if free
-            DataManager.shared.mainTabBarVC.selectedIndex = 2
-            DataManager.shared.streamingMatch = match
-        } else {
-            // Set tapped match
-            self.processingMatch = match
-            
-            // Send get streaming links to check this match was bought or not
-            DataManager.shared.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
-            
-            // Set current action
-            self.tvAction = TvAction.getStreamingLinks
-        }
+        // Get links in next tab
+        DataManager.shared.mainTabBarVC.selectedIndex = 2
+        DataManager.shared.streamingMatch = match
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         return UICollectionReusableView()
     }
@@ -189,84 +163,18 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     // MARK: - HTTPDelegate
     func didGetSuccessRespond(data: JSON?) {
-        if self.tvAction == TvAction.getLiveMatches {
-            // Reload table after get live match successful
-            self.collectionView.cr.endHeaderRefresh()
-            self.collectionView.reloadData()
-            self.tvAction = TvAction.none
-            
-        } else if self.tvAction == TvAction.getStreamingLinks {
-            // Show error message if don't have data from server
-            guard let responseData = data else {
-                self.tvAction = TvAction.none
-                AppUtility.showErrorMessage("Something is horribly wrong from server!")
-                return
-            }
-            
-            guard let user = DataManager.shared.user else {
-                self.tvAction = TvAction.none
-                AppUtility.showErrorMessage("Something is horribly wrong!")
-                return
-            }
-            
-            // Check data: If didn't bought
-            if responseData["message"].stringValue == TvConstant.NOT_BOUGHT_MESSAGE {
-                if user.coins > 3000 {
-                    guard let match = self.processingMatch else {
-                        self.tvAction = TvAction.none
-                        AppUtility.showErrorMessage("Something is horribly wrong!")
-                        return
-                    }
-                    
-                    // Show confirm message, asked user want to buy match or not
-                    // If user tap OK -> Get links
-                    // If user tap Cancel -> Dismiss popup
-                    let messageView: MessageView = MessageView.viewFromNib(layout: .centeredView)
-                    messageView.configureBackgroundView(width: 290)
-                    messageView.configureContent(title: "TvFootball", body: "Press 'Yes' to buy this match. If you don't want, please try swiping to dismiss this message.", iconImage: nil, iconText: "🦄", buttonImage: nil, buttonTitle: "Yes") { _ in
-                        self.tvAction = TvAction.buyStreamingMatch
-                        DataManager.shared.buyStreamingMatch(self, liveMatchId: match.liveMatchId, userId: user.uid)
-                        SwiftMessages.hide()
-                    }
-                    messageView.backgroundView.backgroundColor = UIColor.init(white: 0.97, alpha: 1)
-                    messageView.backgroundView.layer.cornerRadius = 10
-                    var config = SwiftMessages.defaultConfig
-                    config.presentationStyle = .center
-                    config.duration = .forever
-                    config.dimMode = .blur(style: .dark, alpha: 1, interactive: true)
-                    config.presentationContext  = .window(windowLevel: UIWindowLevelStatusBar)
-                    SwiftMessages.show(config: config, view: messageView)
-                } else {
-                    self.tvAction = TvAction.none
-                    AppUtility.showErrorMessage("You don't have enought coins to buy this match!")
-                }
-                
-            } else {
-                self.tvAction = TvAction.none
-                DataManager.shared.mainTabBarVC.selectedIndex = 2
-                DataManager.shared.streamingMatch = self.processingMatch
-            }
-            
-        } else if self.tvAction == TvAction.buyStreamingMatch {
-            // Buy match successful
-            AppUtility.showSuccessMessage("You've already bought this match, enjoy it!")
-            
-            // Go to streaming tab
-            self.tvAction = TvAction.none
-            DataManager.shared.mainTabBarVC.selectedIndex = 2
-            DataManager.shared.streamingMatch = self.processingMatch
-        }
+        // Reload table after get live match successful
+        self.collectionView.cr.endHeaderRefresh()
+        self.collectionView.reloadData()
     }
     
     func didGetErrorFromServer(message: String) {
         self.collectionView.cr.endHeaderRefresh()
-        self.tvAction = TvAction.none
         AppUtility.showErrorMessage("Something is horribly wrong from server!")
     }
     
     func didGetConnectionError(message: String) {
         self.collectionView.cr.endHeaderRefresh()
-        self.tvAction = TvAction.none
         AppUtility.showErrorMessage("Please check your network connection!")
     }
 }

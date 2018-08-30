@@ -10,12 +10,8 @@ import Foundation
 
 struct TvUser {
     var uid: Int
-    var coins: Int
-    var expiryDate: Int
     
-    init(uid: Int, coins: Int, expiryDate: Int) {
+    init(uid: Int) {
         self.uid = uid
-        self.coins = coins
-        self.expiryDate = expiryDate
     }
 }

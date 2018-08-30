@@ -113,56 +113,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6w-9c-5zM" userLabel="coinsLabel">
-                                <rect key="frame" x="94" y="261" width="187.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry date of monthly rent: 09:00 22-08-2018" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOE-9L-soN" userLabel="expiryDateLabel">
-                                <rect key="frame" x="82.5" y="282" width="211" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFY-bN-4iP">
-                                <rect key="frame" x="112" y="331" width="150" height="25"/>
-                                <color key="backgroundColor" red="0.25882352941176467" green="0.40392156862745099" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="EhD-up-eH2"/>
-                                    <constraint firstAttribute="width" constant="150" id="xRX-Nl-76p"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Buy Month">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapBuyMonthButton:" destination="y9L-jF-JOG" eventType="touchUpInside" id="imW-UO-9t2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oFY-bN-4iP" firstAttribute="top" secondItem="qOE-9L-soN" secondAttribute="bottom" constant="8" id="1dv-jO-UB9"/>
-                            <constraint firstItem="C6w-9c-5zM" firstAttribute="top" secondItem="8tT-Fw-drd" secondAttribute="bottom" id="6u9-bh-3sq"/>
-                            <constraint firstItem="C6w-9c-5zM" firstAttribute="width" secondItem="MZf-JN-EOr" secondAttribute="width" multiplier="1/2" id="RaI-XW-FIP"/>
-                            <constraint firstItem="oFY-bN-4iP" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="VLe-vB-6KT"/>
                             <constraint firstItem="8tT-Fw-drd" firstAttribute="top" secondItem="msd-qb-yiB" secondAttribute="bottom" constant="5" id="WQb-aU-4eZ"/>
                             <constraint firstItem="8tT-Fw-drd" firstAttribute="width" secondItem="MZf-JN-EOr" secondAttribute="width" multiplier="1/2" id="Xff-OP-FSH"/>
-                            <constraint firstItem="qOE-9L-soN" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="bbo-gM-Fzc"/>
                             <constraint firstItem="msd-qb-yiB" firstAttribute="top" secondItem="RY7-Xo-uDJ" secondAttribute="top" constant="49" id="fCu-a0-4iA"/>
-                            <constraint firstItem="qOE-9L-soN" firstAttribute="top" secondItem="C6w-9c-5zM" secondAttribute="bottom" id="vUJ-x4-c3A"/>
                             <constraint firstItem="8tT-Fw-drd" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="vZk-oJ-N6z"/>
                             <constraint firstItem="msd-qb-yiB" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="xLv-se-UG5"/>
-                            <constraint firstItem="C6w-9c-5zM" firstAttribute="centerX" secondItem="RY7-Xo-uDJ" secondAttribute="centerX" id="xt7-av-pCQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RY7-Xo-uDJ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="user-icon" id="2we-0a-uyd"/>
                     <connections>
-                        <outlet property="buyMonthButton" destination="oFY-bN-4iP" id="hUk-Om-iR7"/>
-                        <outlet property="coinsLabel" destination="C6w-9c-5zM" id="Jci-BH-gAq"/>
-                        <outlet property="expiryDateLabel" destination="qOE-9L-soN" id="sHH-HA-88x"/>
                         <outlet property="imageView" destination="msd-qb-yiB" id="OFr-wz-apc"/>
                         <outlet property="label" destination="8tT-Fw-drd" id="lz3-AA-Xij"/>
                     </connections>
