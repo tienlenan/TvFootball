@@ -245,6 +245,11 @@ class DataManager: NSObject {
     
     /// Get user information per 5s
     @objc private func getUserInfoSchedule() {
+        // For get ip
+        if self.ip == nil {
+            self.getDeviceIP(nil)
+        }
+        
         // Check access token
         if FBSDKAccessToken.current() == nil {
             // If empty
@@ -317,7 +322,8 @@ class DataManager: NSObject {
         if actualURL.contains(find: "token") {
             actualURL = String(actualURL.split(separator: "?").first!)
             let tick = String(Int(Date().timeIntervalSince1970 + 7000))
-            let t3 = ("livestream" + self.ip! + tick).bytes.md5().toBase64() ?? ""
+            let ip = self.ip ?? ""
+            let t3 = ("livestream" + ip + tick).bytes.md5().toBase64() ?? ""
             actualURL = actualURL
                 + "?token="
                 + t3.replacingOccurrences(of: "=", with: "")
