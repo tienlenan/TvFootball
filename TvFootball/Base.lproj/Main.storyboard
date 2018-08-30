@@ -45,7 +45,29 @@
                                     <outlet property="delegate" destination="xi5-Cb-sjI" id="VTa-De-GE0"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmf-eK-4ye" userLabel="bannerView">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMJ-qA-oM1" userLabel="topBannerView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-Tc-4u2">
+                                        <rect key="frame" x="-2" y="-1" width="375" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVf-Ti-4Xd">
+                                        <rect key="frame" x="351" y="-10" width="32" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeTopBanner:" destination="xi5-Cb-sjI" eventType="touchUpInside" id="sSM-oh-bZ8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmf-eK-4ye" userLabel="bottomBannerView">
                                 <rect key="frame" x="0.0" y="589" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -61,7 +83,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="closeBanner:" destination="xi5-Cb-sjI" eventType="touchUpInside" id="DZk-D7-Qdl"/>
+                                            <action selector="closeBottomBanner:" destination="xi5-Cb-sjI" eventType="touchUpInside" id="EQi-LI-mKd"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -85,9 +107,11 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
-                        <outlet property="bannerImg" destination="MuG-WQ-QZs" id="sSP-ea-m4G"/>
-                        <outlet property="bannerView" destination="mmf-eK-4ye" id="Ap2-yM-hOy"/>
+                        <outlet property="bottomBannerImg" destination="MuG-WQ-QZs" id="JgN-ZX-Roa"/>
+                        <outlet property="bottomBannerView" destination="mmf-eK-4ye" id="zEu-Hj-9XG"/>
                         <outlet property="collectionView" destination="pLb-f4-ABP" id="UYw-WE-Vwb"/>
+                        <outlet property="topBannerImg" destination="wuz-Tc-4u2" id="4Yf-RS-gB5"/>
+                        <outlet property="topBannerView" destination="yMJ-qA-oM1" id="IB0-7o-LCh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4c-ep-nTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,7 +264,29 @@ Napoli</string>
                                     <outlet property="delegate" destination="q6e-hp-oUk" id="0hX-Pc-rie"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-Sh-RMB" userLabel="bannerView">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NYi-xf-vM6" userLabel="topBannerView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-Ua-ieS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6t-Hm-i2M">
+                                        <rect key="frame" x="353" y="-10" width="30" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeTopBanner:" destination="q6e-hp-oUk" eventType="touchUpInside" id="XpK-bT-zjT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-Sh-RMB" userLabel="bottomBannerView">
                                 <rect key="frame" x="0.0" y="589" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -256,8 +302,7 @@ Napoli</string>
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="closeBanner:" destination="q6e-hp-oUk" eventType="touchUpInside" id="lVh-54-owm"/>
-                                            <action selector="closeBanner:" destination="xi5-Cb-sjI" eventType="touchUpInside" id="oue-SY-7WJ"/>
+                                            <action selector="closeBottomBanner:" destination="q6e-hp-oUk" eventType="touchUpInside" id="4EX-ro-Y4b"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -281,9 +326,11 @@ Napoli</string>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
-                        <outlet property="bannerImg" destination="b7m-QO-2uG" id="RAG-nl-mVD"/>
-                        <outlet property="bannerView" destination="6aE-Sh-RMB" id="SLB-RW-uIx"/>
+                        <outlet property="bottomBannerImg" destination="b7m-QO-2uG" id="c1x-m7-Q5T"/>
+                        <outlet property="bottomBannerView" destination="6aE-Sh-RMB" id="Mez-ok-Hsg"/>
                         <outlet property="collectionView" destination="c5G-F4-n9F" id="dEO-Sc-Fdy"/>
+                        <outlet property="topBannerImg" destination="eMX-Ua-ieS" id="x7v-J1-Sve"/>
+                        <outlet property="topBannerView" destination="NYi-xf-vM6" id="cWx-wH-wYy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8y-fo-RE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -303,7 +350,29 @@ Napoli</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVS-wA-WC2" userLabel="bannerView">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPX-db-Qjr" userLabel="topBannerView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41d-Gy-a94" userLabel="bannerImg">
+                                        <rect key="frame" x="0.0" y="0.0" width="376" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPG-WM-5Fg">
+                                        <rect key="frame" x="354" y="-10" width="30" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeTopBanner:" destination="3i3-Vw-kgY" eventType="touchUpInside" id="oEW-9V-QCo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVS-wA-WC2" userLabel="bottomBannerView">
                                 <rect key="frame" x="0.0" y="589" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
@@ -319,7 +388,7 @@ Napoli</string>
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="closeBanner:" destination="3i3-Vw-kgY" eventType="touchUpInside" id="kd7-Se-4tv"/>
+                                            <action selector="closeBottomBanner:" destination="3i3-Vw-kgY" eventType="touchUpInside" id="Th4-Fj-oYj"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -331,8 +400,10 @@ Napoli</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home-icon" id="B2D-Se-QDa"/>
                     <connections>
-                        <outlet property="bannerImg" destination="vBG-p8-lhv" id="7cg-nj-VAn"/>
-                        <outlet property="bannerView" destination="dVS-wA-WC2" id="64x-7S-CCj"/>
+                        <outlet property="bottomBannerImg" destination="vBG-p8-lhv" id="bDq-qE-lEZ"/>
+                        <outlet property="bottomBannerView" destination="dVS-wA-WC2" id="Yyk-Ew-ZSB"/>
+                        <outlet property="topBannerImg" destination="41d-Gy-a94" id="cvW-3u-p7R"/>
+                        <outlet property="topBannerView" destination="GPX-db-Qjr" id="HvU-KD-u9g"/>
                         <outlet property="tvWebView" destination="8jH-fh-DtV" id="Bd1-D3-TWg"/>
                     </connections>
                 </viewController>

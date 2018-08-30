@@ -15,8 +15,11 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tvWebView: UIView!
-    @IBOutlet weak var bannerImg: UIImageView!
-    @IBOutlet weak var bannerView: UIView!
+    @IBOutlet weak var topBannerImg: UIImageView!
+    @IBOutlet weak var topBannerView: UIView!
+    
+    @IBOutlet weak var bottomBannerImg: UIImageView!
+    @IBOutlet weak var bottomBannerView: UIView!
     
     // MARK: - Variables
     var webView : WKWebView!
@@ -46,15 +49,26 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     private func downloadBanner() {
         Alamofire.request(TvConstant.TOP_BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
-                self.bannerImg.image = image
-                self.bannerView.isHidden = false
+                self.topBannerImg.image = image
+                self.topBannerView.isHidden = false
+            }
+        }
+        
+        Alamofire.request(TvConstant.TOP_BANNER_IMAGE_URL).responseImage { response in
+            if let image = response.result.value {
+                self.bottomBannerImg.image = image
+                self.bottomBannerView.isHidden = false
             }
         }
     }
     
     // MARK: - IBACtion
-    @IBAction func closeBanner(_ sender: UIButton) {
-        self.bannerView.removeFromSuperview()
+    @IBAction func closeTopBanner(_ sender: UIButton) {
+        self.topBannerView.removeFromSuperview()
+    }
+    
+    @IBAction func closeBottomBanner(_ sender: UIButton) {
+        self.bottomBannerView.removeFromSuperview()
     }
     
     // MARK: - Private function
