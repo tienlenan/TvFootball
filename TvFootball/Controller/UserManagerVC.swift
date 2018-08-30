@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import SwiftyJSON
+import SwiftMessages
 
 class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
     
@@ -70,7 +71,23 @@ class UserManagerVC: UIViewController, FBSDKLoginButtonDelegate, HTTPDelegate {
         
         // Check coins
         if user.coins > 20000 {
-            DataManager.shared.buyMonth(self, userId: user.uid)
+            // Show confirm message, asked user want to buy match or not
+            // If user tap OK -> Get links
+            // If user tap Cancel -> Dismiss popup
+            let messageView: MessageView = MessageView.viewFromNib(layout: .centeredView)
+            messageView.configureBackgroundView(width: 290)
+            messageView.configureContent(title: "TvFootball", body: "Press 'Yes' to buy monthly service. If you don't want, please try swiping to dismiss this message.", iconImage: nil, iconText: "🦄", buttonImage: nil, buttonTitle: "Yes") { _ in
+                DataManager.shared.buyMonth(self, userId: user.uid)
+                SwiftMessages.hide()
+            }
+            messageView.backgroundView.backgroundColor = UIColor.init(white: 0.97, alpha: 1)
+            messageView.backgroundView.layer.cornerRadius = 10
+            var config = SwiftMessages.defaultConfig
+            config.presentationStyle = .center
+            config.duration = .forever
+            config.dimMode = .blur(style: .dark, alpha: 1, interactive: true)
+            config.presentationContext  = .window(windowLevel: UIWindowLevelStatusBar)
+            SwiftMessages.show(config: config, view: messageView)
         } else {
             AppUtility.showErrorMessage("Do not enough to buy month, your account must has at least 20k coins!")
         }
