@@ -10,10 +10,11 @@ import Foundation
 
 class TvConstant {
     /// Banner image url
-    static let BANNER_IMAGE_URL = "http://nghienbongda.net/bottom1.gif"
+    static let TOP_BANNER_IMAGE_URL = "http://nghienbongda.net/topfunlive1.gif"
+    static let BOTTOM_BANNER_IMAGE_URL = "http://nghienbongda.net/bottomfunlive1.gif"
     
     /// Ads web url
-    static let ADS_URL = "http://nghienbongda.net/app/index.html"
+    static let ADS_URL = "http://nghienbongda.net/iframe/index.php"
     
     /// For getting live matches url
     static let GET_LIVE_MATCHES_API_URL = "http://api.bongdahd.info/api/fixture/list"
@@ -23,9 +24,6 @@ class TvConstant {
     /// If not bought, return "NotBought" in response
     static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream"
     
-    /// Buying match/month url
-    static let TRY_GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/trylinkstream"
-    
     /// Get user info url
     static let GET_USER_INFO_API = "http://api.bongdahd.info/api/customer/userinfo"
     
@@ -34,9 +32,6 @@ class TvConstant {
     
     /// Default logo
     static let DEFAULT_TEAM_IMG = "tv_logo"
-    
-    /// Not bought message
-    static let NOT_BOUGHT_MESSAGE = "NotBought"
     
     // AES en/decript key
     static let AES_KEY = "1234567891234567"

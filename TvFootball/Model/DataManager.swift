@@ -158,43 +158,6 @@ class DataManager: NSObject {
         }
     }
     
-    /// Buy streaming match
-    /// Purpose
-    /// - Get streaming links of match
-    ///
-    /// - Parameters:
-    ///   - httpDelegate: delegate
-    ///   - liveMatchId: live match identifier
-    ///   - userId: id of user who wants to buy match
-    func buyStreamingMatch(_ httpDelegate: HTTPDelegate?, liveMatchId: Int, userId: Int) {
-        self.delegate = httpDelegate
-        
-        let parameters: [String:Any] = [
-            "LiveMatchId": liveMatchId,
-            "UserId": userId
-        ]
-        Alamofire.request(TvConstant.TRY_GET_STREAM_LINKS_API, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                debugPrint(response)
-                if let _ = response.result.error {
-                    // Return connection error
-                    self.handleResponse(type: .httpConnectionError, data: nil)
-                    
-                } else {
-                    let responseJSONData = JSON(response.result.value!)
-                    let statusCode = (response.response?.statusCode)
-                    if statusCode == 200 {
-                        // Return http success
-                        self.handleResponse(type: .httpSuccess, data: responseJSONData)
-                        
-                    } else {
-                        // Return error from server
-                        self.handleResponse(type: .httpConnectionError, data: nil)
-                    }
-                }
-        }
-    }
-    
     /// Get live matches
     ///
     /// - Parameter httpDelegate: delegate

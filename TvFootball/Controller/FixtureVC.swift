@@ -44,7 +44,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
-        Alamofire.request(TvConstant.BANNER_IMAGE_URL).responseImage { response in
+        Alamofire.request(TvConstant.TOP_BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
                 self.bannerImg.image = image
                 self.bannerView.isHidden = false
