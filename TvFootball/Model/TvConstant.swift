@@ -38,4 +38,7 @@ class TvConstant {
     
     // Notification for loading user info
     static let USER_INFO_WAS_LOADED = "USER_INFO_WAS_LOADED"
+    
+    // Get forever service link
+    static let FOREVER_SERVICE_URL = "http://nghienbongda.net/form/index.php"
 }

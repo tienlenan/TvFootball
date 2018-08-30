@@ -381,7 +381,7 @@ Napoli</string>
         <!--Contact-->
         <scene sceneID="aZb-X8-pKg">
             <objects>
-                <viewController id="w4O-bA-7EX" sceneMemberID="viewController">
+                <viewController id="w4O-bA-7EX" customClass="ContactVC" customModule="TvFootball" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="byK-8t-KM8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -486,6 +486,9 @@ Napoli</string>
                         <viewLayoutGuide key="safeArea" id="e1v-h7-HAP"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contact" image="contact-icon" id="U2f-1I-HwN"/>
+                    <connections>
+                        <outlet property="alertLabel" destination="NJw-dh-3Lw" id="hHy-Gg-Tih"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKt-xd-KD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
