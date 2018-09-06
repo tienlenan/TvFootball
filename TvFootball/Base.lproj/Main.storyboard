@@ -45,9 +45,8 @@
                                     <outlet property="delegate" destination="xi5-Cb-sjI" id="VTa-De-GE0"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMJ-qA-oM1" userLabel="topBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMJ-qA-oM1" userLabel="topBannerView">
                                 <rect key="frame" x="0.0" y="64" width="376" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-Tc-4u2">
                                         <rect key="frame" x="0.0" y="0.0" width="376" height="30"/>
@@ -66,10 +65,13 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="376" id="GxO-r2-iYd"/>
+                                    <constraint firstAttribute="height" constant="30" id="QUw-yD-cpl"/>
+                                </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmf-eK-4ye" userLabel="bottomBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmf-eK-4ye" userLabel="bottomBannerView">
                                 <rect key="frame" x="0.0" y="589" width="376" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MuG-WQ-QZs">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="31"/>
@@ -88,13 +90,21 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4TM-lN-EZS"/>
+                                    <constraint firstAttribute="width" constant="376" id="Ss8-ax-0tS"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="yMJ-qA-oM1" firstAttribute="top" secondItem="jpH-AX-HLq" secondAttribute="top" id="0oB-cJ-o5u"/>
+                            <constraint firstItem="mmf-eK-4ye" firstAttribute="bottom" secondItem="jpH-AX-HLq" secondAttribute="bottom" constant="1" id="7zM-bn-0OI"/>
                             <constraint firstItem="pLb-f4-ABP" firstAttribute="width" secondItem="m8I-wi-Q1n" secondAttribute="width" id="HwP-7m-D2Y"/>
                             <constraint firstItem="pLb-f4-ABP" firstAttribute="bottom" secondItem="jpH-AX-HLq" secondAttribute="bottom" id="SeF-59-Vvh"/>
                             <constraint firstItem="pLb-f4-ABP" firstAttribute="centerX" secondItem="jpH-AX-HLq" secondAttribute="centerX" id="bf0-41-hPJ"/>
+                            <constraint firstItem="mmf-eK-4ye" firstAttribute="centerX" secondItem="jpH-AX-HLq" secondAttribute="centerX" id="brF-vg-zDc"/>
+                            <constraint firstItem="yMJ-qA-oM1" firstAttribute="centerX" secondItem="jpH-AX-HLq" secondAttribute="centerX" id="jNG-6o-uyd"/>
                             <constraint firstItem="jpH-AX-HLq" firstAttribute="top" secondItem="pLb-f4-ABP" secondAttribute="top" id="urr-d3-u8N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jpH-AX-HLq"/>
@@ -264,9 +274,8 @@ Napoli</string>
                                     <outlet property="delegate" destination="q6e-hp-oUk" id="0hX-Pc-rie"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NYi-xf-vM6" userLabel="topBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYi-xf-vM6" userLabel="topBannerView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-Ua-ieS">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -285,10 +294,13 @@ Napoli</string>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2Kv-JK-2oO"/>
+                                    <constraint firstAttribute="width" constant="375" id="LtW-by-irZ"/>
+                                </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-Sh-RMB" userLabel="bottomBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-Sh-RMB" userLabel="bottomBannerView">
                                 <rect key="frame" x="0.0" y="589" width="375" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b7m-QO-2uG">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -307,6 +319,10 @@ Napoli</string>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ePI-8K-QsP"/>
+                                    <constraint firstAttribute="width" constant="375" id="wad-5f-3y0"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -314,7 +330,11 @@ Napoli</string>
                             <constraint firstItem="xQV-bW-Crf" firstAttribute="top" secondItem="c5G-F4-n9F" secondAttribute="top" id="Bvf-qJ-UaQ"/>
                             <constraint firstItem="xQV-bW-Crf" firstAttribute="bottom" secondItem="c5G-F4-n9F" secondAttribute="bottom" id="I3F-0S-nKi"/>
                             <constraint firstItem="c5G-F4-n9F" firstAttribute="centerX" secondItem="xQV-bW-Crf" secondAttribute="centerX" id="IMn-OA-zzv"/>
+                            <constraint firstItem="6aE-Sh-RMB" firstAttribute="bottom" secondItem="xQV-bW-Crf" secondAttribute="bottom" constant="1" id="PHk-q3-Nhc"/>
+                            <constraint firstItem="NYi-xf-vM6" firstAttribute="centerX" secondItem="xQV-bW-Crf" secondAttribute="centerX" id="XP1-vZ-uXa"/>
+                            <constraint firstItem="NYi-xf-vM6" firstAttribute="top" secondItem="xQV-bW-Crf" secondAttribute="top" id="kPA-w6-nqI"/>
                             <constraint firstItem="c5G-F4-n9F" firstAttribute="width" secondItem="ADT-dg-iuc" secondAttribute="width" id="pqI-aC-7kf"/>
+                            <constraint firstItem="6aE-Sh-RMB" firstAttribute="centerX" secondItem="xQV-bW-Crf" secondAttribute="centerX" id="wvV-Qr-mQN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xQV-bW-Crf"/>
                     </view>
@@ -350,9 +370,8 @@ Napoli</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPX-db-Qjr" userLabel="topBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPX-db-Qjr" userLabel="topBannerView">
                                 <rect key="frame" x="0.0" y="64" width="376" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41d-Gy-a94" userLabel="bannerImg">
                                         <rect key="frame" x="-1" y="0.0" width="377" height="29"/>
@@ -371,10 +390,13 @@ Napoli</string>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CEL-9z-cv6"/>
+                                    <constraint firstAttribute="width" constant="376" id="G6Y-vE-eyt"/>
+                                </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dVS-wA-WC2" userLabel="bottomBannerView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVS-wA-WC2" userLabel="bottomBannerView">
                                 <rect key="frame" x="0.0" y="589" width="376" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBG-p8-lhv" userLabel="bannerImg">
                                         <rect key="frame" x="-1" y="-1" width="377" height="31"/>
@@ -393,9 +415,19 @@ Napoli</string>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cWu-1p-5Sl"/>
+                                    <constraint firstAttribute="width" constant="376" id="us6-4v-InG"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dVS-wA-WC2" firstAttribute="centerX" secondItem="q8h-kH-0m4" secondAttribute="centerX" id="IMI-0D-J9r"/>
+                            <constraint firstItem="GPX-db-Qjr" firstAttribute="centerX" secondItem="q8h-kH-0m4" secondAttribute="centerX" id="Lg1-Ch-ys2"/>
+                            <constraint firstItem="GPX-db-Qjr" firstAttribute="top" secondItem="q8h-kH-0m4" secondAttribute="top" id="dsu-5N-moK"/>
+                            <constraint firstItem="dVS-wA-WC2" firstAttribute="bottom" secondItem="q8h-kH-0m4" secondAttribute="bottom" constant="1" id="gH2-rb-tkf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="q8h-kH-0m4"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home-icon" id="B2D-Se-QDa"/>

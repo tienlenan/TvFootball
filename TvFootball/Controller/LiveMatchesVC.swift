@@ -146,6 +146,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         if DataManager.shared.userState == TvUSerState.loggedOut {
             // Show message notify app user that him/her didn't logged in
             AppUtility.showWarningMessage("You aren't logged in. Please login first!")
+            DataManager.shared.mainTabBarVC.selectedIndex = 3
             return
         }
         

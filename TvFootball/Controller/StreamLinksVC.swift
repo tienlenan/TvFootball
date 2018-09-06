@@ -44,6 +44,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         } else {
             self.collectionView.reloadData()
             AppUtility.showWarningMessage("You have to choose one match from \"Matches\" tab!")
+            DataManager.shared.mainTabBarVC.selectedIndex = 1
         }
     }
     
