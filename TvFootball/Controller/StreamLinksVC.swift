@@ -43,7 +43,7 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             DataManager.shared.getStreamUrls(self, liveMatchId: match.liveMatchId, userId: user.uid)
         } else {
             self.collectionView.reloadData()
-            AppUtility.showWarningMessage("You have to choose one match from \"Matches\" tab!")
+            AppUtility.showWarningMessage("Bạn cần chọn một trận đấu!")
             DataManager.shared.mainTabBarVC.selectedIndex = 1
         }
     }
