@@ -43,7 +43,7 @@ struct AppUtility {
             
             // Set message title, body, and icon. Here, we're overriding the default warning
             // image with an emoji character.
-            view.configureContent(title: "Error", body: message)
+            view.configureContent(title: "Lỗi", body: message)
             
             return view
         }
@@ -67,7 +67,7 @@ struct AppUtility {
             
             // Set message title, body, and icon. Here, we're overriding the default warning
             // image with an emoji character.
-            view.configureContent(title: "Success", body: message)
+            view.configureContent(title: "Thành công", body: message)
             
             return view
         }
@@ -91,7 +91,7 @@ struct AppUtility {
             
             // Set message title, body, and icon. Here, we're overriding the default warning
             // image with an emoji character.
-            view.configureContent(title: "Warning", body: message)
+            view.configureContent(title: "Cảnh báo", body: message)
             
             return view
         }
