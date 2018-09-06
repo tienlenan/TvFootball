@@ -10,8 +10,8 @@ import Foundation
 
 class TvConstant {
     /// Banner image url
-    static let TOP_BANNER_IMAGE_URL = "https://i.imgur.com/QZ6j8Mg.png"
-    static let BOTTOM_BANNER_IMAGE_URL = "https://i.imgur.com/QZ6j8Mg.png"
+    static let TOP_BANNER_IMAGE_URL = "http://nghienbongda.net/topfunlive1.gif"
+    static let BOTTOM_BANNER_IMAGE_URL = "http://nghienbongda.net/bottomfunlive1.gif"
     
     /// Ads web url
     static let ADS_URL = "http://nghienbongda.net/iframe/index.php"
