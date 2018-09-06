@@ -145,14 +145,14 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if DataManager.shared.userState == TvUSerState.loggedOut {
             // Show message notify app user that him/her didn't logged in
-            AppUtility.showWarningMessage("You aren't logged in. Please login first!")
+            AppUtility.showWarningMessage("Bạn cần login trước!")
             DataManager.shared.mainTabBarVC.selectedIndex = 3
             return
         }
         
         if DataManager.shared.userState == TvUSerState.informationNotLoaded {
             // Show message notify app user that user information was not loaded
-            AppUtility.showWarningMessage("Could not load your account information. Please try again later!")
+            AppUtility.showWarningMessage("Không thể tải thông tin tài khoản. Vui lòng thử lại sau!")
             return
         }
         
@@ -185,11 +185,11 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     func didGetErrorFromServer(message: String) {
         self.collectionView.cr.endHeaderRefresh()
-        AppUtility.showErrorMessage("Something is horribly wrong from server!")
+        AppUtility.showErrorMessage("Lỗi không xác định từ máy chủ!")
     }
     
     func didGetConnectionError(message: String) {
         self.collectionView.cr.endHeaderRefresh()
-        AppUtility.showErrorMessage("Please check your network connection!")
+        AppUtility.showErrorMessage("Không có kết nối internet!")
     }
 }

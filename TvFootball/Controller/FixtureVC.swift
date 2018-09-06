@@ -23,7 +23,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     
     // MARK: - Variables
     var webView : WKWebView!
-    var idLoaded = false
+    var isLoaded = false
 
     /// View did load
     override func viewDidLoad() {
@@ -38,11 +38,15 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !idLoaded {
+        if !isLoaded {
             let url = URL(string: TvConstant.ADS_URL)
             let request = URLRequest(url: url!)
             webView.load(request)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.isLoaded = false
     }
     
     /// Download banner, show banner view when completed download banner image
@@ -54,7 +58,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
             }
         }
         
-        Alamofire.request(TvConstant.TOP_BANNER_IMAGE_URL).responseImage { response in
+        Alamofire.request(TvConstant.BOTTOM_BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
                 self.bottomBannerImg.image = image
                 self.bottomBannerView.isHidden = false
@@ -111,7 +115,7 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     ///   - navigation: navigation
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("Web View finished...")
-        self.idLoaded = true
+        self.isLoaded = true
     }
     
     /// Decide policy for navigation response

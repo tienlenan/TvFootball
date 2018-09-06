@@ -218,17 +218,17 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.collectionView.reloadData()
         
         if self.urls.count == 0 {
-            AppUtility.showWarningMessage("Currently we aren't straming this match. Please come later!")
+            AppUtility.showWarningMessage("Hiện tại trận đấu này không được phát!")
         }
     }
     
     func didGetErrorFromServer(message: String) {
         print("Error")
-        AppUtility.showErrorMessage("Error when get streaming links!")
+        AppUtility.showErrorMessage("Không thể lấy link trực tiếp!")
     }
     
     func didGetConnectionError(message: String) {
         print("Error")
-        AppUtility.showErrorMessage("Please check your network connection!")
+        AppUtility.showErrorMessage("Không có kết nối internet!")
     }
 }
