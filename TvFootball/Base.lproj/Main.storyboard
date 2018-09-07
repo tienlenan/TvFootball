@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -489,74 +487,8 @@ Napoli</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="viber-icon" translatesAutoresizingMaskIntoConstraints="NO" id="6FK-6P-MeW" userLabel="viberImage">
-                                <rect key="frame" x="86.5" y="164" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="Phf-pK-bqz"/>
-                                    <constraint firstAttribute="width" constant="32" id="u5B-4N-eyZ"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zalo/Viber/Wechat" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="up3-r8-K6X" userLabel="viberTextLabel">
-                                <rect key="frame" x="123.5" y="164" width="158" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="rO7-Kc-Ebo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+639954678950" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25M-Xl-TdD" userLabel="viberValue">
-                                <rect key="frame" x="120.5" y="196" width="134" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skype-icon" translatesAutoresizingMaskIntoConstraints="NO" id="ttl-RB-Edu" userLabel="skypeImage">
-                                <rect key="frame" x="86" y="246" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="NmE-B3-gyl"/>
-                                    <constraint firstAttribute="height" constant="32" id="xYi-AX-fca"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skype" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxh-RG-jA4" userLabel="skypeTextLabel">
-                                <rect key="frame" x="123" y="246.5" width="53" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="yXP-cj-MZs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="viet.affiliate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLF-RJ-igx" userLabel="skypeValue">
-                                <rect key="frame" x="143" y="278.5" width="89" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email-icon" translatesAutoresizingMaskIntoConstraints="NO" id="B53-ex-OMN" userLabel="emailImage">
-                                <rect key="frame" x="86.5" y="328" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="Mse-U3-p1P"/>
-                                    <constraint firstAttribute="width" constant="32" id="xc3-yG-ycF"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d23-F9-Std" userLabel="emailTextLabel">
-                                <rect key="frame" x="123.5" y="328.5" width="46" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="gk7-fC-C5k"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="viet.affiliate@fun88.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVd-KC-Fab" userLabel="emailValue">
-                                <rect key="frame" x="94" y="360.5" width="187" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click vào đây để XÁC THỰC TÀI KHOẢN XEM MIỄN PHÍ TRỌN ĐỜI CHẤT LƯỢNG HD." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-dh-3Lw" userLabel="alertTextLabel">
-                                <rect key="frame" x="10" y="499.5" width="355" height="68.5"/>
+                                <rect key="frame" x="10" y="307" width="355" height="68.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -564,27 +496,9 @@ Napoli</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jVd-KC-Fab" firstAttribute="centerX" secondItem="e1v-h7-HAP" secondAttribute="centerX" id="2tm-hE-FxF"/>
-                            <constraint firstItem="BLF-RJ-igx" firstAttribute="top" secondItem="Xxh-RG-jA4" secondAttribute="bottom" id="31r-wS-gnp"/>
-                            <constraint firstItem="up3-r8-K6X" firstAttribute="leading" secondItem="6FK-6P-MeW" secondAttribute="trailing" constant="5" id="6eJ-QX-dRv"/>
-                            <constraint firstItem="ttl-RB-Edu" firstAttribute="centerX" secondItem="e1v-h7-HAP" secondAttribute="centerX" constant="-85" id="7XE-Va-0NW"/>
-                            <constraint firstItem="up3-r8-K6X" firstAttribute="top" secondItem="e1v-h7-HAP" secondAttribute="top" constant="100" id="7rc-na-hih"/>
                             <constraint firstItem="NJw-dh-3Lw" firstAttribute="width" secondItem="byK-8t-KM8" secondAttribute="width" constant="-20" id="96X-GA-mw3"/>
-                            <constraint firstItem="jVd-KC-Fab" firstAttribute="top" secondItem="d23-F9-Std" secondAttribute="bottom" id="DBR-Pd-Cqo"/>
-                            <constraint firstItem="ttl-RB-Edu" firstAttribute="top" secondItem="6FK-6P-MeW" secondAttribute="bottom" constant="50" id="DNm-7w-TdJ"/>
-                            <constraint firstItem="25M-Xl-TdD" firstAttribute="top" secondItem="up3-r8-K6X" secondAttribute="bottom" id="EHf-CP-VMf"/>
-                            <constraint firstItem="25M-Xl-TdD" firstAttribute="centerX" secondItem="e1v-h7-HAP" secondAttribute="centerX" id="MQG-Fo-CkN"/>
-                            <constraint firstItem="BLF-RJ-igx" firstAttribute="centerX" secondItem="e1v-h7-HAP" secondAttribute="centerX" id="P28-Oc-2Vz"/>
                             <constraint firstItem="NJw-dh-3Lw" firstAttribute="centerX" secondItem="e1v-h7-HAP" secondAttribute="centerX" id="Rmc-MX-yaT"/>
-                            <constraint firstItem="6FK-6P-MeW" firstAttribute="top" secondItem="e1v-h7-HAP" secondAttribute="top" constant="100" id="VMj-TA-Byb"/>
-                            <constraint firstItem="B53-ex-OMN" firstAttribute="baseline" secondItem="d23-F9-Std" secondAttribute="firstBaseline" constant="13.5" symbolType="layoutAnchor" id="Zq6-py-KfN"/>
-                            <constraint firstItem="6FK-6P-MeW" firstAttribute="centerX" secondItem="e1v-h7-HAP" secondAttribute="centerX" constant="-85" id="cNX-fO-TV6"/>
-                            <constraint firstItem="e1v-h7-HAP" firstAttribute="bottom" secondItem="NJw-dh-3Lw" secondAttribute="bottom" constant="50" id="fSW-QJ-TZg"/>
-                            <constraint firstItem="B53-ex-OMN" firstAttribute="centerX" secondItem="e1v-h7-HAP" secondAttribute="centerX" constant="-85" id="l4A-uR-x2T"/>
-                            <constraint firstItem="d23-F9-Std" firstAttribute="leading" secondItem="B53-ex-OMN" secondAttribute="trailing" constant="5" id="rYy-Xi-Rjh"/>
-                            <constraint firstItem="ttl-RB-Edu" firstAttribute="baseline" secondItem="Xxh-RG-jA4" secondAttribute="firstBaseline" constant="13.5" symbolType="layoutAnchor" id="soX-cw-kmO"/>
-                            <constraint firstItem="Xxh-RG-jA4" firstAttribute="leading" secondItem="ttl-RB-Edu" secondAttribute="trailing" constant="5" id="x44-Su-ced"/>
-                            <constraint firstItem="B53-ex-OMN" firstAttribute="top" secondItem="ttl-RB-Edu" secondAttribute="bottom" constant="50" id="zbp-bE-3te"/>
+                            <constraint firstItem="NJw-dh-3Lw" firstAttribute="centerY" secondItem="e1v-h7-HAP" secondAttribute="centerY" id="SMQ-FM-6m7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e1v-h7-HAP"/>
                     </view>
@@ -600,12 +514,9 @@ Napoli</string>
     </scenes>
     <resources>
         <image name="contact-icon" width="24" height="24"/>
-        <image name="email-icon" width="32" height="32"/>
         <image name="home-icon" width="24" height="24"/>
         <image name="live-icon" width="24" height="24"/>
-        <image name="skype-icon" width="32" height="32"/>
         <image name="streaming-icon" width="32" height="32"/>
         <image name="user-icon" width="24" height="24"/>
-        <image name="viber-icon" width="32" height="32"/>
     </resources>
 </document>

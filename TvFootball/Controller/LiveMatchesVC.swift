@@ -64,7 +64,7 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             }
         }
         
-        Alamofire.request(TvConstant.TOP_BANNER_IMAGE_URL).responseImage { response in
+        Alamofire.request(TvConstant.BOTTOM_BANNER_IMAGE_URL).responseImage { response in
             if let image = response.result.value {
                 self.bottomBannerImg.image = image
                 self.bottomBannerView.isHidden = false
