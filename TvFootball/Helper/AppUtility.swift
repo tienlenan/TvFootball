@@ -96,4 +96,12 @@ struct AppUtility {
             return view
         }
     }
+    
+    static func openURL(_ urlStr: String) {
+        if let url = URL(string: urlStr) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+    }
 }

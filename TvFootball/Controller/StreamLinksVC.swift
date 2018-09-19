@@ -33,6 +33,9 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         // Setup layout
         self.setupRefreshView()
         
+        // Action for banners
+        self.addActionForBanners()
+        
         // Download banner
         self.downloadBanner()
     }
@@ -46,6 +49,15 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             AppUtility.showWarningMessage("Bạn cần chọn một trận đấu!")
             DataManager.shared.mainTabBarVC.selectedIndex = 1
         }
+    }
+    
+    private func addActionForBanners() {
+        let tapTopBanner = UITapGestureRecognizer(target: self, action: #selector(self.tappedBanner))
+        let tapBottomBanner = UITapGestureRecognizer(target: self, action: #selector(self.tappedBanner))
+        topBannerImg.isUserInteractionEnabled = true
+        topBannerImg.addGestureRecognizer(tapTopBanner)
+        bottomBannerImg.isUserInteractionEnabled = true
+        bottomBannerImg.addGestureRecognizer(tapBottomBanner)
     }
     
     /// Download banner, show banner view when completed download banner image
@@ -89,6 +101,10 @@ class StreamLinksVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         } catch _ as NSError {
             print("Error when set category blayback for audio session")
         }
+    }
+    
+    @objc func tappedBanner() {
+        AppUtility.openURL(TvConstant.BANNER_ACTION_URL)
     }
     
     // MARK: - IBACtion

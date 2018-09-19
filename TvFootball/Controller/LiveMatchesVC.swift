@@ -40,6 +40,9 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         // Setup refresh view
         self.setupRefreshView()
         
+        // Action for banners
+        self.addActionForBanners()
+        
         // Download banner image
         self.downloadBanner()
     }
@@ -53,6 +56,15 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         } else {
             self.collectionView.reloadData()
         }
+    }
+    
+    private func addActionForBanners() {
+        let tapTopBanner = UITapGestureRecognizer(target: self, action: #selector(self.tappedBanner))
+        let tapBottomBanner = UITapGestureRecognizer(target: self, action: #selector(self.tappedBanner))
+        topBannerImg.isUserInteractionEnabled = true
+        topBannerImg.addGestureRecognizer(tapTopBanner)
+        bottomBannerImg.isUserInteractionEnabled = true
+        bottomBannerImg.addGestureRecognizer(tapBottomBanner)
     }
     
     /// Download banner, show banner view when completed download banner image
@@ -87,6 +99,10 @@ class LiveMatchesVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 DataManager.shared.getLiveMatches(self)
             })
         }
+    }
+    
+    @objc func tappedBanner() {
+        AppUtility.openURL(TvConstant.BANNER_ACTION_URL)
     }
     
     // MARK: - IBACtion

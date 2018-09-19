@@ -208,8 +208,8 @@ Napoli</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bundes Liga" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj1-tE-nv0" userLabel="leagueLabel">
-                                                    <rect key="frame" x="115" y="50" width="90" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bundes Liga" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rj1-tE-nv0" userLabel="leagueLabel">
+                                                    <rect key="frame" x="80" y="50" width="160" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -235,6 +235,7 @@ Napoli</string>
                                             <constraint firstItem="oMA-s0-sl6" firstAttribute="centerY" secondItem="J2E-oU-bHS" secondAttribute="centerY" id="3aX-bu-sTg"/>
                                             <constraint firstAttribute="trailing" secondItem="K4C-ny-xZd" secondAttribute="trailing" constant="6" id="LyZ-Ud-f9o"/>
                                             <constraint firstItem="1fs-Vh-Pt6" firstAttribute="top" secondItem="rj1-tE-nv0" secondAttribute="bottom" constant="-2" id="UuJ-p3-P00"/>
+                                            <constraint firstItem="rj1-tE-nv0" firstAttribute="width" secondItem="J2E-oU-bHS" secondAttribute="width" constant="-160" id="XE8-hq-0QS"/>
                                             <constraint firstItem="rj1-tE-nv0" firstAttribute="top" secondItem="YVm-6r-mCT" secondAttribute="bottom" id="aEd-eP-wTy"/>
                                             <constraint firstItem="YVm-6r-mCT" firstAttribute="centerX" secondItem="J2E-oU-bHS" secondAttribute="centerX" id="fNf-Pb-Wyx"/>
                                             <constraint firstItem="oMA-s0-sl6" firstAttribute="leading" secondItem="J2E-oU-bHS" secondAttribute="leading" constant="6" id="fP7-jx-DE0"/>

@@ -15,17 +15,21 @@ class TvConstant {
     
     /// Ads web url
     static let ADS_URL = "http://nghienbongda.net/iframe/index.php"
+    static let LINKED_URL = "nghienbongda.net/ios/index.php"
+    
+    // Banner action url
+    static let BANNER_ACTION_URL = "http://nghienbongda.net/link/index.php"
     
     /// For getting live matches url
-    static let GET_LIVE_MATCHES_API_URL = "http://api.bongdahd.info/api/fixture/list"
+    static let GET_LIVE_MATCHES_API_URL = "http://app.fun88tip.com/api/fixture/list"
     
     /// For get streaming links
     /// If bought, return links
     /// If not bought, return "NotBought" in response
-    static let GET_STREAM_LINKS_API = "http://api.bongdahd.info/api/fixture/linkstream"
+    static let GET_STREAM_LINKS_API = "http://app.fun88tip.com/api/fixture/linkstream"
     
     /// Get user info url
-    static let GET_USER_INFO_API = "http://api.bongdahd.info/api/customer/userinfo"
+    static let GET_USER_INFO_API = "http://app.fun88tip.com/api/customer/userinfo"
     
     /// Tracking IP url
     static let IP_TRACKING_URL = "https://www.trackip.net/ip?json"

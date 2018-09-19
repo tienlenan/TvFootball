@@ -32,6 +32,9 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         // Load webview
         self.loadTvWebView()
         
+        // Action for banners
+        self.addActionForBanners()
+        
         // Download banner image
         self.downloadBanner()
     }
@@ -49,6 +52,15 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
         self.isLoaded = false
     }
     
+    private func addActionForBanners() {
+        let tapTopBanner = UITapGestureRecognizer(target: self, action: #selector(self.tappedBanner))
+        let tapBottomBanner = UITapGestureRecognizer(target: self, action: #selector(self.tappedBanner))
+        topBannerImg.isUserInteractionEnabled = true
+        topBannerImg.addGestureRecognizer(tapTopBanner)
+        bottomBannerImg.isUserInteractionEnabled = true
+        bottomBannerImg.addGestureRecognizer(tapBottomBanner)
+    }
+    
     /// Download banner, show banner view when completed download banner image
     private func downloadBanner() {
         Alamofire.request(TvConstant.TOP_BANNER_IMAGE_URL).responseImage { response in
@@ -64,6 +76,10 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
                 self.bottomBannerView.isHidden = false
             }
         }
+    }
+    
+    @objc func tappedBanner() {
+        AppUtility.openURL(TvConstant.BANNER_ACTION_URL)
     }
     
     // MARK: - IBACtion
@@ -127,6 +143,25 @@ class FixtureVC: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: (@escaping (WKNavigationResponsePolicy) -> Void)){
         decisionHandler(.allow)
         // Write in sub-class
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .linkActivated  {
+            if let url = navigationAction.request.url,
+                let host = url.host, !host.hasPrefix(TvConstant.LINKED_URL),
+                UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+                print(url)
+                print("Redirected to browser. No need to open it locally")
+                decisionHandler(.cancel)
+            } else {
+                print("Open it locally")
+                decisionHandler(.allow)
+            }
+        } else {
+            print("not a user click")
+            decisionHandler(.allow)
+        }
     }
     
 }
